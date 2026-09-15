@@ -1,0 +1,148 @@
+[
+  {
+    "cat": "AI",
+    "tag": "global",
+    "title": {
+      "cn": "全球AI市场：1.8万亿美元，+37%",
+      "en": "Global AI: $1.8T, +37%"
+    },
+    "desc": {
+      "cn": "据IDC《2026全球AI市场跟踪报告》，2026年全球AI市场规模将达1.8万亿美元，同比增长37.2%。中国AI市场突破5万亿元，占全球重要份额。企业AI创意工具采用率18个月增长超200%。",
+      "en": "IDC: 2026 global AI $1.8T (+37.2% YoY). China AI >5T yuan. Enterprise AI creative tool adoption +200% in 18 months."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "全球规模",
+          "en": "Global"
+        },
+        "v": {
+          "cn": "1.8万亿$",
+          "en": "$1.8T"
+        }
+      },
+      {
+        "k": {
+          "cn": "中国",
+          "en": "China"
+        },
+        "v": {
+          "cn": "5万亿¥",
+          "en": "5T¥"
+        }
+      }
+    ],
+    "foreign": 1,
+    "links": [
+      {
+        "t": {
+          "cn": "CSDN报告解读",
+          "en": "Report"
+        },
+        "u": "https://blog.csdn.net/ZZSFZG/article/details/161106216"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "global",
+    "title": {
+      "cn": "AI视频工具重塑创作者经济",
+      "en": "AI Video Tools Reshape Creator Economy"
+    },
+    "desc": {
+      "cn": "Solo创作者用AI工具批量生成短视频，运营10+频道，月入500-3000美元。工具栈：Descript（文字剪辑）、HeyGen（数字人175+语言）、ElevenLabs（AI配音）、Sora 2、Adobe Firefly。无脸频道RPM达10-15美元。",
+      "en": "Solo creators batch-generate short video, run 10+ channels, $500-3000/mo. Stack: Descript, HeyGen (175+ langs), ElevenLabs, Sora 2, Firefly. Faceless RPM $10-15."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "月入",
+          "en": "Monthly"
+        },
+        "v": {
+          "cn": "500-3000$",
+          "en": "$500-3k"
+        }
+      },
+      {
+        "k": {
+          "cn": "RPM",
+          "en": "RPM"
+        },
+        "v": {
+          "cn": "$10-15",
+          "en": "$10-15"
+        }
+      }
+    ],
+    "foreign": 1,
+    "links": [
+      {
+        "t": {
+          "cn": "工具盘点",
+          "en": "Tools"
+        },
+        "u": "https://aiunpacker.com/blog/7-ai-video-generation-tools-that-built-profitable-youtube-channels-in-2026/"
+      },
+      {
+        "t": {
+          "cn": "变现指南",
+          "en": "Monetize"
+        },
+        "u": "https://www.makeinfluencer.ai/guides/sora-2-make-money-guide"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "global",
+    "title": {
+      "cn": "生成式动画市场爆发",
+      "en": "Generative Animation Boom"
+    },
+    "desc": {
+      "cn": "每天超3400万张AI图像被创建，企业AI创意工具采用率18个月增长超200%。生成式动画市场从2024年210亿美元持续扩张，29%创作者认为无尽创意可能性是AI最大影响。",
+      "en": "34M+ AI images created daily; enterprise adoption +200%. Generative animation expanding from $21B (2024); 29% creators cite endless creativity as top AI impact."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "每日图像",
+          "en": "Daily imgs"
+        },
+        "v": {
+          "cn": "3400万+",
+          "en": "34M+"
+        }
+      },
+      {
+        "k": {
+          "cn": "采用增长",
+          "en": "Adoption"
+        },
+        "v": {
+          "cn": "+200%",
+          "en": "+200%"
+        }
+      }
+    ],
+    "foreign": 1,
+    "links": [
+      {
+        "t": {
+          "cn": "Analytics报告",
+          "en": "Report"
+        },
+        "u": "https://www.analyticsinsight.net/artificial-intelligence/how-art-and-video-generators-are-leading"
+      },
+      {
+        "t": {
+          "cn": "Artlist趋势",
+          "en": "Artlist"
+        },
+        "u": "https://artlist-dev-imgix.s3.eu-central-1.amazonaws.com/artlist/trend-report/trend-report-2026.pdf?_sp=a511d69d-d66d-41f4-a26e-38eadf77e49b"
+      }
+    ]
+  }
+]

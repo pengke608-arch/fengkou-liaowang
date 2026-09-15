@@ -1,0 +1,1234 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#8FA876">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<link rel="manifest" href="./manifest.json">
+<link rel="apple-touch-icon" href="./icon-192.png">
+<link rel="icon" type="image/png" href="./icon-192.png">
+<title>风口瞭望 · 行业趋势政策工作台</title>
+<style>
+/* ============ 主题变量 ============ */
+:root{
+  --bg:#F5F1E8; --bg2:#FAF7F0; --card:#FFFFFF; --card2:#FDFBF6;
+  --primary:#8FA876; --primary-d:#6B8E5A; --primary-l:#B7C9A3;
+  --accent:#C9A96E; --text:#3D4A36; --text2:#6B7A60; --muted:#9AA890;
+  --border:#E3DCCB; --shadow:rgba(122,142,100,.12); --radius:18px;
+  --nav-h:62px; --safe-b:env(safe-area-inset-bottom,0px);
+}
+[data-theme="mint"]{--bg:#EDF6F0;--bg2:#F4FAF6;--card:#FFFFFF;--card2:#F7FCF9;--primary:#5BA88A;--primary-d:#3D8B6E;--primary-l:#9FD4BD;--accent:#7EC8B8;--text:#244A3D;--text2:#4E7A66;--muted:#8FB8A6;--border:#D5E8DD;--shadow:rgba(60,120,95,.12)}
+[data-theme="cream"]{--bg:#FBF6EC;--bg2:#FFFBF2;--card:#FFFFFF;--card2:#FFFDF7;--primary:#C9A96E;--primary-d:#A8884E;--primary-l:#E4D0A6;--accent:#D4B886;--text:#4A3D28;--text2:#7A6850;--muted:#B0A088;--border:#EFE5D2;--shadow:rgba(160,130,80,.12)}
+[data-theme="dark"]{--bg:#1A1F1B;--bg2:#232A24;--card:#2A312B;--card2:#313A33;--primary:#9DBF85;--primary-d:#7BA563;--primary-l:#5F7A4E;--accent:#C9A96E;--text:#E0E6DC;--text2:#A8B49E;--muted:#6B7A60;--border:#3A4339;--shadow:rgba(0,0,0,.35)}
+[data-theme="berry"]{--bg:#F5EFF2;--bg2:#FBF6F8;--card:#FFFFFF;--card2:#FDF9FB;--primary:#B57B8E;--primary-d:#9A5E72;--primary-l:#D7AEBE;--accent:#C99AAE;--text:#4A2E38;--text2:#7A5260;--muted:#B08E9A;--border:#EADAE0;--shadow:rgba(150,90,110,.12)}
+
+/* 护眼模式叠加 */
+.eye-on{filter:sepia(.22) saturate(.85) brightness(.96) contrast(.97) !important}
+#eyeOverlay{position:fixed;inset:0;pointer-events:none;z-index:9998;opacity:0;transition:opacity .3s;background:radial-gradient(ellipse at center,rgba(180,210,160,.04),rgba(120,160,90,.07))}
+.eye-on #eyeOverlay{opacity:1}
+
+*{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{height:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+a{color:var(--primary-d);text-decoration:none}
+img{max-width:100%}
+
+
+/* ============ 骨架屏加载动画 ============ */
+.skeleton{background:linear-gradient(90deg,var(--card2) 25%,var(--bg2) 50%,var(--card2) 75%);background-size:200% 100%;animation:skeleton-loading 1.5s infinite;border-radius:12px}
+@keyframes skeleton-loading{0%{background-position:200% 0}100%{background-position:-200% 0}}
+.skel-card{height:140px;margin-bottom:12px;border-radius:var(--radius)}
+.skel-title{height:20px;width:60%;margin-bottom:10px;border-radius:8px}
+.skel-text{height:14px;width:100%;margin-bottom:8px;border-radius:6px}
+.skel-text.short{width:70%}
+.loading-wrap{padding:20px 16px}
+.loading-tip{text-align:center;color:var(--muted);font-size:13px;padding:20px 0}
+/* 最后更新时间 */
+.last-update{font-size:11px;color:var(--muted);text-align:right;padding:4px 16px 0}
+
+/* ============ 顶部栏 ============ */
+.topbar{position:sticky;top:0;z-index:100;background:var(--bg2);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.top-row{display:flex;align-items:center;gap:10px}
+.logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;color:var(--primary-d);flex-shrink:0}
+.logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-l));box-shadow:0 0 8px var(--primary)}
+.search-wrap{flex:1;position:relative}
+.search-wrap input{width:100%;padding:9px 14px 9px 36px;border-radius:24px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:13px;outline:none}
+.search-wrap input:focus{border-color:var(--primary);box-shadow:0 0 0 3px var(--shadow)}
+.search-wrap svg{position:absolute;left:12px;top:50%;transform:translateY(-50%);width:16px;height:16px;color:var(--muted)}
+.top-actions{display:flex;gap:6px;flex-shrink:0}
+.icon-btn{width:36px;height:36px;border-radius:10px;border:1px solid var(--border);background:var(--card);display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text2);transition:all .2s;position:relative}
+.icon-btn:active{transform:scale(.92)}
+.icon-btn.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.icon-btn svg{width:18px;height:18px}
+.badge{position:absolute;top:-2px;right:-2px;background:var(--accent);color:#fff;font-size:9px;min-width:15px;height:15px;border-radius:8px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-weight:600}
+
+/* ============ 主题/语言切换条 ============ */
+.subbar{display:flex;align-items:center;gap:8px;padding:8px 14px 0;overflow-x:auto;scrollbar-width:none}
+.subbar::-webkit-scrollbar{display:none}
+.chip{flex-shrink:0;padding:5px 12px;border-radius:20px;border:1px solid var(--border);background:var(--card);font-size:12px;color:var(--text2);cursor:pointer;transition:all .2s;white-space:nowrap;display:flex;align-items:center;gap:5px}
+.chip:active{transform:scale(.94)}
+.chip.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+.chip .sw{width:12px;height:12px;border-radius:4px;border:1px solid rgba(0,0,0,.1)}
+
+/* ============ 主内容 ============ */
+.main{padding:12px 14px calc(var(--nav-h) + var(--safe-b) + 24px);max-width:720px;margin:0 auto}
+.page{display:none;animation:fade .3s}
+.page.active{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+
+/* Hero */
+.hero{background:linear-gradient(135deg,var(--primary),var(--primary-d));border-radius:22px;padding:22px 20px;color:#fff;margin-bottom:16px;position:relative;overflow:hidden}
+.hero::after{content:"";position:absolute;right:-30px;top:-30px;width:140px;height:140px;border-radius:50%;background:rgba(255,255,255,.1)}
+.hero::before{content:"";position:absolute;right:30px;bottom:-50px;width:90px;height:90px;border-radius:50%;background:rgba(255,255,255,.08)}
+.hero h2{font-size:21px;margin-bottom:6px;position:relative}
+.hero p{font-size:13px;opacity:.92;position:relative}
+.hero-stats{display:flex;gap:14px;margin-top:16px;position:relative}
+.hero-stat b{font-size:22px;display:block}
+.hero-stat span{font-size:11px;opacity:.85}
+
+/* 卡片 */
+.card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px;box-shadow:0 2px 12px var(--shadow);transition:transform .15s}
+.card:active{transform:scale(.99)}
+.card-head{display:flex;align-items:flex-start;gap:10px;margin-bottom:8px}
+.tag{flex-shrink:0;padding:3px 9px;border-radius:8px;font-size:11px;font-weight:600;white-space:nowrap}
+.tag.hot{background:rgba(201,169,110,.18);color:var(--accent)}
+.tag.new{background:rgba(143,168,118,.18);color:var(--primary-d)}
+.tag.gov{background:rgba(91,140,200,.15);color:#5B8CC8}
+.tag.global{background:rgba(155,120,200,.15);color:#9B78C8}
+.tag.career{background:rgba(200,120,130,.15);color:#C8788A}
+.card h3{font-size:15.5px;color:var(--text);line-height:1.45}
+.card p{font-size:13px;color:var(--text2);margin-top:6px}
+.card .nums{display:flex;gap:10px;flex-wrap:wrap;margin-top:10px}
+.num-pill{background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:5px 10px;font-size:11.5px;color:var(--text2)}
+.num-pill b{color:var(--primary-d);font-size:13px}
+.card-links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.link-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:10px;background:var(--primary-l);color:var(--primary-d);font-size:12px;font-weight:600;transition:all .2s}
+.link-btn:active{transform:scale(.94)}
+.link-btn.alt{background:var(--card2);border:1px solid var(--border);color:var(--text2)}
+.link-btn svg{width:13px;height:13px}
+.src{font-size:11px;color:var(--muted);margin-top:8px;display:flex;align-items:center;gap:4px}
+
+/* 区块标题 */
+.sec-title{display:flex;align-items:center;gap:8px;margin:18px 0 10px;font-size:16px;font-weight:700;color:var(--text)}
+.sec-title .bar{width:4px;height:18px;border-radius:3px;background:linear-gradient(var(--primary),var(--primary-l))}
+.sec-title .en{font-size:11px;color:var(--muted);font-weight:400}
+
+/* 转行路径 */
+.path-card{background:var(--card);border:1px solid var(--border);border-radius:var(--radius);padding:16px;margin-bottom:12px;border-left:4px solid var(--primary)}
+.path-card .step{display:flex;gap:10px;padding:8px 0;border-bottom:1px dashed var(--border)}
+.path-card .step:last-child{border:0}
+.step .n{width:24px;height:24px;border-radius:50%;background:var(--primary-l);color:var(--primary-d);font-size:12px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.step .st b{font-size:13.5px}.step .st span{font-size:12px;color:var(--text2)}
+
+/* 视频卡片 */
+.vid-card{background:var(--card);border:1px solid var(--border);border-radius:14px;overflow:hidden;margin-bottom:12px}
+.vid-thumb{height:130px;background:linear-gradient(135deg,var(--primary-d),var(--primary-l));position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.vid-thumb::after{content:"";position:absolute;inset:0;background:rgba(0,0,0,.12)}
+.play-btn{width:52px;height:52px;border-radius:50%;background:rgba(255,255,255,.92);display:flex;align-items:center;justify-content:center;position:relative;z-index:1;box-shadow:0 4px 16px rgba(0,0,0,.2)}
+.play-btn svg{width:22px;height:22px;color:var(--primary-d);margin-left:3px}
+.vid-info{padding:12px 14px}
+.vid-info h4{font-size:14px;margin-bottom:4px}
+.vid-info .meta{font-size:11.5px;color:var(--muted);display:flex;gap:10px}
+
+/* 记录 */
+.note-input{display:flex;gap:8px;margin-bottom:12px}
+.note-input select{padding:10px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:13px;outline:none}
+.note-input input{flex:1;padding:10px 14px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text);font-size:13px;outline:none}
+.note-input input:focus,.note-input select:focus{border-color:var(--primary)}
+.add-btn{padding:10px 16px;border-radius:12px;background:var(--primary);color:#fff;border:0;font-size:13px;font-weight:600;cursor:pointer}
+.add-btn:active{transform:scale(.94)}
+.note-item{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px;display:flex;gap:10px;align-items:flex-start}
+.note-item .nt{flex-shrink:0;width:6px;height:6px;border-radius:50%;margin-top:6px}
+.note-item .nb{flex:1}
+.note-item .nb .nh{display:flex;justify-content:space-between;align-items:center;margin-bottom:4px}
+.note-item .ncat{font-size:10.5px;padding:2px 7px;border-radius:6px;background:var(--card2);color:var(--text2)}
+.note-item .ntext{font-size:13px;color:var(--text);word-break:break-word}
+.note-item .ndate{font-size:10.5px;color:var(--muted);margin-top:4px}
+.note-item .del{color:var(--muted);cursor:pointer;font-size:18px;line-height:1;padding:4px}
+.empty{text-align:center;padding:40px 20px;color:var(--muted);font-size:13px}
+.empty svg{width:48px;height:48px;opacity:.4;margin-bottom:10px}
+
+/* 底部导航 */
+.bottomnav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--nav-h) + var(--safe-b));background:var(--bg2);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-b);z-index:100;backdrop-filter:blur(12px)}
+.nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--muted);cursor:pointer;transition:color .2s;font-size:9px}
+.nav-item.active{color:var(--primary-d)}
+.nav-item svg{width:18px;height:18px}
+.nav-item .ni{position:relative}
+
+/* 主题面板 */
+.sheet{position:fixed;bottom:0;left:0;right:0;background:var(--bg2);border-radius:24px 24px 0 0;padding:20px;padding-bottom:calc(20px + var(--safe-b));z-index:200;transform:translateY(100%);transition:transform .3s;border-top:1px solid var(--border)}
+.sheet.show{transform:none}
+.sheet-mask{position:fixed;inset:0;background:rgba(0,0,0,.4);z-index:150;opacity:0;pointer-events:none;transition:opacity .3s}
+.sheet-mask.show{opacity:1;pointer-events:auto}
+.sheet h3{font-size:16px;margin-bottom:14px;text-align:center}
+.theme-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-bottom:16px}
+.theme-opt{border:2px solid var(--border);border-radius:14px;padding:12px 8px;text-align:center;cursor:pointer;transition:all .2s;background:var(--card)}
+.theme-opt.active{border-color:var(--primary)}
+.theme-opt .prev{height:40px;border-radius:8px;margin-bottom:6px;border:1px solid rgba(0,0,0,.08)}
+.theme-opt span{font-size:11.5px;color:var(--text2)}
+.toggle-row{display:flex;align-items:center;justify-content:space-between;padding:14px 0;border-top:1px solid var(--border)}
+.toggle-row span{font-size:14px}
+.switch{width:46px;height:26px;border-radius:14px;background:var(--border);position:relative;cursor:pointer;transition:background .2s}
+.switch::after{content:"";position:absolute;top:3px;left:3px;width:20px;height:20px;border-radius:50%;background:#fff;transition:transform .2s;box-shadow:0 1px 3px rgba(0,0,0,.2)}
+.switch.on{background:var(--primary)}
+.switch.on::after{transform:translateX(20px)}
+
+/* toast */
+.toast{position:fixed;bottom:calc(var(--nav-h) + 30px);left:50%;transform:translateX(-50%) translateY(20px);background:var(--text);color:var(--bg);padding:10px 20px;border-radius:24px;font-size:13px;z-index:300;opacity:0;transition:all .3s;pointer-events:none}
+.toast.show{opacity:1;transform:translateX(-50%) none}
+
+/* 搜索高亮 */
+mark{background:var(--accent);color:#fff;border-radius:3px;padding:0 2px}
+.hidden{display:none !important}
+
+/* 适配大屏 */
+@media(min-width:560px){
+  .theme-grid{grid-template-columns:repeat(5,1fr)}
+}
+
+/* ============ 城市模块 ============ */
+.city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
+.city-chip{background:var(--card);border:2px solid var(--border);border-radius:14px;padding:12px 6px;text-align:center;cursor:pointer;transition:all .2s;position:relative}
+.city-chip:active{transform:scale(.94)}
+.city-chip.active{border-color:var(--primary);background:var(--primary-l)}
+.city-chip .cname{font-size:14px;font-weight:700;color:var(--text)}
+.city-chip .creg{font-size:10px;color:var(--muted);margin-top:2px}
+.city-chip .csal{font-size:10px;color:var(--primary-d);margin-top:4px;font-weight:600}
+.city-chip .check{position:absolute;top:4px;right:4px;width:16px;height:16px;border-radius:50%;background:var(--primary);color:#fff;font-size:10px;display:none;align-items:center;justify-content:center}
+.city-chip.checked .check{display:flex}
+
+.city-detail{display:none}
+.city-detail.show{display:block;animation:fade .3s}
+.city-section{margin-bottom:14px}
+.city-section .sh{font-size:12px;font-weight:700;color:var(--primary-d);margin-bottom:6px;display:flex;align-items:center;gap:4px}
+.city-section .sv{font-size:13px;color:var(--text2);line-height:1.7}
+.city-policy-item{background:var(--card2);border:1px solid var(--border);border-radius:12px;padding:12px;margin-bottom:8px}
+.city-policy-item .pt{font-size:13.5px;font-weight:600;color:var(--text);margin-bottom:4px}
+.city-policy-item .pd{font-size:12px;color:var(--text2);margin-bottom:6px}
+.city-policy-item .pmeta{font-size:11px;color:var(--muted);display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+.city-policy-item .pdate{background:var(--primary-l);color:var(--primary-d);padding:2px 8px;border-radius:6px;font-weight:600}
+.city-site-btn{display:inline-flex;align-items:center;gap:4px;padding:6px 12px;border-radius:10px;background:var(--card2);border:1px solid var(--border);color:var(--text2);font-size:12px;margin:4px 4px 0 0;transition:all .2s}
+.city-site-btn:active{transform:scale(.94)}
+
+.city-compare{margin-bottom:14px}
+.cmp-row{display:flex;gap:6px;margin-bottom:6px}
+.cmp-col{flex:1;background:var(--card2);border:1px solid var(--border);border-radius:10px;padding:8px;text-align:center}
+.cmp-col b{font-size:13px;color:var(--primary-d);display:block}
+.cmp-col span{font-size:10px;color:var(--muted)}
+.cmp-header{display:flex;gap:6px;margin-bottom:8px}
+.cmp-h{flex:1;text-align:center;font-size:14px;font-weight:700;color:var(--primary-d);padding:8px;background:var(--primary-l);border-radius:10px}
+.cmp-label{font-size:11px;color:var(--muted);text-align:center;padding:4px 0}
+
+.mode-tabs{display:flex;gap:6px;margin-bottom:14px}
+.mode-tab{flex:1;padding:8px;text-align:center;border-radius:12px;border:1px solid var(--border);background:var(--card);font-size:13px;color:var(--text2);cursor:pointer;transition:all .2s}
+.mode-tab.active{background:var(--primary);color:#fff;border-color:var(--primary)}
+
+/* ============ 视频播放器模态框 ============ */
+.vid-modal{position:fixed;inset:0;z-index:9999;background:rgba(0,0,0,.85);display:none;flex-direction:column;align-items:center;justify-content:center;padding:16px}
+.vid-modal.show{display:flex;animation:fade .3s}
+.vid-modal-close{position:absolute;top:12px;right:16px;width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,.15);color:#fff;display:flex;align-items:center;justify-content:center;font-size:20px;cursor:pointer;z-index:10}
+.vid-modal-title{color:#fff;font-size:14px;margin-bottom:10px;text-align:center;max-width:90%;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.vid-frame-wrap{width:100%;max-width:560px;aspect-ratio:16/9;background:#000;border-radius:12px;overflow:hidden;position:relative}
+.vid-frame-wrap iframe{width:100%;height:100%;border:none}
+.vid-modal-links{margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;justify-content:center}
+.vid-modal-links a{color:var(--primary-l);font-size:12px;padding:6px 14px;border:1px solid rgba(255,255,255,.25);border-radius:20px;text-decoration:none}
+
+/* 视频卡片缩略图 */
+.vid-thumb-real{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.vid-card{display:flex;gap:10px;margin-bottom:10px;cursor:pointer;transition:transform .2s}
+.vid-card:active{transform:scale(.98)}
+.vid-thumb-box{width:130px;min-width:130px;height:80px;border-radius:10px;overflow:hidden;position:relative;background:var(--primary-l)}
+.vid-thumb-box .play-overlay{position:absolute;inset:0;background:rgba(0,0,0,.3);display:flex;align-items:center;justify-content:center}
+.vid-thumb-box .play-overlay svg{width:28px;height:28px;color:#fff;opacity:.9}
+.vid-duration{position:absolute;bottom:4px;right:4px;background:rgba(0,0,0,.7);color:#fff;font-size:10px;padding:1px 5px;border-radius:4px}
+
+/* ============ 日历+心情 ============ */
+.cal-wrap{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:14px}
+.cal-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+.cal-head .cm-title{font-size:15px;font-weight:700;color:var(--text)}
+.cal-nav{display:flex;gap:6px}
+.cal-nav button{width:30px;height:30px;border-radius:8px;border:1px solid var(--border);background:var(--card2);color:var(--text2);cursor:pointer;font-size:14px;display:flex;align-items:center;justify-content:center}
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:3px}
+.cal-dow{text-align:center;font-size:10px;color:var(--muted);padding:4px 0}
+.cal-day{text-align:center;font-size:12px;padding:7px 0;border-radius:8px;cursor:pointer;position:relative;transition:all .15s;min-height:34px}
+.cal-day:active{transform:scale(.9)}
+.cal-day.other{opacity:.3}
+.cal-day.today{background:var(--primary-l);font-weight:700;color:var(--primary-d)}
+.cal-day.selected{background:var(--primary);color:#fff;font-weight:700}
+.cal-day .mood-dot{position:absolute;bottom:3px;left:50%;transform:translateX(-50%);font-size:10px;line-height:1}
+.mood-picker{display:flex;gap:6px;justify-content:center;margin:10px 0;flex-wrap:wrap}
+.mood-btn{width:40px;height:40px;border-radius:12px;border:2px solid var(--border);background:var(--card2);font-size:20px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s}
+.mood-btn:active{transform:scale(.85)}
+.mood-btn.selected{border-color:var(--primary);background:var(--primary-l);transform:scale(1.1)}
+.mood-label{text-align:center;font-size:11px;color:var(--muted);margin-top:4px}
+
+/* ============ 自由组合路径 ============ */
+.path-builder{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:14px}
+.pb-step{display:flex;align-items:center;gap:8px;padding:10px;border-radius:10px;margin-bottom:6px;background:var(--card2);border:1px solid var(--border);cursor:pointer;transition:all .2s}
+.pb-step:active{transform:scale(.98)}
+.pb-step.selected{border-color:var(--primary);background:var(--primary-l)}
+.pb-step .pb-check{width:20px;height:20px;border-radius:6px;border:2px solid var(--border);display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.pb-step.selected .pb-check{background:var(--primary);border-color:var(--primary);color:#fff}
+.pb-step .pb-content{flex:1}
+.pb-step .pb-title{font-size:13px;font-weight:600;color:var(--text)}
+.pb-step .pb-desc{font-size:11px;color:var(--muted)}
+.pb-step .pb-from{font-size:10px;color:var(--primary-d);margin-top:2px}
+.pb-preview{margin-top:10px;padding:10px;border-radius:10px;background:linear-gradient(135deg,var(--primary-l),var(--card2))}
+.pb-preview-title{font-size:13px;font-weight:700;color:var(--primary-d);margin-bottom:6px}
+
+/* ============ 已读标记 ============ */
+.card.read-item{position:relative}
+.card.read-item::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:var(--primary);border-radius:12px 12px 0 0;opacity:0}
+.card.read-item.is-read::before{opacity:1}
+.card.read-item.is-read{opacity:.6}
+.card.read-item.is-read .card-head h3::after{content:' ✓';color:var(--primary);font-size:12px}
+.read-badge{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;border-radius:8px;font-weight:600}
+.nav-badge{position:absolute;top:-2px;right:50%;transform:translateX(18px);background:var(--accent);color:#fff;font-size:8px;min-width:14px;height:14px;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-weight:700}
+.read-toggle{font-size:11px;color:var(--primary-d);cursor:pointer;padding:4px 10px;border-radius:8px;background:var(--primary-l);border:none;display:inline-block;margin-top:6px}
+.read-toggle:active{transform:scale(.95)}
+
+/* ============ 视频封面 ============ */
+.vid-cover{width:100%;height:100%;object-fit:cover;position:absolute;inset:0}
+.vid-plat-icon{position:absolute;top:4px;left:4px;font-size:9px;padding:2px 6px;border-radius:6px;font-weight:600;color:#fff;z-index:2}
+.vid-blogger{font-size:10px;color:var(--primary-d);margin-top:2px;display:flex;align-items:center;gap:3px}
+
+/* ============ 行动计划 ============ */
+.action-plan{background:linear-gradient(135deg,var(--primary-l),var(--card2));border:1px solid var(--primary-l);border-radius:16px;padding:14px;margin-top:12px}
+.ap-title{font-size:14px;font-weight:700;color:var(--primary-d);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.ap-week{margin-bottom:10px}
+.ap-week-title{font-size:12px;font-weight:700;color:var(--text);margin-bottom:4px;padding:4px 8px;background:var(--card);border-radius:8px;display:inline-block}
+.ap-task{font-size:12px;color:var(--text2);padding:6px 10px;margin:4px 0;background:var(--card);border-radius:8px;border-left:3px solid var(--primary);line-height:1.6}
+.ap-task b{color:var(--text)}
+</style>
+</head>
+<body>
+<div id="eyeOverlay"></div>
+<div id="vidModal" class="vid-modal" onclick="if(event.target===this)closeVidModal()">
+  <div class="vid-modal-close" onclick="closeVidModal()">×</div>
+  <div class="vid-modal-title" id="vidModalTitle"></div>
+  <div class="vid-frame-wrap" id="vidFrameWrap"></div>
+  <div class="vid-modal-links" id="vidModalLinks"></div>
+</div>
+
+<!-- 顶部栏 -->
+<div class="topbar">
+  <div class="top-row">
+    <div class="logo"><span class="dot"></span><span data-i="appName">风口瞭望</span></div>
+    <div class="search-wrap">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/></svg>
+      <input id="search" type="search" data-ph="搜风口·政策·行业" data-phe="Search trends·policies">
+    </div>
+    <div class="top-actions">
+      <button class="icon-btn" id="langBtn" title="语言"><span id="langTxt" style="font-size:11px;font-weight:700">EN</span></button>
+      <button class="icon-btn" id="themeBtn" title="主题"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg></button>
+      <button class="icon-btn" id="eyeBtn" title="护眼"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7Z"/><circle cx="12" cy="12" r="3"/></svg></button>
+      <button class="icon-btn" id="pwaInstallBtn" title="安装App" style="display:none;background:var(--primary);color:#fff"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12M7 10l5 5 5-5M5 21h14"/></svg></button>
+    </div>
+  </div>
+  <div class="subbar" id="catBar"></div>
+  <div class="last-update" id="lastUpdate">数据更新中...</div>
+</div>
+
+<!-- 主内容 -->
+<div class="main" id="content"></div>
+
+<!-- 底部导航 -->
+<div class="bottomnav" id="bottomnav"></div>
+
+<!-- 主题面板 -->
+<div class="sheet-mask" id="sheetMask"></div>
+<div class="sheet" id="themeSheet">
+  <h3 data-i="themeTitle">主题与护眼</h3>
+  <div class="theme-grid" id="themeGrid"></div>
+  <div class="toggle-row">
+    <span data-i="eyeMode">护眼模式</span>
+    <div class="switch" id="eyeSwitch"></div>
+  </div>
+  <div class="toggle-row">
+    <span data-i="langMode">中英切换</span>
+    <div class="switch" id="langSwitch"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+/* ============ 多语言文案 ============ */
+const I={
+  appName:{cn:"风口瞭望",en:"TrendWatch"},
+  appNameSub:{cn:"行业趋势 · 政策工作台",en:"Industry Trends & Policy Hub"},
+  searchPh:{cn:"搜风口·政策·行业",en:"Search trends·policies"},
+  themeTitle:{cn:"主题与护眼",en:"Theme & Eye-care"},
+  eyeMode:{cn:"护眼模式",en:"Eye-care Mode"},
+  langMode:{cn:"中英切换",en:"CN / EN"},
+  navHome:{cn:"首页",en:"Home"},navTrend:{cn:"风口",en:"Trends"},navPolicy:{cn:"政策",en:"Policy"},
+  navGlobal:{cn:"国际",en:"Global"},navCareer:{cn:"转行",en:"Career"},navVideo:{cn:"视频",en:"Video"},navNote:{cn:"记录",en:"Notes"},
+  catAll:{cn:"全部",en:"All"},catAI:{cn:"AI",en:"AI"},catLow:{cn:"低空",en:"Low-alt"},catEnergy:{cn:"储能",en:"Energy"},catSilver:{cn:"银发",en:"Silver"},catMedia:{cn:"新媒体",en:"Media"},
+  heroTitle:{cn:"抓住风口，看清趋势",en:"Catch the Wind, See the Trends"},
+  heroSub:{cn:"国家级到地方政策 · 行业风口实时瞭望 · 为你的转行决策赋能",en:"National to local policies · Real-time trend watch · Empowering your career shift"},
+  realtime:{cn:"实时来源",en:"Live source"},translate:{cn:"翻译为中文",en:"Translate to CN"},viewVideo:{cn:"看最新视频",en:"Latest videos"},official:{cn:"官方原文",en:"Official"},learnMore:{cn:"了解详情",en:"Learn more"},recordIdea:{cn:"记一笔",en:"Note it"},
+  noteCat0:{cn:"💡想法",en:"💡Idea"},noteCat1:{cn:"📢政策",en:"📢Policy"},noteCat2:{cn:"🎬风口",en:"🎬Trend"},noteCat3:{cn:"📱抖音见闻",en:"📱Douyin"},noteCat4:{cn:"✅待办",en:"✅Todo"},
+  notePh:{cn:"记录想法/政策/抖音见闻…",en:"Note ideas/policies/observations…"},
+  addNote:{cn:"记下",en:"Save"},noNote:{cn:"还没有记录，快记下你的第一个想法吧",en:"No notes yet. Record your first idea!"},
+  eyeOn:{cn:"护眼模式已开启",en:"Eye-care on"},eyeOff:{cn:"护眼模式已关闭",en:"Eye-care off"},
+  saved:{cn:"已保存",en:"Saved"},deleted:{cn:"已删除",en:"Deleted"},
+  careerTitle:{cn:"为你定制的转行路径",en:"Your Custom Career Path"},
+  careerSub:{cn:"基于你的技能：英语六级·计算机二级·普通话二甲",en:"Based on: CET-6 · Computer L2 · Mandarin 2A"},
+  stat1:{cn:"万亿风口",en:"T Trillion"},stat2:{cn:"缺口岗位",en:"Jobs gap"},stat3:{cn:"起薪区间",en:"Start salary"},
+  navRemote:{cn:"远程",en:"Remote"},
+  catRemote:{cn:"远程",en:"Remote"},
+  remoteTitle:{cn:"远程工作机会",en:"Remote Work Opportunities"},
+  remoteSub:{cn:"中国境内 · 全球远程 · 居家办公 · 数字游民",en:"China · Global · Work from home · Digital nomad"},
+  remotePlatform:{cn:"招聘平台",en:"Platforms"},remoteJob:{cn:"热门远程岗位",en:"Hot Remote Jobs"},
+  remoteTip:{cn:"点击平台/岗位卡片直达招聘页面或公众号，实时获取最新远程岗位。",en:"Tap platform/job cards to open recruitment pages or official accounts for latest remote jobs."},
+  navCity:{cn:"城市",en:"Cities"},
+  cityTitle:{cn:"全国城市政策查询",en:"National City Policy Explorer"},
+  citySub:{cn:"点击城市查看最新人才需求 · 行业风口 · 官方政策",en:"Tap a city for latest talent needs, industry trends & official policies"},
+  cityPick:{cn:"选择城市",en:"Select City"},cityCompare:{cn:"城市对比",en:"Compare Cities"},
+  cityKeyInd:{cn:"重点产业",en:"Key Industries"},cityTalent:{cn:"紧缺人才",en:"Talent Needs"},
+  citySalary:{cn:"薪资参考",en:"Salary"},cityPolicy:{cn:"最新政策",en:"Latest Policies"},
+  cityOfficial:{cn:"官方网站",en:"Official Sites"},cityHighlight:{cn:"城市亮点",en:"Highlights"},
+  cityDate:{cn:"更新日期",en:"Updated"},cityAllCities:{cn:"全部城市",en:"All Cities"},
+  cityTier1:{cn:"一线城市",en:"Tier 1"},cityTier2:{cn:"新一线",en:"New Tier 1"},cityOther:{cn:"其他",en:"Other"},
+  compareSel:{cn:"勾选2-3个城市对比",en:"Select 2-3 cities to compare"},cityVs:{cn:"VS",en:"VS"},
+};
+let lang=localStorage.getItem("tw_lang")||"cn";
+
+/* ============ 主题 ============ */
+const THEMES=[
+  {id:"matcha",cn:"抹茶奶白",en:"Matcha",c1:"#8FA876",c2:"#F5F1E8"},
+  {id:"mint",cn:"清新薄荷",en:"Mint",c1:"#5BA88A",c2:"#EDF6F0"},
+  {id:"cream",cn:"暖阳米白",en:"Cream",c1:"#C9A96E",c2:"#FBF6EC"},
+  {id:"berry",cn:"雾莓浅粉",en:"Berry",c1:"#B57B8E",c2:"#F5EFF2"},
+  {id:"dark",cn:"暮色深空",en:"Dark",c1:"#9DBF85",c2:"#1A1F1B"},
+];
+let theme=localStorage.getItem("tw_theme")||"matcha";
+let eye=localStorage.getItem("tw_eye")==="1";
+
+/* ============ 数据 ============ */
+const TRENDS_FALLBACK=[{"cat": "AI", "tag": "hot", "title": {"cn": "AI全产业链：商业化变现元年", "en": "AI Full-Chain: Commercialization Year"}, "desc": {"cn": "十五五规划明确加快AI大模型商业化落地，推动AI智能体、具身机器人场景化应用。2026年AI全产业链规模预计突破万亿，端侧AI于7月获合规牌照进入持证经营。", "en": "15th FYP accelerates AI commercialization; AI agents & embodied robots. 2026 AI market >1 trillion; on-device AI got compliance licenses in July."}, "nums": [{"k": {"cn": "市场规模", "en": "Market"}, "v": {"cn": "突破万亿", "en": ">1T"}}, {"k": {"cn": "端侧牌照", "en": "Licenses"}, "v": {"cn": "7张(7月)", "en": "7 (Jul)"}}], "links": [{"t": {"cn": "国务院发布会", "en": "Gov Press"}, "u": "https://www.gov.cn/lianbo/fabu/202607/content_7076192.htm", "gov": 1}, {"t": {"cn": "央视机遇清单", "en": "CCTV"}, "u": "https://news.cctv.cn/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml"}]}, {"cat": "Media", "tag": "hot", "title": {"cn": "AI漫剧：百亿赛道爆发", "en": "AI Comic Drama: Boom"}, "desc": {"cn": "2025年市场规模168亿，2026年预计突破240-400亿，年增幅超45%。AI生成占比超95%，单剧成本压缩至真人实拍1/10，3-7天可完成数十集。抖音上半年上线AI短剧22万部，日均上新400-500部。", "en": "2025 market 16.8B; 2026 est. 24-40B (+45%). AI-gen >95%; cost 1/10 of live-action; 3-7 days per series. Douyin launched 220k AI dramas in H1."}, "nums": [{"k": {"cn": "2026规模", "en": "2026"}, "v": {"cn": "240-400亿", "en": "24-40B"}}, {"k": {"cn": "用户", "en": "Users"}, "v": {"cn": "2.8亿", "en": "280M"}}, {"k": {"cn": "出海增速", "en": "Overseas"}, "v": {"cn": "6倍", "en": "6x"}}], "links": [{"t": {"cn": "央视数智报道", "en": "CCTV"}, "u": "https://5gai.cctv.com/2026/03/23/ARTIPbDWz2xxYxLEmcTgdzbU260323.shtml"}, {"t": {"cn": "漫剧变现攻略", "en": "Monetization"}, "u": "https://www.manju.cn/641.html"}]}, {"cat": "Media", "tag": "new", "title": {"cn": "AI剪辑师：招聘暴增179%", "en": "AI Editor: Hiring +179%"}, "desc": {"cn": "2026年6月AI剪辑相关职位招聘规模同比骤增179%，薪资8000-20000元。传统基础剪辑已饱和，行业转向融合型后期（PR/AE+AIGC）。复合型人才缺口突破100万，应届起薪8k-15k。", "en": "AI editing jobs +179% YoY (Jun 2026), salary 8-20k. Basic editing saturated; demand shifts to PR/AE+AIGC hybrid. Talent gap >1M; fresh grad 8-15k."}, "nums": [{"k": {"cn": "招聘增长", "en": "Hiring"}, "v": {"cn": "+179%", "en": "+179%"}}, {"k": {"cn": "薪资", "en": "Salary"}, "v": {"cn": "8k-20k", "en": "8-20k"}}, {"k": {"cn": "人才缺口", "en": "Gap"}, "v": {"cn": "100万+", "en": "1M+"}}], "links": [{"t": {"cn": "行业缺口分析", "en": "Analysis"}, "u": "https://m.sohu.com/a/1052726462_122575751/"}, {"t": {"cn": "AIGC成刚需", "en": "AIGC"}, "u": "https://m.sohu.com/a/1060891153_122575751/"}]}, {"cat": "Low", "tag": "new", "title": {"cn": "低空经济：商用爆发年", "en": "Low-Altitude Economy: Boom"}, "desc": {"cn": "2026年20多个城市放开无人机航线试点，市场规模预计突破3000亿，未来5年复合增长率超30%。无人机配送、农林植保、低空文旅等场景商业化，配套运维服务门槛低。", "en": "20+ cities open drone routes in 2026; market >300B, 5-yr CAGR >30%. Delivery, agriculture, tourism commercialized; low-barrier O&M services."}, "nums": [{"k": {"cn": "市场规模", "en": "Market"}, "v": {"cn": "3000亿+", "en": "300B+"}}, {"k": {"cn": "复合增长", "en": "CAGR"}, "v": {"cn": "30%+", "en": "30%+"}}], "links": [{"t": {"cn": "四大高景气赛道", "en": "4 Tracks"}, "u": "https://tidenews.com.cn/tmh_news.html?id=6a55a512805a1f00015de701"}, {"t": {"cn": "新兴支柱路线图", "en": "Roadmap"}, "u": "http://www.ce.cn/xwzx/gnsz/gdxw/202608/t20260806_3130523.shtml"}]}, {"cat": "Energy", "tag": "new", "title": {"cn": "储能与新型电力系统", "en": "Energy Storage & New Power"}, "desc": {"cn": "双碳目标推进，风光强制配储、虚拟电厂推广。2026年储能市场规模预计突破5000亿，钠离子电池、工商业储能、户用储能爆发。分销与运维成轻资产风口。", "en": "Dual-carbon drives mandatory storage & virtual power plants. 2026 market >500B; sodium-ion, C&I, home storage booming. Distribution & O&M are light-asset opportunities."}, "nums": [{"k": {"cn": "市场规模", "en": "Market"}, "v": {"cn": "5000亿+", "en": "500B+"}}], "links": [{"t": {"cn": "四大高景气赛道", "en": "4 Tracks"}, "u": "https://tidenews.com.cn/tmh_news.html?id=6a55a512805a1f00015de701"}]}, {"cat": "AI", "tag": "gov", "title": {"cn": "六大新兴支柱产业", "en": "6 Emerging Pillar Industries"}, "desc": {"cn": "集成电路、航空航天、生物医药、低空经济、新型储能、智能机器人。到2030年相关产值比2025年翻一番，总规模扩大到10万亿以上。", "en": "ICs, aerospace, biomedicine, low-altitude, storage, robots. By 2030 output doubles vs 2025, >10 trillion total."}, "nums": [{"k": {"cn": "2030规模", "en": "2030"}, "v": {"cn": "10万亿+", "en": "10T+"}}], "links": [{"t": {"cn": "央视机遇清单", "en": "CCTV"}, "u": "https://news.cctv.cn/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml"}]}, {"cat": "AI", "tag": "gov", "title": {"cn": "六大未来产业", "en": "6 Future Industries"}, "desc": {"cn": "量子科技、生物制造、绿色氢能和核聚变能、脑机接口、具身智能、6G。处在技术突破前夜，AI相关产业规模十五五末将达10万亿以上。", "en": "Quantum, bio-manufacturing, green H2 & fusion, BCI, embodied AI, 6G. On the eve of breakthroughs; AI sector >10T by end of 15th FYP."}, "nums": [{"k": {"cn": "AI规模", "en": "AI"}, "v": {"cn": "10万亿+", "en": "10T+"}}], "links": [{"t": {"cn": "央视机遇清单", "en": "CCTV"}, "u": "https://news.cctv.cn/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml"}]}];
+const POLICIES_FALLBACK=[{"cat": "Silver", "tag": "gov", "region": {"cn": "重庆", "en": "Chongqing"}, "title": {"cn": "《重庆市养老服务条例》7月1日施行", "en": "Chongqing Eldercare Regulation (Jul 1)"}, "desc": {"cn": "支持医疗机构设养老机构、养老机构设医务室；推动中医药康养、森林康养、旅居养老等特色业态；健全养老服务产业政策，促进智慧养老、康养地产发展。", "en": "Supports med-care integration; TCM/forest/residential care; smart eldercare & wellness real estate policies."}, "links": [{"t": {"cn": "重庆民政局", "en": "MCA"}, "u": "https://mzj.cq.gov.cn/zwgk_218/zfxxgkml/zcjd/mtsj/202606/t20260630_15785606.html", "gov": 1}]}, {"cat": "Silver", "tag": "gov", "region": {"cn": "重庆", "en": "Chongqing"}, "title": {"cn": "失能老人养老服务消费补贴（全国实施）", "en": "Disabled Elder Care Subsidy"}, "desc": {"cn": "自2026年1月1日起，向中度以上失能老年人发放养老服务消费补贴，全国范围内实施。重庆已建成医养结合机构196家、医养床位4.6万张、社区医养中心30个。", "en": "From Jan 1 2026, nationwide subsidy for moderate+ disabled elders. Chongqing: 196 med-care institutions, 46k beds, 30 community centers."}, "links": [{"t": {"cn": "补贴通知原文", "en": "Notice"}, "u": "https://static.ciicbj.cn/hrlib/kb/template/2026/02/12/01kh8jpgmbfsmzb5rgvjkg7dh1.pdf", "gov": 1}, {"t": {"cn": "重庆卫健委", "en": "Health"}, "u": "https://wsjkw.cq.gov.cn/ztzl_242/rdjyzxta/zxta/202606/t20260604_15729742_wap.html"}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "成都", "en": "Chengdu"}, "title": {"cn": "人工智能OPC创新发展13条（补贴最高2500万）", "en": "AI OPC 13 Measures (up to 25M)"}, "desc": {"cn": "围绕空间载体、人才引育、新产品新场景、创新创业支撑四部分，13条举措精准滴灌人工智能产业，补贴最高达2500万元。", "en": "13 measures across space, talent, products/scenarios, innovation; subsidies up to 25M yuan."}, "links": [{"t": {"cn": "中国日报报道", "en": "China Daily"}, "u": "https://sc.chinadaily.com.cn/a/202603/24/WS69c267b7a310942cc49a4b8f.html"}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "福建闽清", "en": "Minqing"}, "title": {"cn": "数据标注产业十条", "en": "Data Annotation 10 Measures"}, "desc": {"cn": "福建省首个县级数据标注产业政策，从办公场地、人才安居、技能提升、规模就业、数据交易等10方面系统支持，打造数据标注产业集聚高地。", "en": "Fujian's first county-level data annotation policy: 10 areas incl. office, housing, skills, employment, data trading."}, "links": [{"t": {"cn": "福建省政府", "en": "Fujian Gov"}, "u": "https://www.fujian.gov.cn/zwgk/ztzl/sxzygwzxsgzx/sdjj/szjj/202604/t20260410_7121152.htm", "gov": 1}]}, {"cat": "Media", "tag": "gov", "region": {"cn": "福建石狮", "en": "Shishi"}, "title": {"cn": "电商人才倍增措施（补贴500-4500元）", "en": "E-commerce Talent Measures"}, "desc": {"cn": "将电子商务师、互联网营销师、跨境电商运营纳入急需紧缺职业目录，获证参训者补贴500-4500元；电商直播纳入职业技能大赛，获奖可评技术能手。", "en": "E-commerce/internet marketing/cross-border listed as shortage occupations; 500-4500 yuan subsidies; competition winners get titles."}, "links": [{"t": {"cn": "石狮市政府", "en": "Shishi Gov"}, "u": "https://www.shishi.gov.cn/zwgk/zfxxgkzl/zc/xzgfxwj/bm/202602/t20260206_3265285.htm", "gov": 1}]}, {"cat": "Media", "tag": "gov", "region": {"cn": "福建泉州", "en": "Quanzhou"}, "title": {"cn": "泉就业+N提质赋能十条（培训补贴500-4500元）", "en": "Quan Employment 10 Measures"}, "desc": {"cn": "面向各类劳动者开展技能培训，合格取证按等级补贴500-4500元，力争全年培训2万人次以上；增强新就业形态人员保障。", "en": "Skills training for all workers; 500-4500 yuan by level; 20k+ trainings/yr; new-economy worker protections."}, "links": [{"t": {"cn": "泉州人社局", "en": "Quanzhou HR"}, "u": "https://rsj.quanzhou.gov.cn/zwgk/zfxxgkzl/zc/xzgfxwj/202601/t20260113_3254289.htm", "gov": 1}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "贵州贵阳", "en": "Guiyang"}, "title": {"cn": "支持数据产业发展若干措施", "en": "Data Industry Support Measures"}, "desc": {"cn": "对数据标注从业人员首次达100/200/500人及以上企业，分别给予10万/30万/50万一次性奖励；深入实施数字活市战略。", "en": "One-time rewards: 100/200/500+ staff firms get 100k/300k/500k yuan; digital-city strategy."}, "links": [{"t": {"cn": "知政策", "en": "Policy"}, "u": "https://www.zhizhengce.com/policies/69aa8b0c1ace6b6a60034bd2"}]}, {"cat": "Skill", "tag": "gov", "region": {"cn": "全国", "en": "National"}, "title": {"cn": "2026年高校毕业生就业创业政策：职业培训补贴", "en": "2026 Grad Employment: Training Subsidy"}, "desc": {"cn": "人社部财政部联合发文，毕业年度高校毕业生参加就业技能培训和创业培训，取得证书后给予补贴。企业新录用毕业生1年内参加岗位技能培训也予补贴。", "en": "MOHRSS+MOF: training subsidy for grads completing skills/entrepreneurship training with certificates. Enterprise onboarding training also subsidized."}, "links": [{"t": {"cn": "中国政府网原文", "en": "Gov.cn"}, "u": "https://www.gov.cn/zhengce/zhengceku/202603/content_7063305.htm", "gov": 1}]}, {"cat": "Skill", "tag": "gov", "region": {"cn": "全国", "en": "National"}, "title": {"cn": "2026年技能提升补贴新规（8月7日）", "en": "2026 Skills Subsidy New Rules (Aug 7)"}, "desc": {"cn": "参加失业保险12个月以上在职职工，取得急需紧缺/数字/绿色职业等级证书，可申领技能提升补贴。政策执行至2026年底。数字职业技能证书是重点倾斜方向。", "en": "Workers with 12mo+ unemployment insurance, obtaining shortage/digital/green occupation certificates can claim skills subsidy. Valid through end of 2026. Digital skills prioritized."}, "links": [{"t": {"cn": "搜狐政策解读", "en": "Sohu"}, "u": "https://m.sohu.com/a/1060043670_121106822/", "gov": 1}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "深圳", "en": "Shenzhen"}, "title": {"cn": "人工智能训练师报考（补贴1000-3120元）", "en": "AI Trainer Certification (Subsidy 1000-3120)"}, "desc": {"cn": "深圳报考人工智能训练师可享1000-3120元政府补贴。广东政务服务网报名，适合职场转型、技能提升。不限户籍，年满16岁即可。", "en": "Shenzhen: AI trainer certification gets 1000-3120 yuan subsidy. Register via GD government service. No household restriction, age 16+. Ideal for career transition."}, "links": [{"t": {"cn": "深圳本地宝指南", "en": "Guide"}, "u": "http://m.bendibao.com/show999381.html", "gov": 1}, {"t": {"cn": "广东政务网报名", "en": "Register"}, "u": "https://ggfw.hrss.gd.gov.cn/OUPX/", "gov": 1}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "广州", "en": "Guangzhou"}, "title": {"cn": "广州AI训练师报考（不限户籍，补贴最高3120元）", "en": "GZ AI Trainer (No Hukou, up to 3120)"}, "desc": {"cn": "2026年广州AI训练师报考推进中，不限户籍年满16岁可参与，最高补贴3120元。AI训练师是AI落地关键支撑岗位，职场转型优选方向。", "en": "2026 GZ AI trainer registration open, no hukou restriction, 16+, max 3120 yuan subsidy. Key AI deployment role, ideal for career transition."}, "links": [{"t": {"cn": "广州本地宝", "en": "GZ Guide"}, "u": "https://m.gz.bendibao.com/edu/369884.html", "gov": 1}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "广州番禺", "en": "GZ Panyu"}, "title": {"cn": "政策+AI双驱动：技能培训补贴最高173%", "en": "Policy+AI: Training Subsidy up to 173%"}, "desc": {"cn": "广州石碁镇对AI训练师、电子商务师等数字技能类及紧缺工种重点倾斜，考核合格最高可申领培训费用100%-173%技能提升补贴。补贴申领至2026年底。", "en": "GZ Shiqi: AI trainers, e-commerce and digital skills prioritized. Up to 100-173% training cost subsidy. Valid through end of 2026."}, "links": [{"t": {"cn": "中国就业网", "en": "China Job"}, "u": "https://chinajob.mohrss.gov.cn/h5/c/2026-03-30/517998.shtml", "gov": 1}]}, {"cat": "AI", "tag": "gov", "region": {"cn": "安徽", "en": "Anhui"}, "title": {"cn": "安徽AI通识培训（补贴最高2400元/人）", "en": "Anhui AI Training (Subsidy up to 2400)"}, "desc": {"cn": "安徽统筹就业补助资金、失业保险基金，AI培训合格学员补贴最高2400元/人。取得AI训练师等技能等级证书按规定给技能提升补贴。合肥、芜湖建实训基地。", "en": "Anhui: AI training subsidy up to 2400 yuan/person. AI trainer certificate holders get additional skills subsidy. Hefei/Wuhu build training bases."}, "links": [{"t": {"cn": "中国教育报", "en": "China Ed News"}, "u": "https://m.weibo.cn/detail/5328953565778632", "gov": 1}]}, {"cat": "Skill", "tag": "gov", "region": {"cn": "深圳", "en": "Shenzhen"}, "title": {"cn": "深圳技能提升补贴（高级工上浮30%）", "en": "SZ Skills Subsidy (Senior +30%)"}, "desc": {"cn": "2026年1月1日起，深圳技能提升补贴部分高级工及以上标准上浮30%。补贴有效期至2026年12月31日。涵盖数字技能、AI训练师等紧缺工种。", "en": "From Jan 1 2026, Shenzhen skills subsidy for senior workers +30%. Valid through Dec 31 2026. Covers digital skills, AI trainer and shortage occupations."}, "links": [{"t": {"cn": "深圳本地宝", "en": "SZ Guide"}, "u": "http://m.bendibao.com/show999141.html", "gov": 1}]}, {"cat": "Silver", "tag": "gov", "region": {"cn": "全国", "en": "National"}, "title": {"cn": "银发经济：智慧养老+康养文旅万亿市场", "en": "Silver Economy: Smart Eldercare Trillion Market"}, "desc": {"cn": "国家推进银发经济政策，智慧养老、康养文旅、适老化改造万亿级市场。重庆医养结合机构196家，银发内容创作（短视频/科普）是蓝海方向。适合你在职过渡。", "en": "National silver economy policy: smart eldercare, wellness tourism, age-friendly renovation = trillion-level market. CQ has 196 med-care institutions. Silver content creation is blue ocean for your transition."}, "links": [{"t": {"cn": "重庆养老条例", "en": "CQ Regulation"}, "u": "https://mzj.cq.gov.cn/zwgk_218/zfxxgkml/zcjd/mtsj/202606/t20260630_15785606.html", "gov": 1}]}, {"cat": "LowAlt", "tag": "gov", "region": {"cn": "全国", "en": "National"}, "title": {"cn": "低空经济纳入六大新兴支柱产业", "en": "Low-Altitude Economy: 6 Strategic Pillars"}, "desc": {"cn": "低空经济与集成电路、航空航天、生物医药、新型储能、智能机器人并列六大新兴支柱产业，到2030年达10万亿+。无人机操控、低空运营等新职业涌现。", "en": "Low-altitude economy joins ICs, aerospace, biomedicine, energy storage, robotics as 6 strategic pillars. 10T+ by 2030. New jobs: drone operation, low-alt operations."}, "links": [{"t": {"cn": "央视新闻", "en": "CCTV"}, "u": "https://news.cctv.com/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml", "gov": 1}]}];
+const GLOBAL_FALLBACK=[{"cat": "AI", "tag": "global", "title": {"cn": "全球AI市场：1.8万亿美元，+37%", "en": "Global AI: $1.8T, +37%"}, "desc": {"cn": "据IDC《2026全球AI市场跟踪报告》，2026年全球AI市场规模将达1.8万亿美元，同比增长37.2%。中国AI市场突破5万亿元，占全球重要份额。企业AI创意工具采用率18个月增长超200%。", "en": "IDC: 2026 global AI $1.8T (+37.2% YoY). China AI >5T yuan. Enterprise AI creative tool adoption +200% in 18 months."}, "nums": [{"k": {"cn": "全球规模", "en": "Global"}, "v": {"cn": "1.8万亿$", "en": "$1.8T"}}, {"k": {"cn": "中国", "en": "China"}, "v": {"cn": "5万亿¥", "en": "5T¥"}}], "foreign": 1, "links": [{"t": {"cn": "CSDN报告解读", "en": "Report"}, "u": "https://blog.csdn.net/ZZSFZG/article/details/161106216"}]}, {"cat": "Media", "tag": "global", "title": {"cn": "AI视频工具重塑创作者经济", "en": "AI Video Tools Reshape Creator Economy"}, "desc": {"cn": "Solo创作者用AI工具批量生成短视频，运营10+频道，月入500-3000美元。工具栈：Descript（文字剪辑）、HeyGen（数字人175+语言）、ElevenLabs（AI配音）、Sora 2、Adobe Firefly。无脸频道RPM达10-15美元。", "en": "Solo creators batch-generate short video, run 10+ channels, $500-3000/mo. Stack: Descript, HeyGen (175+ langs), ElevenLabs, Sora 2, Firefly. Faceless RPM $10-15."}, "nums": [{"k": {"cn": "月入", "en": "Monthly"}, "v": {"cn": "500-3000$", "en": "$500-3k"}}, {"k": {"cn": "RPM", "en": "RPM"}, "v": {"cn": "$10-15", "en": "$10-15"}}], "foreign": 1, "links": [{"t": {"cn": "工具盘点", "en": "Tools"}, "u": "https://aiunpacker.com/blog/7-ai-video-generation-tools-that-built-profitable-youtube-channels-in-2026/"}, {"t": {"cn": "变现指南", "en": "Monetize"}, "u": "https://www.makeinfluencer.ai/guides/sora-2-make-money-guide"}]}, {"cat": "Media", "tag": "global", "title": {"cn": "生成式动画市场爆发", "en": "Generative Animation Boom"}, "desc": {"cn": "每天超3400万张AI图像被创建，企业AI创意工具采用率18个月增长超200%。生成式动画市场从2024年210亿美元持续扩张，29%创作者认为无尽创意可能性是AI最大影响。", "en": "34M+ AI images created daily; enterprise adoption +200%. Generative animation expanding from $21B (2024); 29% creators cite endless creativity as top AI impact."}, "nums": [{"k": {"cn": "每日图像", "en": "Daily imgs"}, "v": {"cn": "3400万+", "en": "34M+"}}, {"k": {"cn": "采用增长", "en": "Adoption"}, "v": {"cn": "+200%", "en": "+200%"}}], "foreign": 1, "links": [{"t": {"cn": "Analytics报告", "en": "Report"}, "u": "https://www.analyticsinsight.net/artificial-intelligence/how-art-and-video-generators-are-leading"}, {"t": {"cn": "Artlist趋势", "en": "Artlist"}, "u": "https://artlist-dev-imgix.s3.eu-central-1.amazonaws.com/artlist/trend-report/trend-report-2026.pdf?_sp=a511d69d-d66d-41f4-a26e-38eadf77e49b"}]}];
+const REMOTE_PLATFORMS_FALLBACK=[{"name": {"cn": "电鸭社区", "en": "Eleduck"}, "desc": {"cn": "国内最知名的远程工作者社区，大量中小团队直招，可交流经验积累人脉。", "en": "Top remote worker community in China; SME direct hires; networking."}, "url": "https://eleduck.com", "tag": {"cn": "社区直招", "en": "Community"}}, {"name": {"cn": "远程.work", "en": "Yuancheng.work"}, "desc": {"cn": "专门聚合国内全远程岗位，每日更新，分类清晰，入驻企业500+、职位700+。", "en": "Aggregates China remote jobs; daily updates; 500+ companies, 700+ jobs."}, "url": "https://yuancheng.work", "tag": {"cn": "每日更新", "en": "Daily"}}, {"name": {"cn": "云工网", "en": "Yungong"}, "desc": {"cn": "远程工作招聘平台，涵盖电商运营、新媒体运营、设计、开发、文案等岗位，支持兼职全职。", "en": "Remote work platform: e-commerce, new media, design, dev, copywriting; part-time & full-time."}, "url": "https://www.yungong.com", "tag": {"cn": "综合平台", "en": "All-in-one"}}, {"name": {"cn": "小蜜蜂", "en": "Xiaomifeng"}, "desc": {"cn": "远程工作平台，覆盖开发、产品、设计、运营、市场、媒体、客服等多领域。", "en": "Remote work: dev, product, design, ops, marketing, media, CS."}, "url": "https://www.xmf.com", "tag": {"cn": "多领域", "en": "Multi-field"}}, {"name": {"cn": "云队友", "en": "CloudMate"}, "desc": {"cn": "自由职业者远程协作平台，涵盖设计、文案、技术、音视频、运营等。", "en": "Freelancer collaboration: design, copywriting, tech, AV, ops."}, "url": "https://awp.duiyou360.com", "tag": {"cn": "自由职业", "en": "Freelance"}}, {"name": {"cn": "FreeLab自由客实验室", "en": "FreeLab"}, "desc": {"cn": "联结自由职业者、小微创业者及数字游民，涵盖翻译、摄影、插画、UI设计、开发、影视剪辑。", "en": "Connects freelancers, entrepreneurs & digital nomads; translation, photography, UI, dev, video editing."}, "url": "https://www.freelab.cc", "tag": {"cn": "数字游民", "en": "Nomad"}}, {"name": {"cn": "BOSS直聘·远程", "en": "BOSS·Remote"}, "desc": {"cn": "搜索「远程办公」「居家办公」关键词，大量新媒体运营、公众号运营远程岗位。", "en": "Search 'remote' keywords; many new-media & WeChat ops remote roles."}, "url": "https://www.zhipin.com/web/geek/job?query=远程办公&city=100010000", "tag": {"cn": "直聘搜索", "en": "Search"}}, {"name": {"cn": "远程岛", "en": "Remote Island"}, "desc": {"cn": "专注远程工作的中文社区平台，汇聚各类远程职位信息。", "en": "Chinese remote work community; various remote positions."}, "url": "https://yuanchengdao.com", "tag": {"cn": "中文社区", "en": "CN Community"}}, {"name": {"cn": "Jobicy·China", "en": "Jobicy China"}, "desc": {"cn": "国际远程工作平台中国区，浏览可在中国远程工作的工程师、设计、营销岗位。", "en": "International remote jobs in China: engineers, designers, marketing."}, "url": "https://jobicy.com/job-region/china", "tag": {"cn": "国际·中国", "en": "Intl·CN"}, "foreign": 1}, {"name": {"cn": "Remote.co", "en": "Remote.co"}, "desc": {"cn": "国际远程职位招聘网站，涵盖技术、营销、教育、客服等多行业远程岗位。", "en": "International remote jobs: tech, marketing, education, CS."}, "url": "https://remote.co", "tag": {"cn": "国际综合", "en": "Intl"}, "foreign": 1}, {"name": {"cn": "We Work Remotely", "en": "WeWorkRemotely"}, "desc": {"cn": "全球最大的远程工作社区之一，大量海外全职远程岗位，适合英语好的求职者。", "en": "World's largest remote work community; full-time overseas remote jobs; great for English speakers."}, "url": "https://weworkremotely.com", "tag": {"cn": "海外全职", "en": "Overseas"}, "foreign": 1}, {"name": {"cn": "Toptal", "en": "Toptal"}, "desc": {"cn": "专注高技能专业人士（软件开发、设计、财务）的远程工作平台，申请严格但薪资高。", "en": "Elite remote platform for devs, designers, finance; strict screening, high pay."}, "url": "https://www.toptal.com", "tag": {"cn": "高端自由", "en": "Elite"}, "foreign": 1}];
+const REMOTE_JOBS_FALLBACK=[{"cat": "Media", "tag": "career", "title": {"cn": "IP运营操盘手（远程）", "en": "IP Operations Specialist (Remote)"}, "desc": {"cn": "负责IP账号全流程运营：内容策划、矩阵搭建、爆款打造、商业变现。远程办公，结果导向。综合年收入20-30万。你的新媒体运营意向+普通话二甲很匹配。", "en": "Full-process IP account ops: content, matrix, viral hits, monetization. Remote, result-oriented. 200-300k/yr. Matches your new-media interest + Mandarin 2A."}, "nums": [{"k": {"cn": "年收入", "en": "Annual"}, "v": {"cn": "20-30万", "en": "200-300k"}}, {"k": {"cn": "模式", "en": "Mode"}, "v": {"cn": "全职远程", "en": "Full remote"}}], "links": [{"t": {"cn": "BOSS直聘搜索", "en": "BOSS"}, "u": "https://www.zhipin.com/web/geek/job?query=IP运营远程&city=100010000"}, {"t": {"cn": "电鸭社区", "en": "Eleduck"}, "u": "https://eleduck.com/search/CDYy"}]}, {"cat": "Media", "tag": "career", "title": {"cn": "新媒体运营（远程办公）", "en": "New Media Operations (Remote)"}, "desc": {"cn": "负责公众号/抖音/小红书等平台内容运营，远程办公无需坐班。适合兼职过渡期积累经验。时薪25-50元起，全职8k-15k。", "en": "Manage WeChat/Douyin/Xiaohongshu content; remote, no office. Good for part-time transition. 25-50/hr, full-time 8-15k."}, "nums": [{"k": {"cn": "薪资", "en": "Salary"}, "v": {"cn": "8k-15k", "en": "8-15k"}}, {"k": {"cn": "时薪", "en": "Hourly"}, "v": {"cn": "25-50元", "en": "25-50"}}], "links": [{"t": {"cn": "BOSS直聘搜索", "en": "BOSS"}, "u": "https://www.zhipin.com/web/geek/job?query=新媒体运营远程&city=100010000"}, {"t": {"cn": "云工网", "en": "Yungong"}, "u": "https://www.yungong.com/yunying/index.html"}]}, {"cat": "AI", "tag": "career", "title": {"cn": "AI剪辑师 / AI漫剧制作（远程接单）", "en": "AI Editor / AI Drama (Remote Freelance)"}, "desc": {"cn": "用AI工具完成短视频剪辑、漫剧制作，可远程接单或全职。副业单账号月入5k-5w。你的英语六级可看海外教程，计算机二级有基础。", "en": "AI short video editing & comic drama; remote freelance or full-time. Side income 5k-50k/mo. CET-6 for overseas tutorials, Computer L2 foundation."}, "nums": [{"k": {"cn": "月入", "en": "Monthly"}, "v": {"cn": "5k-5w", "en": "5k-50k"}}, {"k": {"cn": "模式", "en": "Mode"}, "v": {"cn": "接单/全职", "en": "Freelance/FT"}}], "links": [{"t": {"cn": "云工网接单", "en": "Yungong"}, "u": "https://www.yungong.com"}, {"t": {"cn": "电鸭社区", "en": "Eleduck"}, "u": "https://eleduck.com"}]}, {"cat": "Media", "tag": "career", "title": {"cn": "公众号运营（远程办公，无需坐班）", "en": "WeChat Account Ops (Remote)"}, "desc": {"cn": "负责公众号内容撰写、排版、粉丝互动，远程办公，结果导向。非常适合兼职过渡，每周7小时起。", "en": "WeChat content writing, layout, fan engagement; remote, result-oriented. Great for part-time, 7hrs/wk minimum."}, "nums": [{"k": {"cn": "时薪", "en": "Hourly"}, "v": {"cn": "25元起", "en": "25+"}}, {"k": {"cn": "周期", "en": "Schedule"}, "v": {"cn": "2天/周", "en": "2d/wk"}}], "links": [{"t": {"cn": "BOSS直聘", "en": "BOSS"}, "u": "https://www.zhipin.com/web/geek/job?query=公众号运营远程&city=100010000"}]}, {"cat": "AI", "tag": "career", "title": {"cn": "数据标注 / AI训练师（远程）", "en": "Data Annotation / AI Trainer (Remote)"}, "desc": {"cn": "为AI大模型做数据标注和训练，零基础可学，远程办公。多地出台数据标注产业政策，闽清、贵阳有专项补贴。", "en": "Annotate data for AI models; zero-base friendly, remote. Multiple cities have data annotation industry policies & subsidies."}, "nums": [{"k": {"cn": "门槛", "en": "Barrier"}, "v": {"cn": "零基础", "en": "Zero-base"}}, {"k": {"cn": "政策", "en": "Policy"}, "v": {"cn": "有补贴", "en": "Subsidized"}}], "links": [{"t": {"cn": "闽清数据标注十条", "en": "Minqing"}, "u": "https://www.fujian.gov.cn/zwgk/ztzl/sxzygwzxsgzx/sdjj/szjj/202604/t20260410_7121152.htm"}, {"t": {"cn": "贵阳数据产业", "en": "Guiyang"}, "u": "https://www.zhizhengce.com/policies/69aa8b0c1ace6b6a60034bd2"}]}, {"cat": "Media", "tag": "career", "title": {"cn": "海外无脸频道运营（YouTube/TikTok）", "en": "Faceless Channel Ops (YouTube/TikTok)"}, "desc": {"cn": "用AI工具批量生成短视频，运营海外无脸频道，月入500-3000美元。你的英语六级是核心优势，可做英文内容。", "en": "Batch-generate short video with AI; run overseas faceless channels; $500-3000/mo. Your CET-6 is a core advantage for English content."}, "nums": [{"k": {"cn": "月入", "en": "Monthly"}, "v": {"cn": "500-3000$", "en": "$500-3k"}}, {"k": {"cn": "RPM", "en": "RPM"}, "v": {"cn": "$10-15", "en": "$10-15"}}], "foreign": 1, "links": [{"t": {"cn": "工具盘点", "en": "Tools"}, "u": "https://aiunpacker.com/blog/7-ai-video-generation-tools-that-built-profitable-youtube-channels-in-2026/"}, {"t": {"cn": "变现指南", "en": "Monetize"}, "u": "https://www.makeinfluencer.ai/guides/sora-2-make-money-guide"}]}];
+const CITIES_FALLBACK=[{"id": "chongqing", "tier": 2, "name": {"cn": "重庆", "en": "Chongqing"}, "region": {"cn": "西南", "en": "SW"}, "industries": {"cn": "新能源汽车、电子信息、医疗器械、AI大数据、养老康养、33618现代制造业", "en": "NEV, electronics, medical devices, AI/Big Data, eldercare, 33618 manufacturing"}, "talent": {"cn": "AI/大数据、智能制造、新能源、养老护理、新媒体运营、数据标注、33618制造业人才", "en": "AI/Big Data, smart manufacturing, NEV, eldercare, new media, data annotation, 33618 manufacturing"}, "salary": {"cn": "6k-15k", "en": "6-15k"}, "highlight": {"cn": "8月11日出台系列就业补贴政策；7月22日渝创渝新创业启航计划；7月1日施行养老服务条例；416科创+33618制造业集群", "en": "Aug 11 employment subsidies; Jul 22 startup plan; Jul 1 eldercare regulation; 416 tech + 33618 manufacturing"}, "policies": [{"t": {"cn": "重庆出台一系列就业补贴政策（8月11日最新）", "en": "CQ Employment Subsidy Policies (Aug 11)"}, "d": "2026-08-11", "u": "https://cq.gov.cn/ywdt/jrcq/202608/t20260811_15916612.html", "gov": 1, "desc": {"cn": "一次性求职补贴、12个县大学生就业补贴、灵活就业社保补贴、紧缺岗位就业补贴，8月10日发布。", "en": "One-time job-seeking subsidy, 12-county grad subsidy, flexible employment social security subsidy, shortage position subsidy, published Aug 10."}}, {"t": {"cn": "渝创渝新大学生创业启航计划（7月22日）", "en": "Yu-Chuang-Yu-Xin Startup Plan (Jul 22)"}, "d": "2026-07-22", "u": "https://rlsbj.cq.gov.cn/zwxx_182/tzgg/202607/t20260722_15842602.html", "gov": 1, "desc": {"cn": "聚焦33618现代制造业、软件信息、AI、乡村振兴、新能源新材料等重点行业创业项目，含AI OPC优质项目。", "en": "Focuses on 33618 manufacturing, software, AI, rural revitalization, NEV materials startups, including AI OPC quality projects."}}, {"t": {"cn": "2026年留学人员回国创业创新支持计划", "en": "2026 Returnee Startup Innovation Support"}, "d": "2026-07-16", "u": "https://rlsbj.cq.gov.cn/zwxx_182/tzgg/202607/t20260716_15827926.html", "gov": 1, "desc": {"cn": "优先支持新一代信息技术、集成电路、AI、航空航天、新能源、新材料、高端装备、生物医药、量子科技等前沿领域。", "en": "Prioritizes next-gen IT, ICs, AI, aerospace, NEV, new materials, high-end equipment, biomedicine, quantum tech."}}, {"t": {"cn": "《2026年促进高校毕业生等青年就业创业政策清单》", "en": "2026 Youth Employment Policy List"}, "d": "2026-07-31", "u": "https://rlsbj.cq.gov.cn/zwxx_182/tzgg/202607/t20260731_15879302.html", "gov": 1, "desc": {"cn": "系统梳理青年就业创业政策，促进青年留渝来渝就业创业。紧缺岗位就业并参保1年以上补贴6000元/人。", "en": "Systematic youth employment policies; 6000 yuan/person subsidy for shortage positions with 1yr+ social security."}}, {"t": {"cn": "《重庆市养老服务条例》7月1日施行", "en": "Eldercare Regulation (Jul 1)"}, "d": "2026-06-30", "u": "https://mzj.cq.gov.cn/zwgk_218/zfxxgkml/zcjd/mtsj/202606/t20260630_15785606.html", "gov": 1, "desc": {"cn": "支持医养结合、中医药康养、旅居养老；促进智慧养老、康养地产发展。", "en": "Supports med-care integration, TCM wellness, residential care; smart eldercare development."}}, {"t": {"cn": "促进农民工就业补贴政策延续实施", "en": "Migrant Worker Employment Subsidy Extended"}, "d": "2026-06-24", "u": "https://rlsbj.cq.gov.cn/zwgk_182/zfxxgkml/zcwj_145360/jfxzgfxwj/202606/t20260624_15773897.html", "gov": 1, "desc": {"cn": "企业吸纳返乡农民工就业补贴延续；家政物业等生活性服务业就业空间拓宽。", "en": "Enterprise hiring returning migrant worker subsidy extended; domestic/property services employment expanded."}}, {"t": {"cn": "百万高校毕业生留渝来渝就业创业行动计划(2024-2027)", "en": "Million Graduates Stay-in-CQ Action (2024-2027)"}, "d": "2024-04", "u": "https://www.cq.gov.cn/zwgk/zfxxgkml/szfwj/qtgw/202404/W020240416427769071305.pdf", "gov": 1, "desc": {"cn": "制造业/生产性服务业紧缺岗位就业补贴6000元；市外毕业生交通食宿补贴500元。", "en": "6000 yuan subsidy for manufacturing/service shortage jobs; 500 yuan transport subsidy for out-of-city grads."}}], "sites": [{"n": {"cn": "重庆市人社局", "en": "CQ HR&SS Bureau"}, "u": "https://rlsbj.cq.gov.cn"}, {"n": {"cn": "重庆市政府", "en": "CQ Gov"}, "u": "https://www.cq.gov.cn"}, {"n": {"cn": "重庆民政局", "en": "CQ Civil Affairs"}, "u": "https://mzj.cq.gov.cn"}, {"n": {"cn": "中国就业网-重庆", "en": "China Job-CQ"}, "u": "https://chinajob.mohrss.gov.cn/h5/c/2026-08-13/587203.shtml"}]}, {"id": "shanghai", "tier": 1, "name": {"cn": "上海", "en": "Shanghai"}, "region": {"cn": "华东", "en": "E China"}, "industries": {"cn": "集成电路、人工智能、生物医药、新能源汽车、航空航天", "en": "ICs, AI, biomedicine, NEV, aerospace"}, "talent": {"cn": "AI推介官（培训5万人次）、集成电路、健康照护师、供应链管理师、数字内容创作", "en": "AI promoter (50k training target), ICs, health care specialist, supply chain manager, digital content"}, "salary": {"cn": "10k-25k", "en": "10-25k"}, "highlight": {"cn": "2026年急需紧缺高技能人才目录已发布；技能提升年行动方案；A类重点支持+B类急需紧缺补贴目录新版", "en": "2026 urgently-needed skilled talent catalog; skills upgrade year action plan; new A/B/C subsidy catalog"}, "policies": [{"t": {"cn": "《上海市急需紧缺高技能人才职业目录(2026年)》", "en": "Shanghai Urgent Skills Catalog (2026)"}, "d": "2026-07", "u": "https://rsj.sh.gov.cn/cmsres/cf/cf505c38a50a4fe6969b764e573e02ef/a0754ce0f619402e7bb06d3125e9fcb8.pdf", "gov": 1, "desc": {"cn": "发布急需紧缺高技能人才职业工种目录，覆盖AI、集成电路、生物医药等重点产业。", "en": "Catalog of urgently-needed skilled occupations covering AI, ICs, biomedicine and other key industries."}}, {"t": {"cn": "《技能提升年行动方案》- AI推介官培训5万人次", "en": "Skills Upgrade Year - 50k AI Promoter Training"}, "d": "2026-06", "u": "https://rsj.sh.gov.cn/cmsres/57/577ddccf2cca486c9da019b65b416a12/ff41dfaf5f1734bb76a76101db774081.pdf", "gov": 1, "desc": {"cn": "全年完成AI推介官培训认证5万人次；加快技能人才发展立法。", "en": "50k AI promoter training certifications; accelerating skills talent legislation."}}, {"t": {"cn": "新版职业技能提升补贴目录", "en": "New Skills Subsidy Catalog"}, "d": "2026-04-07", "u": "https://rsj.sh.gov.cn/trdhy_17355/20260407/t0035_1439765.html", "gov": 1, "desc": {"cn": "A类重点支持新增供应链管理师；B类急需紧缺新增健康照护师等职业。", "en": "A-class adds supply chain manager; B-class adds health care specialist and more."}}, {"t": {"cn": "上海市急需紧缺高技能人才职业目录(2026年)", "en": "Shanghai Urgent Skills Directory 2026"}, "d": "2026-07-02", "u": "https://rsj.sh.gov.cn/tjypx_17737/20260702/t0035_1442059.html", "gov": 1, "desc": {"cn": "聚焦三大先导产业、民生和城市运行保障重点行业，培育引进急需紧缺高技能人才。", "en": "Focus on 3 pioneer industries, livelihood and urban operation key industries."}}, {"t": {"cn": "AI+制造发展若干措施", "en": "AI+Manufacturing Measures"}, "d": "2026-07-07", "u": "http://www.sheitc.sh.gov.cn/cyfz/20260717/7986191fa75f49a698259f01c829df52.html", "gov": 1, "desc": {"cn": "强化工业AI供给能力，支持工业垂类大模型、AI编程大模型、物理AI、工业智能等核心技术攻关。", "en": "Strengthen industrial AI supply, support vertical LLM, AI coding, physical AI, industrial intelligence."}}, {"t": {"cn": "百日千万招聘专项行动（行业专场）", "en": "100-Day Million Jobs Campaign"}, "d": "2026-07-29", "u": "https://rsj.sh.gov.cn/tgwyrsb_17088/20260729/t0035_1442774.html", "gov": 1, "desc": {"cn": "汽车、互联网、现代服务、电商专场招聘，比亚迪、蔚来、字节跳动、京东等数百家企业参与。", "en": "Auto, internet, services, e-commerce job fairs with BYD, NIO, ByteDance, JD etc."}}], "sites": [{"n": {"cn": "上海市人社局", "en": "SH HR&SS Bureau"}, "u": "https://rsj.sh.gov.cn"}, {"n": {"cn": "上海市政府", "en": "SH Gov"}, "u": "https://www.shanghai.gov.cn"}]}, {"id": "shenzhen", "tier": 1, "name": {"cn": "深圳", "en": "Shenzhen"}, "region": {"cn": "华南", "en": "S China"}, "industries": {"cn": "人工智能、新能源、生物医药、鸿蒙生态、20+8战略性新兴产业", "en": "AI, NEV, biomedicine, HarmonyOS, 20+8 strategic industries"}, "talent": {"cn": "鸿蒙人才（缺口百万级）、AI工程师、新能源、生物医药、智能制造", "en": "HarmonyOS talent (million-level gap), AI engineers, NEV, biomedicine, smart manufacturing"}, "salary": {"cn": "10k-30k", "en": "10-30k"}, "highlight": {"cn": "8月5日鸿蒙人才双选会，缺口百万级；每天新增约150个四新经济就业岗位；20+8战略性新兴产业", "en": "Aug 5 HarmonyOS job fair, million-level gap; ~150 new-economy jobs daily; 20+8 strategic industries"}, "policies": [{"t": {"cn": "鸿蒙人才双选会-人才缺口将达百万级", "en": "HarmonyOS Talent Fair - Million Gap"}, "d": "2026-08-05", "u": "https://www.sz.gov.cn/ztfw/jylyfwzt/index.html", "gov": 1, "desc": {"cn": "8月5日举行百万英才汇南粤鸿蒙人才双选会，鸿蒙生态人才缺口将达百万级。", "en": "Aug 5 HarmonyOS talent fair under Million Talents program; million-level talent gap in HarmonyOS ecosystem."}}, {"t": {"cn": "深圳每天新增约150个四新经济就业岗位", "en": "~150 New-Economy Jobs Daily"}, "d": "2026-07-24", "u": "https://hrss.sz.gov.cn/xxgk/", "gov": 1, "desc": {"cn": "深圳每天新增约150个四新经济（新技术新产业新业态新模式）就业岗位。", "en": "Shenzhen adds ~150 new-economy jobs daily across new tech, industries, formats, and models."}}, {"t": {"cn": "百万英才汇南粤-覆盖AI/新能源/生物医药20+8产业", "en": "Million Talents - 20+8 Industries"}, "d": "2026-03", "u": "https://www.sz.gov.cn/cn/xxgk/zfxxgj/zwdt/content/mpost_12685428.html", "gov": 1, "desc": {"cn": "招聘岗位突出两业融合，覆盖AI、新能源、生物医药等20+8战略性新兴产业，超千家企业在线发布岗位。", "en": "Jobs cover AI, NEV, biomedicine and 20+8 strategic industries; 1000+ companies posting online."}}, {"t": {"cn": "2026年第一批战略性新兴产业专项资金申报", "en": "2026 Batch 1 Strategic Industry Funding"}, "d": "2026-07-31", "u": "http://fgw.sz.gov.cn/gkmlpt/content/12/12918/mpost_12918955.html", "gov": 1, "desc": {"cn": "围绕半导体与集成电路、生物医药、高端医疗器械、新能源等战新产业，8月1-31日申报。", "en": "Semiconductor, biomedicine, medical devices, NEV. Apply Aug 1-31."}}, {"t": {"cn": "每天新增约150个四新经济就业岗位", "en": "150 New 'Four-New' Jobs Daily"}, "d": "2026-07-24", "u": "https://www.sz.gov.cn/ztfw/jylyfwzt/index.html", "gov": 1, "desc": {"cn": "深圳四新经济（新技术、新产业、新业态、新模式）每日新增约150个就业岗位。", "en": "Shenzhen's four-new economy adds ~150 jobs daily."}}], "sites": [{"n": {"cn": "深圳市人社局", "en": "SZ HR&SS Bureau"}, "u": "https://hrss.sz.gov.cn"}, {"n": {"cn": "深圳就业创业", "en": "SZ Employment"}, "u": "https://www.sz.gov.cn/ztfw/jylyfwzt/index.html"}]}, {"id": "beijing", "tier": 1, "name": {"cn": "北京", "en": "Beijing"}, "region": {"cn": "华北", "en": "N China"}, "industries": {"cn": "人工智能、集成电路、医药健康、智能网联汽车、数字经济", "en": "AI, ICs, pharma & health, smart connected vehicles, digital economy"}, "talent": {"cn": "AI大模型、集成电路设计、生物医药、数字经济、高层次人才（高聚工程/科技新星）", "en": "AI LLMs, IC design, biomedicine, digital economy, high-level talent (High聚/Tech Star programs)"}, "salary": {"cn": "10k-25k", "en": "10-25k"}, "highlight": {"cn": "7月24日启动百日千万招聘专项行动；100万平方米创业空间；青年公寓试点；高聚工程人才经费支持", "en": "Jul 24 Million Recruitment Action; 1M sqm startup space; youth apartment pilot; High聚 talent funding"}, "policies": [{"t": {"cn": "2026年百日千万招聘专项行动", "en": "2026 100-Day Million Recruitment Action"}, "d": "2026-07-24", "u": "https://rsj.beijing.gov.cn/xxgk/2024qt/202607/t20260724_4783974.html", "gov": 1, "desc": {"cn": "利用100天集中组织线上线下招聘，聚焦高校毕业生、新兴和未来产业、重点企业用工需求。", "en": "100-day intensive online/offline recruitment for grads, emerging/future industries, key enterprises."}}, {"t": {"cn": "《北京市2026年推动经济稳中有进若干措施》", "en": "2026 Economic Stability Measures"}, "d": "2026-03-18", "u": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202603/t20260318_4560553.html", "gov": 1, "desc": {"cn": "提供100万平方米创业空间；加大青年人才创业支持；推进青年公寓试点。", "en": "1M sqm startup space; enhanced youth entrepreneurship support; youth apartment pilot."}}, {"t": {"cn": "经济技术开发区OPC人才认定申报", "en": "Economic Zone OPC Talent Certification"}, "d": "2026-07-10", "u": "https://www.beijing.gov.cn/ywdt/gzdt/202607/t20260710_4757039.html", "gov": 1, "desc": {"cn": "北京经开区将超级个体人才纳入亦城人才体系，7月9日上线AI超级个体(OPC)认定申报。", "en": "Beijing EZ includes super-individual talent, OPC certification launched Jul 9."}}, {"t": {"cn": "22条措施促进农村劳动力高质量就业", "en": "22 Measures for Rural Employment"}, "d": "2026-07-08", "u": "https://rsj.beijing.gov.cn/zmsxw/xwsl/202607/t20260709_4753899.html", "gov": 1, "desc": {"cn": "绿岗就业规模不低于3万人，统筹产业布局与岗位开发。", "en": "Green jobs ≥30k, coordinate industry layout and job creation."}}], "sites": [{"n": {"cn": "北京市人社局", "en": "BJ HR&SS Bureau"}, "u": "https://rsj.beijing.gov.cn"}, {"n": {"cn": "首都之窗", "en": "BJ Gov Portal"}, "u": "https://www.beijing.gov.cn"}]}, {"id": "guangzhou", "tier": 1, "name": {"cn": "广州", "en": "Guangzhou"}, "region": {"cn": "华南", "en": "S China"}, "industries": {"cn": "智能网联汽车、生物医药、数字经济、低空经济、具身智能、脑机接口", "en": "Smart vehicles, biomedicine, digital economy, low-altitude, embodied AI, BCI"}, "talent": {"cn": "AI大模型、低空经济、具身智能、脑机接口、集成电路、算法算力", "en": "AI LLMs, low-altitude economy, embodied AI, BCI, ICs, algorithm/computing"}, "salary": {"cn": "8k-20k", "en": "8-20k"}, "highlight": {"cn": "本科以上落户无名额限制秒批；百万英才汇南粤；12218现代化产业体系；穗跃进好五来礼遇", "en": "Bachelor+ settlement unlimited & instant; Million Talents; 12218 industrial system; Five Benefits talent policy"}, "policies": [{"t": {"cn": "百万英才汇南粤-广州五来礼遇引才政策", "en": "Million Talents - Five Benefits Policy"}, "d": "2026-07", "u": "https://rsj.gz.gov.cn/ywzt/jycy/gzdt/content/post_10734650.html", "gov": 1, "desc": {"cn": "全日制本科以上落户无名额限制、全程网办秒批；住下来/干起来/创未来/乐驾来/想将来五大礼遇。", "en": "Bachelor+ settlement unlimited & instant; 5 benefits: housing, work, startup, driving, future."}}, {"t": {"cn": "海珠区总量控制类引进人才-含低空经济/具身智能/脑机接口", "en": "Haizhu Talent Import - Low-alt/Embodied AI/BCI"}, "d": "2026-08", "u": "https://www.haizhu.gov.cn/gzjg/qzf/hzqrsj/tzgg/content/mpost_10959245.html", "gov": 1, "desc": {"cn": "重点培育企业含智能网联、具身智能、低空经济、脑机接口、大模型等前沿产业。", "en": "Key enterprises include smart vehicles, embodied AI, low-altitude, BCI, LLMs and frontier industries."}}, {"t": {"cn": "广东省高校毕业生就业创业扶持政策清单", "en": "Guangdong Grad Employment Support List"}, "d": "2026-08-03", "u": "https://www.gz.gov.cn/zwgk/zdly/jycy/gzdt/#modal", "gov": 1, "desc": {"cn": "8月3日发布最新政策清单；见企面岗实践活动白云/南沙/番禺线8月7日开启。", "en": "Aug 3 latest policy list; Aug 7 enterprise visit activities in Baiyu/Nansha/Panyu."}}, {"t": {"cn": "2026年广东高校毕业生就业创业十大行动方案", "en": "2026 Grad Employment 10 Actions"}, "d": "2026-08-06", "u": "https://rsj.gz.gov.cn/zzzq/tzgg/content/post_10956505.html", "gov": 1, "desc": {"cn": "全年招聘活动1000场以上，公务员岗位1500个，事业单位5000个，国企新招5000人。", "en": "1000+ job fairs, 1500 civil servant posts, 5000 institution posts, 5000 SOE hires."}}, {"t": {"cn": "海珠区引进人才入户申报（8月10-31日）", "en": "Haizhu Talent Residency (Aug 10-31)"}, "d": "2026-08-10", "u": "https://www.haizhu.gov.cn/gzjg/qzf/hzqrsj/tzgg/content/mpost_10959245.html", "gov": 1, "desc": {"cn": "海珠区总量控制类引进人才入户指标申报，8月10日至31日受理。", "en": "Haizhu quota-based talent residency, Aug 10-31."}}], "sites": [{"n": {"cn": "广州市人社局", "en": "GZ HR&SS Bureau"}, "u": "https://rsj.gz.gov.cn"}, {"n": {"cn": "广州市政府", "en": "GZ Gov"}, "u": "https://www.gz.gov.cn"}]}, {"id": "hangzhou", "tier": 2, "name": {"cn": "杭州", "en": "Hangzhou"}, "region": {"cn": "华东", "en": "E China"}, "industries": {"cn": "数字经济、人工智能、视觉智能、集成电路、高端软件、低空经济", "en": "Digital economy, AI, visual intelligence, ICs, software, low-altitude"}, "talent": {"cn": "AI/大模型、数字经济、集成电路、低空经济、先进制造、生活服务业（113个培训项目）", "en": "AI/LLMs, digital economy, ICs, low-altitude, advanced manufacturing, services (113 training programs)"}, "salary": {"cn": "8k-20k", "en": "8-20k"}, "highlight": {"cn": "2026版技能类紧缺职业目录；就业创业一张图智能化平台；数字经济创新中心；AI赋能制造业试点", "en": "2026 skills shortage catalog; smart employment platform; digital economy innovation center; AI+manufacturing pilot"}, "policies": [{"t": {"cn": "《杭州市技能类紧缺职业(工种)目录(2026版)》", "en": "Hangzhou Skills Shortage Catalog (2026)"}, "d": "2026-03-28", "u": "https://www.hangzhou.gov.cn/col/col1229063386/art/2026/art_8e35283dbbe84cbb894caa1143cd3067.html", "gov": 1, "desc": {"cn": "发布2026版紧缺职业工种目录，覆盖数字经济、AI、先进制造、低空经济等关键领域。", "en": "2026 shortage occupation catalog covering digital economy, AI, manufacturing, low-altitude economy."}}, {"t": {"cn": "113个培训项目-含数字经济/低空经济/先进制造", "en": "113 Training Programs - Digital/Low-alt/Manufacturing"}, "d": "2026-06", "u": "https://hrss.hangzhou.gov.cn/col/col1229196787/art/2026/art_14769f838444444190f8f9458263ee57.html", "gov": 1, "desc": {"cn": "开展1000场以上技能培训，帮扶1万名以上重点群体提升技能；113个培训项目覆盖生活服务业、数字经济、先进制造业、低空经济。", "en": "1000+ skill training sessions; 10k+ targeted groups; 113 programs covering services, digital economy, manufacturing, low-altitude."}}, {"t": {"cn": "杭州八大促就业服务举措", "en": "Hangzhou 8 Employment Service Measures"}, "d": "2026-08-07", "u": "http://hznews.hangzhou.com.cn/chengshi/content/2026-08/07/content_9274090.htm", "desc": {"cn": "8月7日起推出八大促就业服务举措，面向未就业青年。", "en": "Aug 7: 8 employment service measures for unemployed youth."}}, {"t": {"cn": "萧山区高校毕业生就业补贴清单", "en": "Xiaoshan Grad Employment Subsidy List"}, "d": "2026-07-06", "u": "https://www.xiaoshan.gov.cn/col/col1229728547/art/2026/art_5b77d4e32e7c4bf5a8cfae1c26b6a5e2.html", "gov": 1, "desc": {"cn": "毕业2年内高校生到中小微企业就业补贴等多项政策清单。", "en": "Subsidies for grads within 2 years working at SMEs."}}, {"t": {"cn": "新场景大规模应用实施方案（2026-2027）", "en": "New Scenario Application Plan (2026-2027)"}, "d": "2026-07-19", "u": "https://www.hangzhou.gov.cn/col/col1229063385/art/2026/art_0d6dbb2f399f4e8d8829a8b39ebc928e.html", "gov": 1, "desc": {"cn": "每年培育开放高质量场景200个、促成合作项目60项，聚焦先进制造业集群。", "en": "200 quality scenarios/year, 60 cooperation projects, advanced manufacturing focus."}}], "sites": [{"n": {"cn": "杭州市人社局", "en": "HZ HR&SS Bureau"}, "u": "https://hrss.hangzhou.gov.cn"}, {"n": {"cn": "杭州市政府", "en": "HZ Gov"}, "u": "https://www.hangzhou.gov.cn"}]}, {"id": "chengdu", "tier": 2, "name": {"cn": "成都", "en": "Chengdu"}, "region": {"cn": "西南", "en": "SW"}, "industries": {"cn": "航空航天、新一代信息技术、生物医药、人工智能、数字文创", "en": "Aerospace, next-gen IT, biomedicine, AI, digital creative"}, "talent": {"cn": "AI大模型、集成电路、脑机接口算法工程师、机械臂控制、航空航天", "en": "AI LLMs, ICs, BCI algorithm engineers, robotic arm control, aerospace"}, "salary": {"cn": "7k-18k", "en": "7-18k"}, "highlight": {"cn": "新质产业职位需求激增；航空航天/信息技术/生物医药稳居前三；天府新区重点产业紧缺人才清单；AI OPC 13条补贴最高2500万", "en": "New-quality job surge; aerospace/IT/biomedicine top 3; Tianfu New Area shortage list; AI OPC 13 measures up to 25M"}, "policies": [{"t": {"cn": "天府新区重点产业领域急需紧缺人才清单(2025-2026)", "en": "Tianfu New Area Key Industry Talent List"}, "d": "2026-03", "u": "https://imgbdb4.bendibao.com/cdbdb/fangchan/20263/26/2026326180904_79230.pdf", "desc": {"cn": "涵盖人工智能(大模型/集成电路)、脑机接口算法工程师、机械臂运动控制等紧缺岗位。", "en": "Covers AI (LLMs/ICs), BCI algorithm engineers, robotic arm control and other shortage roles."}}, {"t": {"cn": "AI OPC创新发展13条（补贴最高2500万）", "en": "AI OPC 13 Measures (up to 25M)"}, "d": "2026-03-23", "u": "https://sc.chinadaily.com.cn/a/202603/24/WS69c267b7a310942cc49a4b8f.html", "desc": {"cn": "围绕空间载体、人才引育、新产品新场景、创新创业支撑四部分，13条举措补贴最高2500万元。", "en": "13 measures across space, talent, products/scenarios, innovation; subsidies up to 25M yuan."}}, {"t": {"cn": "2026年海外人才实习生计划招募", "en": "2026 Overseas Talent Intern Program"}, "d": "2026-07-22", "u": "http://www.chengdu.gov.cn/cdsrmzf/c169603/2026-07/22/content_73a218c74674456dac3483cc13c16716.shtml", "gov": 1, "desc": {"cn": "围绕9+9+10产业体系征集超400个实习岗位，覆盖AI、集成电路、低空经济等。", "en": "400+ internships in AI, IC, low-altitude economy per 9+9+10 system."}}, {"t": {"cn": "促进人工智能产业发展办法（9月1日施行）", "en": "AI Industry Promotion Regulation (Sep 1)"}, "d": "2026-07-28", "u": "http://www.chengdu.gov.cn/gkml/cdsrmzfbgt/gz/1531618249366568960.shtml", "gov": 1, "desc": {"cn": "市政府令第247号，推动AI在经济、生活、城市治理深度融合应用。", "en": "Municipal order 247, AI integration in economy, life, governance."}}, {"t": {"cn": "四川延续扩大社保补贴范围政策", "en": "Sichuan Extends Social Security Subsidy"}, "d": "2026-07-30", "u": "https://www.sc.gov.cn/10462/10464/10797/2026/7/30/f996d4ce7b4b459a8f58ba5604e93f93.shtml", "gov": 1, "desc": {"cn": "中小微企业吸纳重点群体就业，按个人实际缴费额25%给予社保补贴。", "en": "SMEs hiring key groups get 25% social security subsidy."}}], "sites": [{"n": {"cn": "成都市人社局", "en": "CD HR&SS Bureau"}, "u": "https://cdhrss.chengdu.gov.cn"}, {"n": {"cn": "成都市政府", "en": "CD Gov"}, "u": "https://www.chengdu.gov.cn"}]}, {"id": "wuhan", "tier": 2, "name": {"cn": "武汉", "en": "Wuhan"}, "region": {"cn": "华中", "en": "C China"}, "industries": {"cn": "光电子信息、人工智能、生物医药、具身智能、新能源汽车", "en": "Optoelectronics, AI, biomedicine, embodied AI, NEV"}, "talent": {"cn": "具身智能（需求增长翻番110%）、AI/光电子、生物医药、新能源", "en": "Embodied AI (demand +110%), AI/optoelectronics, biomedicine, NEV"}, "salary": {"cn": "7k-16k", "en": "7-16k"}, "highlight": {"cn": "具身智能人才需求增长翻番全国第一(110.28%)；AI光博计划储备300名博士；AI产业就业景气指数同比飙升95.83%", "en": "Embodied AI demand #1 nationally (+110%); AI Photon-Doctor plan 300 PhDs; AI employment index +95.83%"}, "policies": [{"t": {"cn": "武汉具身智能人才需求增长翻番-全国第一", "en": "Wuhan Embodied AI Demand Doubles - #1 Nationally"}, "d": "2026-05-22", "u": "https://www.wuhan.gov.cn/sy/whyw/202605/t20260522_2767422.shtml", "gov": 1, "desc": {"cn": "具身智能领域新发职位城市分布TOP10中，武汉人才需求增长翻番，同比增速110.28%排第一。4月全省AI产业就业景气指数同比飙升95.83%。", "en": "Wuhan embodied AI talent demand grew 110.28% YoY, ranking #1 nationally. Apr AI employment index +95.83% YoY."}}, {"t": {"cn": "AI光博计划-储备300名博士", "en": "AI Photon-Doctor Plan - 300 PhDs"}, "d": "2026-06-26", "u": "https://finance.sina.com.cn/roll/2026-06-26/doc-inietwvm7206542.shtml.md", "desc": {"cn": "武汉光谷启动AI光博计划，三年定向储备300名应届博士，打通高校实验室到产业一线通道。", "en": "Wuhan Optical Valley launches AI Photon-Doctor plan: 300 PhDs in 3 years, lab-to-industry pipeline."}}, {"t": {"cn": "支持生物医药产业创新发展若干措施", "en": "Biomedicine Innovation Support Measures"}, "d": "2026-06-10", "u": "https://www.wuhan.gov.cn/zwgk/xxgk/zfwj/bgtwj/202606/t20260610_2775977.shtml", "gov": 1, "desc": {"cn": "鼓励生物医药顶尖人才创新创业，推荐申报武汉英才计划，举荐制绿色通道评定职称。", "en": "Encourages biomedicine top talent innovation; Wuhan Talent program; green-channel title evaluation."}}, {"t": {"cn": "第三批支持城市更新政策措施", "en": "Batch 3 Urban Renewal Policies"}, "d": "2026-07-16", "u": "https://www.wuhan.gov.cn/sy/whyw/202607/t20260716_2821510.shtml", "gov": 1, "desc": {"cn": "支持城市更新人才申报武汉英才计划，危旧房原拆原建可增容。", "en": "Urban renewal talent can apply for Wuhan Talent Plan."}}, {"t": {"cn": "千校万企联合促就业活动启动", "en": "1000 Schools 10000 Enterprises Joint Employment"}, "d": "2026-07-10", "u": "https://www.wuhan.gov.cn/sy/whyw/202607/t20260710_2819014.shtml", "gov": 1, "desc": {"cn": "200余所高校参加，覆盖毕业生109.7万人，东风汽车、小米、华工科技等300余家企业。", "en": "200+ universities, 1.097M grads, 300+ enterprises incl. Xiaomi."}}, {"t": {"cn": "湖北十大就业服务举措（7-12月）", "en": "Hubei 10 Employment Services (Jul-Dec)"}, "d": "2026-07-21", "u": "https://rst.hubei.gov.cn/bmdt/dtyw/stfb/202607/t20260721_5981011.shtml", "gov": 1, "desc": {"cn": "20万+岗位、500个培训项目，青年就业服务攻坚行动7月至12月。", "en": "200k+ jobs, 500 training programs, Jul-Dec youth employment campaign."}}], "sites": [{"n": {"cn": "武汉市政府", "en": "WH Gov"}, "u": "https://www.wuhan.gov.cn"}, {"n": {"cn": "武汉市人社局", "en": "WH HR&SS"}, "u": "https://rsj.wuhan.gov.cn"}]}, {"id": "nanjing", "tier": 2, "name": {"cn": "南京", "en": "Nanjing"}, "region": {"cn": "华东", "en": "E China"}, "industries": {"cn": "人工智能、机器人、生物医药、新一代信息通信、6G", "en": "AI, robotics, biomedicine, next-gen communications, 6G"}, "talent": {"cn": "AI/软件、机器人、生物医药、信息通信、6G研发、电商人才", "en": "AI/software, robotics, biomedicine, communications, 6G R&D, e-commerce"}, "salary": {"cn": "8k-18k", "en": "8-18k"}, "highlight": {"cn": "十五五每年集10名顶尖人才资助最高1亿；学士1万/硕士3万/博士补贴；6G之城；1026新兴产业集群", "en": "15th FYP: 10 top talents/yr up to 100M funding; Bachelor 10k/Master 30k/PhD subsidy; 6G City; 1026 clusters"}, "policies": [{"t": {"cn": "十五五人才新政-顶尖人才综合资助最高1亿元", "en": "15th FYP Talent Policy - Up to 100M for Top Talent"}, "d": "2026-07", "u": "https://cnooc.ncss.cn/ncss/jydt/jy/202607/20260714/2293873506.html", "desc": {"cn": "每年集聚10名顶尖人才综合资助最高1亿元，项目最高2000万；引进200个高层次团队；学士1万/硕士3万/博士补贴；重点产业补贴上浮20%。", "en": "10 top talents/yr up to 100M total; 200 teams/yr; Bachelor 10k/Master 30k/PhD subsidy; key industry +20%."}}], "sites": [{"n": {"cn": "南京市政府", "en": "NJ Gov"}, "u": "https://www.nanjing.gov.cn"}, {"n": {"cn": "南京市人社局", "en": "NJ HR&SS"}, "u": "https://rsj.nanjing.gov.cn"}]}, {"id": "xian", "tier": 2, "name": {"cn": "西安", "en": "Xi'an"}, "region": {"cn": "西北", "en": "NW"}, "industries": {"cn": "航空航天、集成电路、人工智能、新能源、高端装备", "en": "Aerospace, ICs, AI, NEV, high-end equipment"}, "talent": {"cn": "航空航天、芯片设计、AI算法、新能源材料、军工电子", "en": "Aerospace, chip design, AI algorithms, NEV materials, defense electronics"}, "salary": {"cn": "6k-14k", "en": "6-14k"}, "highlight": {"cn": "硬科技之都；航空航天产业西迁承接核心城市；集成电路设计全国前列；硬科技产业政策持续加码", "en": "Hard-tech capital; aerospace westward relocation hub; top IC design city; continuous hard-tech policy support"}, "policies": [{"t": {"cn": "硬科技产业政策持续加码-国产替代红利", "en": "Hard-tech Policy - Domestic Substitution"}, "d": "2026-07", "u": "https://tidenews.com.cn/tmh_news.html?id=6a55a512805a1f00015de701", "desc": {"cn": "西安作为硬科技之都，航空航天、集成电路获国家级政策重点扶持，国产硬科技替代加速。", "en": "Xi'an as hard-tech capital; aerospace & ICs receive national policy support; domestic substitution accelerating."}}], "sites": [{"n": {"cn": "西安市政府", "en": "XA Gov"}, "u": "https://www.xa.gov.cn"}, {"n": {"cn": "西安市人社局", "en": "XA HR&SS"}, "u": "https://rsj.xa.gov.cn"}]}, {"id": "hongkong", "tier": 0, "name": {"cn": "香港", "en": "Hong Kong"}, "region": {"cn": "特别行政区", "en": "SAR"}, "industries": {"cn": "金融科技、AI与机械人、生命健康科技、半导体、先进材料、新能源", "en": "FinTech, AI & Robotics, Life Science, Semiconductor, Advanced Materials, NEV"}, "talent": {"cn": "AI/数据科学、金融科技、生命健康、半导体芯片、先进制造人才", "en": "AI/Data Science, FinTech, Life Science, Semiconductor, Advanced Manufacturing"}, "salary": {"cn": "20k-60k港币", "en": "20-60k HKD"}, "highlight": {"cn": "创科产业引导基金启动；高端人才通行证已批32617宗；新型工业加速计划每家最高2亿港币", "en": "Tech Industry Guidance Fund launched; Top Talent Pass 32617 approved; New Industrialization Acceleration up to HK$200M per enterprise"}, "policies": [{"t": {"cn": "创科产业引导基金（2026-27年度）", "en": "Tech Industry Guidance Fund (2026-27)"}, "d": "2026-02", "u": "https://www.itib.gov.hk/zh-cn/attractingenterprises/index.php", "gov": 1, "desc": {"cn": "引导市场投资生命健康科技、AI与机械人、半导体与智能设备、先进材料和新能源等策略性新兴产业。", "en": "Guide market investment in life science, AI/robotics, semiconductor, advanced materials, NEV."}}, {"t": {"cn": "高端人才通行证计划及优才计划优化", "en": "Top Talent Pass & QMAS Optimization"}, "d": "2026-06", "u": "https://www.legco.gov.hk/yr2026/chinese/policy-pulse/pp2026-13-empowering-hong-kong-by-nurturing-and-pooling-talents-building-an-international-hub-for-high-calibre-talents-c.pdf", "gov": 1, "desc": {"cn": "优才入境计划已批32617宗不设配额；科技人才入境计划每公司每年最多100人配额。", "en": "QMAS 32617 approved no quota; Tech Talent Scheme max 100/company/year."}}, {"t": {"cn": "新型工业加速计划（100亿港币）", "en": "New Industrialization Acceleration (HK$10B)"}, "d": "2026-03", "u": "https://www.itf.gov.hk/sc/funding-programmes/promoting-new-industrialisation/nias/index.html", "gov": 1, "desc": {"cn": "1:2配对资助，每家最高2亿港币，覆盖生命健康科技、AI与数据科学、先进制造与新能源。", "en": "1:2 matching, max HK$200M per enterprise. Life science, AI, advanced manufacturing, NEV."}}, {"t": {"cn": "引进重点企业办公室（引进办）", "en": "Office for Attracting Strategic Enterprises"}, "d": "2026-01", "u": "https://www.itib.gov.hk/zh-cn/attractingenterprises/index.php", "gov": 1, "desc": {"cn": "重点引进AI与数据科学、生命健康科技、金融科技等策略产业企业落户香港。", "en": "Attract AI/data science, life science, FinTech enterprises to HK."}}], "sites": [{"n": {"cn": "创新科技及工业局", "en": "ITIB"}, "u": "https://www.itib.gov.hk/zh-cn/"}, {"n": {"cn": "香港立法会", "en": "LegCo"}, "u": "https://www.legco.gov.hk/"}, {"n": {"cn": "创新科技基金", "en": "ITF"}, "u": "https://www.itf.gov.hk/sc/"}]}, {"id": "macau", "tier": 0, "name": {"cn": "澳门", "en": "Macau"}, "region": {"cn": "特别行政区", "en": "SAR"}, "industries": {"cn": "大健康、高新技术、现代金融、文化体育、文旅会展", "en": "Health, High-tech, Modern Finance, Culture & Sports, Tourism & MICE"}, "talent": {"cn": "大健康产业、高新技术、现代金融、文旅会展、双语人才", "en": "Health, High-tech, Modern Finance, Tourism/MICE, Bilingual"}, "salary": {"cn": "15k-40k澳门元", "en": "15-40k MOP"}, "highlight": {"cn": "第三期人才引进计划9个计划申请中；1+4经济适度多元发展；青年专项实习5000澳门元/月", "en": "3rd Talent Import 9 programs; 1+4 diversification; Youth internship 5000 MOP/mo"}, "policies": [{"t": {"cn": "第三期人才引进计划（申请至2026年12月）", "en": "3rd Talent Import Plan (Apply by Dec 2026)"}, "d": "2025-12-09", "u": "https://www.cdqq.gov.mo/zh-hant/3rdtrp", "gov": 1, "desc": {"cn": "面向全球三类人才开展九个计划申请，含高端人才、优秀人才和高级专业人才。配合1+4经济适度多元发展。", "en": "Global talent: 9 programs including high-end, outstanding, and senior professional talent. Supports 1+4 diversification."}}, {"t": {"cn": "科技研发人才资助计划（2026年度）", "en": "R&D Talent Grant (2026)"}, "d": "2026-03-23", "u": "https://www.fdct.gov.mo/zh_tw/stt_detail/article/m9aw4x8l.html", "gov": 1, "desc": {"cn": "分企业研发人才类、博士后类及人才回流类，支持科技人才引进和培育。", "en": "Enterprise R&D talent, postdoc, and talent return categories."}}, {"t": {"cn": "澳门青年重点产业专项实习计划", "en": "Macau Youth Key Industry Internship"}, "d": "2026-07-31", "u": "https://www.gov.mo/zh-hans/news/927039/", "gov": 1, "desc": {"cn": "12周60个名额，涵盖大健康、现代金融、高新科技、文旅会展四大产业。5000澳门元/月生活津贴。", "en": "12 weeks, 60 spots, 4 industries: health, finance, tech, tourism. 5000 MOP/mo stipend."}}], "sites": [{"n": {"cn": "人才发展委员会", "en": "Talent Dev Committee"}, "u": "https://www.cdqq.gov.mo/"}, {"n": {"cn": "澳门政府", "en": "Macau Gov"}, "u": "https://www.gov.mo/"}, {"n": {"cn": "科技发展基金", "en": "FDCT"}, "u": "https://www.fdct.gov.mo/"}]}, {"id": "suzhou", "tier": 2, "name": {"cn": "苏州", "en": "Suzhou"}, "region": {"cn": "华东", "en": "East"}, "industries": {"cn": "软件信息、生物医药、人工智能、纳米技术、高端装备", "en": "Software, Biomedicine, AI, Nanotech, High-end Equipment"}, "talent": {"cn": "软件工程师、AI算法、生物医药研发、高端制造、集成电路", "en": "Software, AI, Biomedicine R&D, Manufacturing, IC"}, "salary": {"cn": "8k-25k", "en": "8-25k"}, "highlight": {"cn": "软件产业目标4000亿；优秀人才奖励申报中（7月20-8月19日）；高技能人才购房补贴100万", "en": "Software target 400B; Talent reward Jul20-Aug19; Skilled talent housing subsidy 1M"}, "policies": [{"t": {"cn": "2026苏州市优秀人才专项奖励申报", "en": "2026 Suzhou Talent Reward"}, "d": "2026-07-20", "u": "http://hrss.suzhou.gov.cn/jsszhrss/zxdt/202607/412399797c5d46ae8c9a3b193f6888ba.shtml", "gov": 1, "desc": {"cn": "C类以上年薪50万人才、重点产业年薪100万以上人才可申报，7月20-8月19日。", "en": "Category C+ with 500k salary, key industry 1M+ salary. Jul 20-Aug 19."}}, {"t": {"cn": "软件产业高质量发展行动计划（2026-2027）", "en": "Software Industry Plan (2026-2027)"}, "d": "2026-01-17", "u": "http://www.suzhou.gov.cn/szsrmzf/szfgfxwjk/202601/a66f6d4709324ae4b68efbda40cdddbe/files/d80147294a834078af68065a67090768.pdf", "gov": 1, "desc": {"cn": "目标2027年软件产业4000亿，新设企业最高200万，核心技术攻关最高1000万，人才引进最高100万。", "en": "Target 400B by 2027, new enterprise 2M, core tech 10M, talent 1M."}}, {"t": {"cn": "高技能人才购房补贴（拔尖型100万）", "en": "Skilled Talent Housing Subsidy (Top 1M)"}, "d": "2026-05", "u": "http://www.suzhou.gov.cn/szsrmzf/mszx/202605/b64c2478558148bdaea6b3f6d4deaa7e.shtml", "gov": 1, "desc": {"cn": "拔尖型高技能人才100万购房补贴，紧缺型30万，储备型5万一次性生活补贴。", "en": "Top skilled talent 1M housing, shortage 300k, reserve 50k living subsidy."}}], "sites": [{"n": {"cn": "苏州人社局", "en": "SZ HR&SS"}, "u": "http://hrss.suzhou.gov.cn"}, {"n": {"cn": "苏州市政府", "en": "SZ Gov"}, "u": "http://www.suzhou.gov.cn"}]}, {"id": "hefei", "tier": 2, "name": {"cn": "合肥", "en": "Hefei"}, "region": {"cn": "华东", "en": "East"}, "industries": {"cn": "智能家电、集成电路、新能源汽车、人工智能、量子科技", "en": "Smart Appliances, IC, NEV, AI, Quantum"}, "talent": {"cn": "集成电路、AI、新能源、量子科技、智能家电研发", "en": "IC, AI, NEV, Quantum, Smart Appliance R&D"}, "salary": {"cn": "7k-20k", "en": "7-20k"}, "highlight": {"cn": "高新区秋季全国高校巡回招聘9-11月；654X产业体系；人才驿站免费30天", "en": "High-tech zone fall campus recruiting Sep-Nov; 654X system; talent inn free 30 days"}, "policies": [{"t": {"cn": "产业高质量发展若干政策（654X体系）", "en": "Industrial Dev Policy (654X System)"}, "d": "2026-04-27", "u": "https://www.lj.gov.cn/tzlj/tzzc/120386389.html", "gov": 1, "desc": {"cn": "核心技术攻关最高1000万，股权激励最高20万，产教融合最高30万奖补。", "en": "Core tech up to 10M, equity incentive 200k, industry-education 300k."}}, {"t": {"cn": "高新区秋季高校引才巡回招聘（9-11月）", "en": "High-tech Zone Fall Campus Recruiting (Sep-Nov)"}, "d": "2026-08-05", "u": "https://gxq.hefei.gov.cn/tzgg/18965839.html", "gov": 1, "desc": {"cn": "赴全国重点高校引才，线上云聘会+线下招聘+直播招聘，人才驿站免费30天。", "en": "Nationwide campus recruiting, online+offline+livestream. Free talent inn 30 days."}}, {"t": {"cn": "招才引智云聘会智能家电产业专场", "en": "Smart Appliance Talent Cloud Fair"}, "d": "2026-06-15", "u": "http://rsj.hefei.gov.cn/", "gov": 1, "desc": {"cn": "围绕智能家电重点产业精准对接人才需求，推动区域人才服务协同发展。", "en": "Smart appliance industry talent matching, regional talent coordination."}}], "sites": [{"n": {"cn": "合肥人社局", "en": "HF HR&SS"}, "u": "http://rsj.hefei.gov.cn"}, {"n": {"cn": "合肥高新区", "en": "HF High-tech Zone"}, "u": "https://gxq.hefei.gov.cn"}, {"n": {"cn": "合肥政府", "en": "HF Gov"}, "u": "https://www.hefei.gov.cn"}]}, {"id": "changsha", "tier": 2, "name": {"cn": "长沙", "en": "Changsha"}, "region": {"cn": "华中", "en": "Central"}, "industries": {"cn": "工程机械、新能源、电子信息、文创传媒、新材料", "en": "Construction Machinery, NEV, Electronics, Media/Creative, New Materials"}, "talent": {"cn": "工程机械、新能源、电子信息、新媒体运营、智能制造", "en": "Machinery, NEV, Electronics, New Media, Smart Manufacturing"}, "salary": {"cn": "6k-18k", "en": "6-18k"}, "highlight": {"cn": "三季度3.7万个岗位；小荷青年创业20万补贴；创新创业带动就业申报中", "en": "Q3 37k jobs; Xiaohe startup 200k subsidy; Innovation-entrepreneurship employment program"}, "policies": [{"t": {"cn": "三季度企业岗位需求3.7万个", "en": "Q3 Enterprise Jobs: 37,000"}, "d": "2026-07-06", "u": "http://www.changsha.gov.cn/jdhy/hygq/bmzx/jdjy/202607/t20260706_12432638.html", "gov": 1, "desc": {"cn": "600家企业3.7万招聘名额，覆盖工程机械、新能源、电子信息等产业链。", "en": "600 enterprises, 37k openings across machinery, NEV, electronics chains."}}, {"t": {"cn": "小荷青年人才创业项目（20万补贴）", "en": "Xiaohe Youth Startup (200k Subsidy)"}, "d": "2026-06-26", "u": "http://rsj.changsha.gov.cn/zxzx_0/tzgg_131288/ldjy_131291/202606/t20260626_12423292.html", "gov": 1, "desc": {"cn": "40岁以下青年创业人才一次性20万，可参评D类高层次人才。", "en": "Under-40 startup talent gets 200k, D-class high-level talent eligible."}}, {"t": {"cn": "创新创业带动就业项目申报", "en": "Innovation-Entrepreneurship Employment Program"}, "d": "2026-03", "u": "http://www.furong.gov.cn/affairs/xxgk/gov1/rsj/jy/fczc/202603/P020260320458133843759.pdf", "gov": 1, "desc": {"cn": "含大学生创业项目，通过创业带动就业落实就业优先战略。", "en": "Includes college startup projects, employment-first strategy through entrepreneurship."}}], "sites": [{"n": {"cn": "长沙人社局", "en": "CS HR&SS"}, "u": "http://rsj.changsha.gov.cn"}, {"n": {"cn": "长沙政府", "en": "CS Gov"}, "u": "http://www.changsha.gov.cn"}]}, {"id": "guiyang", "tier": 3, "name": {"cn": "贵阳", "en": "Guiyang"}, "region": {"cn": "西南", "en": "SW"}, "industries": {"cn": "大数据、数据标注、AI训练、云计算、软件服务", "en": "Big Data, Data Annotation, AI Training, Cloud, Software"}, "talent": {"cn": "数据标注、AI训练师、大数据开发、云计算运维、软件开发", "en": "Data Annotation, AI Trainer, Big Data Dev, Cloud Ops, Software Dev"}, "salary": {"cn": "5k-12k", "en": "5-12k"}, "highlight": {"cn": "数据产业21条；数据标注企业最高50万奖励；数据人才月薪500-2000元奖励；大数据条例1月1日实施", "en": "Data 21 measures; Annotation firms 500k; Data talent 500-2000/mo; Big Data regulation Jan 1"}, "policies": [{"t": {"cn": "支持数据产业发展若干措施（21条）", "en": "Data Industry Support (21 Measures)"}, "d": "2026-02-26", "u": "https://www.guiyang.gov.cn/zwgk/zfxxgks/fdzdgknr/lzyj/gfxwj/szfgfxwj/qfbf/202603/t20260306_89610042.html", "gov": 1, "desc": {"cn": "数据标注企业最高50万奖励，数据人才月薪500-2000元，大学生实习每人每天50-100元补贴。", "en": "Annotation firms 500k, data talent 500-2000/mo, intern 50-100/day."}}, {"t": {"cn": "贵州省大数据发展应用促进条例（修订）", "en": "Guizhou Big Data Regulation (Revised)"}, "d": "2026-01-01", "u": "https://m.sohu.com/a/1043755818_121106902/", "gov": 1, "desc": {"cn": "建设数据标注产业基地成为硬核条文，数据标注作为特色产业支持培育。", "en": "Data annotation base construction mandated, annotation as specialty industry."}}, {"t": {"cn": "数据标注产业供需对接会暨21条发布", "en": "Data Annotation Supply-Demand Fair"}, "d": "2026-03-18", "u": "https://guiyang.gov.cn/ztzl/rdzt/ztzlzsyzzl/ztzlzsyzzltzdt/202603/t20260324_89900341.html", "gov": 1, "desc": {"cn": "贵阳贵安数据标注产业供需对接会发布21条措施，培育数据产业生态。", "en": "Supply-demand fair with 21 measures, building data industry ecosystem."}}], "sites": [{"n": {"cn": "贵阳市政府", "en": "GY Gov"}, "u": "https://www.guiyang.gov.cn"}, {"n": {"cn": "贵阳大数据局", "en": "GY Big Data Bureau"}, "u": "https://sjj.guizhou.gov.cn"}]}, {"id": "kunming", "tier": 3, "name": {"cn": "昆明", "en": "Kunming"}, "region": {"cn": "西南", "en": "SW"}, "industries": {"cn": "文旅康养、生物医药、新材料、高原特色农业、跨境电商", "en": "Tourism/Wellness, Biomedicine, New Materials, Highland Agriculture, Cross-border E-commerce"}, "talent": {"cn": "文旅运营、康养护理、跨境电商、生物医药、新媒体运营", "en": "Tourism Ops, Wellness Care, Cross-border E-commerce, Biomedicine, New Media"}, "salary": {"cn": "5k-10k", "en": "5-10k"}, "highlight": {"cn": "就业春城品牌；2026年城镇新增就业38万人；吸引20万高校毕业生来昆；金融支持人才创业", "en": "Employment Spring City brand; 380k new urban jobs; 200k grads attracted; Financial talent support"}, "policies": [{"t": {"cn": "金融支持昆明市人才工作实施意见", "en": "Financial Support for Talent Work"}, "d": "2026-03-28", "u": "https://www.km.gov.cn/c/2026-03-28/5067166.shtml", "gov": 1, "desc": {"cn": "贷免扶补贷款、创业基金、青年共享创业空间，三级青创载体体系。", "en": "Loan-subsidy, startup fund, youth shared space, 3-tier youth innovation system."}}, {"t": {"cn": "就业春城：公共就业服务能力提升示范项目", "en": "Employment Spring City: Service Demo"}, "d": "2026-07-17", "u": "https://www.km.gov.cn/c/2026-07-17/5097787.shtml", "gov": 1, "desc": {"cn": "目标城镇新增就业38万人，吸引20万高校毕业生来昆，技能劳动者占比超30%。", "en": "Target: 380k urban jobs, 200k grads attracted, 30%+ skilled workers."}}, {"t": {"cn": "2026年高校毕业生就业促进政策", "en": "2026 Grad Employment Promotion"}, "d": "2026-03-13", "u": "https://www.km.gov.cn/c/2026-03-13/5070722.shtml", "gov": 1, "desc": {"cn": "事业单位招聘1875人，三支一扶计划岗位，见习岗位，创业扶持。", "en": "Institution hiring 1875, Three Supports plan, internships, startup support."}}], "sites": [{"n": {"cn": "昆明市政府", "en": "KM Gov"}, "u": "https://www.km.gov.cn"}, {"n": {"cn": "昆明人社局", "en": "KM HR&SS"}, "u": "https://rsj.km.gov.cn"}]}];
+const VIDEOS_FALLBACK=[{"bvid": "BV1aZMw6DEQY", "plat": "bilibili", "title": {"cn": "AI漫剧制作全流程（2026暑假版）", "en": "AI Comic Drama Full Process"}, "views": {"cn": "2026-07-04", "en": "Jul 2026"}, "blogger": {"cn": "AI漫剧教程", "en": "AI Drama Tutor"}, "cat": "AI", "desc": {"cn": "剧本+分镜+静帧+视频+配音+剪辑AI一键生成，零基础可学", "en": "Full pipeline: script+storyboard+AI generation+voice+editing"}, "cover": "linear-gradient(135deg,#fb7299,#e63946)"}, {"bvid": "BV14bKG6YE9b", "plat": "bilibili", "title": {"cn": "AI漫剧零基础全套教程（800集）", "en": "AI Comic Drama 800-Ep Course"}, "views": {"cn": "2026-07-16", "en": "Jul 2026"}, "blogger": {"cn": "红果漫剧学院", "en": "Hongguo Academy"}, "cat": "AI", "desc": {"cn": "包含剧本+分镜+配音+剪辑+人物一致性，学完即可变现", "en": "Script+storyboard+voice+editing+character consistency"}, "cover": "linear-gradient(135deg,#00A1D6,#fb7299)"}, {"bvid": "BV1NAoMBkEXZ", "plat": "bilibili", "title": {"cn": "AI帮你剪视频！23条素材一句话出片", "en": "AI Edits 23 Clips in One Sentence"}, "views": {"cn": "实操演示", "en": "Demo"}, "blogger": {"cn": "AI效率实验室", "en": "AI Efficiency Lab"}, "cat": "AI", "desc": {"cn": "Whisper语音识别+GLM视觉理解，自动分析编排渲染", "en": "Whisper+GLM vision, auto analysis & rendering"}, "cover": "linear-gradient(135deg,#00A1D6,#2C3E50)"}, {"bvid": "BV1CVcZzXEjY", "plat": "bilibili", "title": {"cn": "AI剪辑综艺解说保姆级教程", "en": "AI Editing Talk Show Tutorial"}, "views": {"cn": "保姆级", "en": "Step-by-step"}, "blogger": {"cn": "剪映AI工坊", "en": "CapCut AI Workshop"}, "cat": "AI", "desc": {"cn": "全自动剪辑生成综艺解说，120秒成片实操", "en": "Auto-generate variety commentary, 120s demo"}, "cover": "linear-gradient(135deg,#00A1D6,#1a1a2e)"}, {"bvid": "BV1TrPKzWEMc", "plat": "bilibili", "title": {"cn": "新媒体运营0到1全栈攻略（2026）", "en": "New Media Ops 0-to-1 (2026)"}, "views": {"cn": "2026最新", "en": "2026"}, "blogger": {"cn": "短视频运营方宇", "en": "Fangyu Ops"}, "cat": "Media", "desc": {"cn": "DeepSeek+小红书+短视频+直播电商+私域变现全流程", "en": "DeepSeek+Xiaohongshu+short video+livestream+private domain"}, "cover": "linear-gradient(135deg,#FF2442,#FF6B6B)"}, {"bvid": "BV15AemzxEAF", "plat": "bilibili", "title": {"cn": "全媒体运营师怎么考？备考指南", "en": "How to Get Omni-media Operator Cert"}, "views": {"cn": "备考指南", "en": "Prep guide"}, "blogger": {"cn": "考证通", "en": "Cert Guide"}, "cat": "Media", "desc": {"cn": "报考条件、考试时间、备考方法，2-3周轻松上手", "en": "Requirements, schedule, prep methods, 2-3 wks"}, "cover": "linear-gradient(135deg,#00A1D6,#3498DB)"}, {"plat": "douyin", "title": {"cn": "AI漫剧从0到1全流程（抖音版）", "en": "AI Comic Drama 0-to-1 (Douyin)"}, "views": {"cn": "2026最新", "en": "2026"}, "blogger": {"cn": "AI漫剧创作营", "en": "AI Drama Camp"}, "cat": "AI", "desc": {"cn": "抖音热门AI漫剧教程，从出图到剪辑到上传红果全流程", "en": "Popular Douyin AI drama tutorial: image generation to editing to Hongguo upload"}, "cover": "linear-gradient(135deg,#000000,#25F4EE)", "url": "https://www.douyin.com/search/AI漫剧制作教程"}, {"plat": "douyin", "title": {"cn": "AI剪辑实操：一句话生成短视频", "en": "AI Editing: One Sentence to Short Video"}, "views": {"cn": "热门", "en": "Trending"}, "blogger": {"cn": "AI剪辑师小王", "en": "AI Editor Wang"}, "cat": "AI", "desc": {"cn": "用剪映AI功能一句话生成完整短视频，含配音字幕", "en": "Use CapCut AI to generate complete short video with voiceover and subtitles"}, "cover": "linear-gradient(135deg,#25F4EE,#FE2C55)", "url": "https://www.douyin.com/search/AI剪辑教程"}, {"plat": "douyin", "title": {"cn": "新媒体运营入门：涨粉变现全攻略", "en": "New Media Ops: Growth & Monetization"}, "views": {"cn": "热门", "en": "Trending"}, "blogger": {"cn": "运营老司机", "en": "Ops Veteran"}, "cat": "Media", "desc": {"cn": "抖音新媒体运营全攻略，从0粉到变现的完整路径", "en": "Complete Douyin new media path from 0 followers to monetization"}, "cover": "linear-gradient(135deg,#FE2C55,#FF6B6B)", "url": "https://www.douyin.com/search/新媒体运营教程"}, {"plat": "xhs", "title": {"cn": "小红书AI爆款内容制作指南", "en": "Xiaohongshu AI Content Guide"}, "views": {"cn": "2026最新", "en": "2026"}, "blogger": {"cn": "小红书运营学院", "en": "XHS Ops Academy"}, "cat": "Media", "desc": {"cn": "用AI工具打造小红书爆款笔记，DeepSeek+剪映全流程", "en": "Use AI tools to create viral Xiaohongshu posts, DeepSeek+CapCut workflow"}, "cover": "linear-gradient(135deg,#FF2442,#FF6B6B)", "url": "https://www.xiaohongshu.com/search_result?keyword=AI剪辑教程"}, {"plat": "xhs", "title": {"cn": "AI漫剧变现：小红书引流实操", "en": "AI Drama Monetization: XHS Traffic"}, "views": {"cn": "实操", "en": "Practical"}, "blogger": {"cn": "AI变现日记", "en": "AI Monetization Diary"}, "cat": "AI", "desc": {"cn": "在小红书做AI漫剧内容引流，结合私域变现的完整方案", "en": "Use Xiaohongshu for AI drama content traffic + private domain monetization"}, "cover": "linear-gradient(135deg,#FF2442,#C9A96E)", "url": "https://www.xiaohongshu.com/search_result?keyword=AI漫剧变现"}, {"plat": "kuaishou", "title": {"cn": "快手AI漫剧全流程变现实战", "en": "Kuaishou AI Drama Monetization"}, "views": {"cn": "2026实战", "en": "2026"}, "blogger": {"cn": "快手百万漫剧博主", "en": "Kuaishou Million-follower Creator"}, "cat": "AI", "desc": {"cn": "快手百万粉丝AI漫剧博主亲授，吃透90%分账红利，月入过万", "en": "Million-follower Kuaishou AI drama creator teaches 90% revenue share, 10k+/mo"}, "cover": "linear-gradient(135deg,#FF4906,#FF6B6B)", "url": "https://www.kuaishou.com/search/video?searchKey=AI漫剧教程"}, {"plat": "kuaishou", "title": {"cn": "AI短视频矩阵运营：快手批量带货", "en": "AI Short Video Matrix: Kuaishou Batch Sales"}, "views": {"cn": "实战", "en": "Practical"}, "blogger": {"cn": "AI带货王", "en": "AI Sales King"}, "cat": "Media", "desc": {"cn": "用AI批量生成快手短视频带货，多账号矩阵月入1万+", "en": "Batch-generate Kuaishou sales videos with AI, multi-account matrix 10k+/mo"}, "cover": "linear-gradient(135deg,#FF4906,#FFA500)", "url": "https://www.kuaishou.com/search/video?searchKey=AI短视频运营"}];
+
+/* ============ 数据加载器 ============ */
+// 数据变量（初始为空，加载后赋值）
+let TRENDS=[], POLICIES=[], GLOBAL=[], REMOTE_PLATFORMS=[], REMOTE_JOBS=[], CITIES=[], VIDEOS=[];
+
+// 数据文件映射
+const DATA_FILES={
+  TRENDS:'./data/trends.json',
+  POLICIES:'./data/policies.json',
+  GLOBAL:'./data/global.json',
+  REMOTE_PLATFORMS:'./data/remote-platforms.json',
+  REMOTE_JOBS:'./data/remote-jobs.json',
+  CITIES:'./data/cities.json',
+  VIDEOS:'./data/videos.json'
+};
+
+// 加载单个数据文件
+async function loadData(key,url){
+  try{
+    const res=await fetch(url,{cache:'no-cache'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    if(Array.isArray(data)&&data.length>0){
+      window[key]=data;
+      return {key,success:true,count:data.length};
+    }
+    throw new Error('空数据');
+  }catch(e){
+    console.warn('加载'+key+'失败，使用降级数据:',e.message);
+    window[key]=window[key+'_FALLBACK']||[];
+    return {key,success:false,count:window[key].length,fallback:true};
+  }
+}
+
+// 加载最后更新时间
+async function loadLastUpdate(){
+  try{
+    const res=await fetch('./data/last-update.json',{cache:'no-cache'});
+    if(!res.ok)throw new Error('HTTP '+res.status);
+    const data=await res.json();
+    return data.time||null;
+  }catch(e){
+    console.warn('加载更新时间失败:',e.message);
+    return null;
+  }
+}
+
+// 格式化时间
+function formatTime(isoStr){
+  if(!isoStr)return '';
+  try{
+    const d=new Date(isoStr);
+    const now=new Date();
+    const diff=now-d;
+    const hours=Math.floor(diff/3600000);
+    const days=Math.floor(diff/86400000);
+    const fmt=d.getFullYear()+'-'+String(d.getMonth()+1).padStart(2,'0')+'-'+String(d.getDate()).padStart(2,'0');
+    if(hours<1)return lang==='en'?'Updated just now':'刚刚更新';
+    if(hours<24)return lang==='en'?`Updated ${hours}h ago`:`${hours}小时前更新`;
+    if(days<7)return lang==='en'?`Updated ${days}d ago`:`${days}天前更新`;
+    return lang==='en'?`Updated ${fmt}`:fmt+' 更新';
+  }catch(e){return ''}
+}
+
+// 显示骨架屏
+function showSkeleton(){
+  const html=`
+    <div class="loading-wrap">
+      <div class="skel-card skeleton"></div>
+      <div class="skel-card skeleton"></div>
+      <div class="skel-card skeleton"></div>
+      <div class="skel-card skeleton"></div>
+      <div class="loading-tip">${lang==='en'?'Loading data...':'数据加载中...'}</div>
+    </div>`;
+  document.getElementById('content').innerHTML=html;
+}
+
+// 并行加载所有数据
+async function loadAllData(){
+  showSkeleton();
+  
+  const promises=Object.entries(DATA_FILES).map(([k,v])=>loadData(k,v));
+  const results=await Promise.all(promises);
+  
+  // 加载最后更新时间
+  const lastTime=await loadLastUpdate();
+  const el=document.getElementById('lastUpdate');
+  if(el&&lastTime){
+    el.textContent=formatTime(lastTime);
+  }else if(el){
+    el.textContent=lang==='en'?'Data loaded':'数据已加载';
+  }
+  
+  // 统计
+  const success=results.filter(r=>r.success).length;
+  const fallback=results.filter(r=>r.fallback).length;
+  console.log(`数据加载完成: ${success}个成功, ${fallback}个降级`);
+  
+  return results;
+}
+
+const CATS=[
+  {id:"all",cn:"全部",en:"All"},{id:"AI",cn:"AI",en:"AI"},{id:"Media",cn:"新媒体",en:"Media"},
+  {id:"Low",cn:"低空",en:"Low-alt"},{id:"LowAlt",cn:"低空经济",en:"LowAlt"},
+  {id:"Energy",cn:"储能",en:"Energy"},{id:"Silver",cn:"银发",en:"Silver"},
+  {id:"Skill",cn:"技能提升",en:"Skills"},{id:"Remote",cn:"远程",en:"Remote"},
+];
+
+const NAV=[
+  {id:"home",cn:"首页",en:"Home",icon:'<path d="M3 9.5 12 3l9 6.5V20a1 1 0 0 1-1 1h-5v-6H9v6H4a1 1 0 0 1-1-1z"/>'},
+  {id:"trend",cn:"风口",en:"Trends",icon:'<path d="M3 17h6l3-10 3 6 2-4h4" /><path d="M3 21h18"/>'},
+  {id:"policy",cn:"政策",en:"Policy",icon:'<path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><path d="M14 2v6h6M9 13h6M9 17h6"/>'},
+  {id:"global",cn:"国际",en:"Global",icon:'<circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15 15 0 0 1 0 20 15 15 0 0 1 0-20"/>'},
+  {id:"city",cn:"城市",en:"Cities",icon:'<path d="M3 21h18M5 21V7l7-4 7 4v14M9 9h.01M9 13h.01M9 17h.01M15 9h.01M15 13h.01M15 17h.01"/>'},
+  {id:"remote",cn:"远程",en:"Remote",icon:'<rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4M2 9h20"/>'},
+  {id:"career",cn:"转行",en:"Career",icon:'<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="m22 11-3 3-2-2"/>'},
+  {id:"video",cn:"视频",en:"Video",icon:'<rect x="2" y="6" width="14" height="12" rx="2"/><path d="m22 8-6 4 6 4z"/>'},
+  {id:"note",cn:"记录",en:"Notes",icon:'<path d="M4 4h12l4 4v12a0 0 0 0 1 0 0H4z"/><path d="M16 4v4h4M8 13h8M8 17h5"/>'},
+];
+
+let activePage="home", activeCat="all", searchQ="";
+
+/* ============ 渲染 ============ */
+function t(obj){return obj?obj[lang]:obj}
+function openLink(url){
+  try{window.open(url,'_blank','noopener,noreferrer');return}catch(e){}
+  var a=document.createElement('a');a.href=url;a.target='_blank';a.rel='noopener noreferrer';document.body.appendChild(a);a.click();document.body.removeChild(a);
+}
+function linkHTML(label,url,extraClass){
+  return `<a class="link-btn ${extraClass||''}" href="${url}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" onclick="event.preventDefault();openLink('${url.replace(/'/g,"\\'")}')" >${label} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>`;
+}
+function el(html){const d=document.createElement("div");d.innerHTML=html.trim();return d.firstChild}
+
+/* ============ 已读标记系统 ============ */
+function getRead(){return JSON.parse(localStorage.getItem("tw_read")||"[]")}
+function isRead(id){return getRead().includes(id)}
+function toggleRead(id){
+  const r=getRead();
+  const i=r.indexOf(id);
+  if(i>=0){r.splice(i,1)}else{r.push(id)}
+  localStorage.setItem("tw_read",JSON.stringify(r));
+}
+function getUnreadCount(page){
+  const r=getRead();
+  let data=[];
+  if(page==="trend")data=TRENDS;
+  else if(page==="policy")data=POLICIES;
+  else if(page==="global")data=GLOBAL;
+  else if(page==="remote")data=REMOTE_JOBS;
+  return data.filter(d=>!r.includes(d.id||d.title?.cn)).length;
+}
+
+function renderNav(){
+  document.getElementById("bottomnav").innerHTML=NAV.map(n=>{
+    const unread=["trend","policy","global","remote"].includes(n.id)?getUnreadCount(n.id):0;
+    return `<div class="nav-item ${n.id===activePage?"active":""}" data-nav="${n.id}" style="position:relative">
+      <div class="ni"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">${n.icon}</svg></div>
+      <span>${t(n)}</span>
+      ${unread>0?`<div class="nav-badge">${unread>9?'9+':unread}</div>`:""}
+    </div>`;
+  }).join("");
+  document.querySelectorAll("[data-nav]").forEach(e=>e.onclick=()=>{activePage=e.dataset.nav;renderNav();renderContent();window.scrollTo(0,0)});
+}
+
+function renderCats(){
+  document.getElementById("catBar").innerHTML=CATS.map(c=>`<div class="chip ${c.id===activeCat?"active":""}" data-cat="${c.id}">${t(c)}</div>`).join("");
+  document.querySelectorAll("[data-cat]").forEach(e=>e.onclick=()=>{activeCat=e.dataset.cat;renderCats();renderContent()});
+}
+
+function tagHTML(tag){
+  const map={hot:'<span class="tag hot">🔥 '+t({cn:"热门",en:"Hot"})+'</span>',new:'<span class="tag new">✦ '+t({cn:"风口",en:"Trend"})+'</span>',gov:'<span class="tag gov">🏛 '+t({cn:"政策",en:"Policy"})+'</span>',global:'<span class="tag global">🌍 '+t({cn:"国际",en:"Global"})+'</span>',career:'<span class="tag career">🎯 '+t({cn:"转行",en:"Career"})+'</span>'};
+  return map[tag]||"";
+}
+
+function hl(text){
+  if(!searchQ)return text;
+  const q=searchQ.replace(/[.*+?^${}()|[\]\\]/g,"\\$&");
+  return text.replace(new RegExp(q,"gi"),m=>`<mark>${m}</mark>`);
+}
+
+function cardHTML(item){
+  const itemId=item.id||t(item.title);
+  const read=isRead(itemId);
+  const nums=item.nums?`<div class="nums">${item.nums.map(n=>`<div class="num-pill">${t(n.k)} <b>${hl(t(n.v))}</b></div>`).join("")}</div>`:"";
+  const region=item.region?`<span class="num-pill">📍 ${hl(t(item.region))}</span>`:"";
+  const links=item.links?`<div class="card-links">${item.links.map(l=>{
+    let html=`<a class="link-btn ${l.gov?"":"alt"}" href="${l.u}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" onclick="event.preventDefault();openLink('${l.u.replace(/'/g,"\\'")}')">${l.gov?"🏛 ":""}${t(l.t)} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>`;
+    if(l.foreign||item.foreign){const tu=`https://translate.google.com/translate?sl=auto&tl=zh-CN&u=${encodeURIComponent(l.u)}`;html+=`<a class="link-btn alt" href="${tu}" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault();openLink('${tu}')">🌐 ${t(I.translate)}</a>`}
+    return html;
+  }).join("")}</div>`:"";
+  return `<div class="card read-item ${read?'is-read':''}" data-readid="${itemId}">
+    ${!read?`<div class="read-badge">${t({cn:"未读",en:"NEW"})}</div>`:""}
+    <div class="card-head">${tagHTML(item.tag)}<h3>${hl(t(item.title))}</h3></div>
+    ${region}
+    <p>${hl(t(item.desc))}</p>
+    ${nums}
+    ${links}
+    <div class="src">🔗 ${t(I.realtime)} · ${new Date().toLocaleDateString(lang==="en"?"en":"zh")} <span class="read-toggle" onclick="markRead('${itemId.replace(/'/g,"\\'")}')">${read?t({cn:"↩ 取消已读",en:"↩ Unread"}):t({cn:"✓ 标记已读",en:"✓ Mark read"})}</span></div>
+  </div>`;
+}
+
+function markRead(id){
+  toggleRead(id);
+  renderNav();
+  renderContent();
+}
+
+function renderHome(){
+  const c=document.getElementById("content");
+  /* 搜索或筛选时，跨所有数据全局搜索 */
+  if(searchQ||(activeCat!=="all"&&activeCat!=="Remote")){
+    const all=[...TRENDS,...POLICIES,...GLOBAL,...REMOTE_JOBS];
+    c.innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"搜索结果",en:"Search Results"})}<span class="en">/ ${searchQ?'"'+searchQ+'"':t(CATS.find(c=>c.id===activeCat))}</span></div>${renderList(all)}`;
+    return;
+  }
+  if(activeCat==="Remote"){renderRemote();return}
+  c.innerHTML=`
+    <div class="hero">
+      <h2>${t(I.heroTitle)}</h2>
+      <p>${t(I.heroSub)}</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>10万亿+</b><span>${t(I.stat1)}</span></div>
+        <div class="hero-stat"><b>100万+</b><span>${t(I.stat2)}</span></div>
+        <div class="hero-stat"><b>8k-20k</b><span>${t(I.stat3)}</span></div>
+      </div>
+    </div>
+    <div class="sec-title"><span class="bar"></span>${t({cn:"今日风口速览",en:"Today's Trend Brief"})}<span class="en">${t({cn:"/ 国家级趋势",en:"/ National"})}</span></div>
+    ${TRENDS.slice(0,3).map(cardHTML).join("")}
+    <div class="card" style="text-align:center;background:linear-gradient(135deg,var(--primary-l),var(--card2));border-color:var(--primary-l)">
+      <p style="color:var(--primary-d);font-weight:600;margin-bottom:10px">${t({cn:"想看更多？切换到「风口」「政策」或「远程」页",en:"Want more? Switch to Trends, Policy or Remote"})}</p>
+      <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+        <button class="add-btn" onclick="goPage('trend')">${t({cn:"看风口",en:"Trends"})}</button>
+        <button class="add-btn" onclick="goPage('remote')" style="background:var(--accent)">${t({cn:"远程工作",en:"Remote"})}</button>
+        <button class="add-btn" onclick="goPage('career')" style="background:var(--text2)">${t({cn:"转行路径",en:"Career"})}</button>
+      </div>
+    </div>`;
+}
+
+function goPage(p){activePage=p;renderNav();renderContent();window.scrollTo(0,0)}
+
+function renderList(arr){
+  let filtered=arr.filter(i=>activeCat==="all"||i.cat===activeCat);
+  if(searchQ)filtered=filtered.filter(i=>(t(i.title)+t(i.desc)+(i.region?t(i.region):"")+(i.nums?i.nums.map(n=>t(n.v)).join(""):"")).toLowerCase().includes(searchQ.toLowerCase()));
+  if(!filtered.length)return `<div class="empty">${t({cn:"没有匹配内容",en:"No matches"})}</div>`;
+  return filtered.map(cardHTML).join("");
+}
+
+function renderTrend(){document.getElementById("content").innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"国家级行业风口",en:"National Industry Trends"})}<span class="en">/ 2026</span></div>${renderList(TRENDS)}`}
+
+function renderPolicy(){
+  document.getElementById("content").innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"国家到地方政策",en:"National & Local Policies"})}</div>
+  <div class="card" style="background:var(--card2)"><p style="font-size:12.5px;color:var(--text2)">📌 ${t({cn:"点击「官方原文」跳转政府网站获取最新政策，可实时更新。重庆本地政策已置顶。",en:"Tap Official to open gov sites for live updates. Chongqing policies pinned."})}</p></div>
+  ${renderList(POLICIES)}`;
+}
+
+function renderGlobal(){
+  document.getElementById("content").innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"国际风口",en:"Global Trends"})}<span class="en">/ 🌐 ${t({cn:"可一键翻译为中文",en:"One-tap translate"})}</span></div>
+  <div class="card" style="background:var(--card2)"><p style="font-size:12.5px;color:var(--text2)">🌐 ${t({cn:"海外文章/报告可点「翻译为中文」按钮，通过Google翻译自动转中文。",en:"Foreign articles have a Translate-to-CN button via Google Translate."})}</p></div>
+  ${renderList(GLOBAL)}`;
+}
+
+let careerMode="recommend", customSteps={};
+
+function renderCareer(){
+  const c=document.getElementById("content");
+  c.innerHTML=`
+    <div class="hero" style="background:linear-gradient(135deg,var(--accent),var(--primary-d))">
+      <h2>${t(I.careerTitle)}</h2>
+      <p>${t(I.careerSub)}</p>
+      <p style="margin-top:8px;font-size:12px;opacity:.9">💼 ${t({cn:"重庆新大正物业·医养部门 | 25岁 | 贷款1.2万（不裸辞）",en:"Chongqing Xindazheng Property · Med-care | 25 | 12k loan (no bare quit)"})}</p>
+    </div>
+    <div class="mode-tabs">
+      <div class="mode-tab ${careerMode==='recommend'?'active':''}" onclick="careerMode='recommend';renderCareer()">${t({cn:"推荐路径",en:"Recommended"})}</div>
+      <div class="mode-tab ${careerMode==='custom'?'active':''}" onclick="careerMode='custom';renderCareer()">${t({cn:"自由组合",en:"Custom Build"})}</div>
+    </div>
+    <div id="careerBody"></div>`;
+  if(careerMode==='recommend')renderCareerRecommend();
+  else renderCareerCustom();
+}
+
+function renderCareerRecommend(){
+  document.getElementById("careerBody").innerHTML=`
+    ${CAREERS.map((c,ci)=>`<div class="path-card" style="border-left-color:${c.color}">
+      <h3 style="margin-bottom:6px">${hl(t(c.title))}</h3>
+      <p style="font-size:12.5px;margin-bottom:10px">${hl(t(c.why))}</p>
+      ${c.steps.map((s,i)=>`<div class="step"><div class="n" style="background:${c.color}33;color:${c.color}">${i+1}</div><div class="st"><b>${hl(t(s.t))}</b><br><span>${hl(t(s.d))}</span></div></div>`).join("")}
+      <div class="card-links">${c.links.map(l=>`<a class="link-btn" href="${l.u}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" onclick="event.preventDefault();openLink('${l.u.replace(/'/g,"\\'")}')">${t(l.t)} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>`).join("")}</div>
+      <button class="add-btn" style="margin-top:10px;width:100%" onclick="generateActionPlan('recommend',${ci})">${t({cn:"📋 生成具体行动计划",en:"📋 Generate Action Plan"})}</button>
+    </div>`).join("")}
+    <div class="card" style="background:linear-gradient(135deg,var(--primary-l),var(--card2))">
+      <p style="color:var(--primary-d);font-weight:600">${t({cn:"💡 建议：先用路径三（医养+新媒体）在职过渡，边还贷边学技能，3-6个月技能成熟后再切换到路径一或二。",en:"Tip: Start with Path 3 (med-care+media) while employed, pay loan & learn skills, switch to Path 1/2 in 3-6 months."})}</p>
+    </div>`;
+}
+
+function renderCareerCustom(){
+  let allSteps=[];
+  CAREERS.forEach((c,ci)=>{
+    c.steps.forEach((s,si)=>{
+      allSteps.push({ci,si,color:c.color,title:s.t,desc:s.d,from:c.title});
+    });
+  });
+  const selected=Object.keys(customSteps).filter(k=>customSteps[k]);
+  document.getElementById("careerBody").innerHTML=`
+    <div class="card" style="background:var(--card2)"><p style="font-size:12.5px;color:var(--text2)">✅ ${t({cn:"从下方步骤中自由勾选，组合属于你自己的转行路径。选好后点击「保存我的路径」。",en:"Check steps below to build your own career path. Tap 'Save My Path' when done."})}</p></div>
+    <div class="path-builder">
+      ${allSteps.map(s=>{
+        const key=`${s.ci}_${s.si}`;
+        const sel=customSteps[key];
+        return `<div class="pb-step ${sel?'selected':''}" onclick="toggleStep('${key}')">
+          <div class="pb-check">${sel?'✓':''}</div>
+          <div class="pb-content">
+            <div class="pb-title">${t(s.title)}</div>
+            <div class="pb-desc">${t(s.desc)}</div>
+            <div class="pb-from">📍 ${t(s.from)}</div>
+          </div>
+        </div>`;
+      }).join("")}
+      <div class="pb-preview">
+        <div class="pb-preview-title">📋 ${t({cn:"我的自定义路径",en:"My Custom Path"})}（${selected.length} ${t({cn:"步",en:"steps"})}）</div>
+        ${selected.length?selected.map((k,i)=>{
+          const [ci,si]=k.split('_').map(Number);
+          const s=CAREERS[ci].steps[si];
+          return `<div style="font-size:12px;margin:4px 0;padding:4px 8px;background:var(--card);border-radius:8px"><b style="color:var(--primary-d)">${i+1}.</b> ${t(s.t)} <span style="font-size:10px;color:var(--muted)">— ${t(CAREERS[ci].title)}</span></div>`;
+        }).join(""):`<div style="font-size:12px;color:var(--muted)">${t({cn:"还没有选择步骤",en:"No steps selected yet"})}</div>`}
+        ${selected.length?`<button class="add-btn" style="margin-top:8px;width:100%" onclick="saveCustomPath()">${t({cn:"💾 保存我的路径",en:"Save My Path"})}</button>
+        <button class="add-btn" style="margin-top:6px;width:100%;background:var(--accent);color:#fff" onclick="generateActionPlan('custom')">${t({cn:"📋 生成具体行动计划",en:"📋 Generate Action Plan"})}</button>`:""}
+      </div>
+    </div>`;
+}
+
+function toggleStep(key){
+  customSteps[key]=!customSteps[key];
+  renderCareerCustom();
+}
+function saveCustomPath(){
+  const selected=Object.keys(customSteps).filter(k=>customSteps[k]);
+  if(!selected.length)return;
+  const path=selected.map(k=>{
+    const [ci,si]=k.split('_').map(Number);
+    return{ci,si,title:CAREERS[ci].steps[si].t,from:CAREERS[ci].title};
+  });
+  let saved=JSON.parse(localStorage.getItem("tw_custompath")||"[]");
+  saved.unshift({id:Date.now(),steps:path,date:new Date().toLocaleDateString(lang==="en"?"en":"zh")});
+  localStorage.setItem("tw_custompath",JSON.stringify(saved));
+  toast(t({cn:"路径已保存！",en:"Path saved!"}));
+}
+
+function generateActionPlan(source,ci){
+  let steps=[];
+  let planTitle="";
+  if(source==="recommend"){
+    const c=CAREERS[ci];
+    planTitle=t(c.title);
+    steps=c.steps.map((s,i)=>({title:s.t,desc:s.d,from:c.title}));
+  }else{
+    const selected=Object.keys(customSteps).filter(k=>customSteps[k]).sort();
+    if(!selected.length){toast(t({cn:"请先选择步骤",en:"Select steps first"}));return}
+    planTitle=t({cn:"我的自定义路径",en:"My Custom Path"});
+    steps=selected.map(k=>{
+      const [ci2,si]=k.split('_').map(Number);
+      return{title:CAREERS[ci2].steps[si].t,desc:CAREERS[ci2].steps[si].d,from:CAREERS[ci2].title};
+    });
+  }
+  const weekPlans=[
+    {week:t({cn:"第1-2周：打基础",en:"Wk 1-2: Foundation"}),tasks:[]},
+    {week:t({cn:"第3-4周：上手实操",en:"Wk 3-4: Hands-on"}),tasks:[]},
+    {week:t({cn:"第5-8周：积累作品",en:"Wk 5-8: Build Portfolio"}),tasks:[]},
+    {week:t({cn:"第9-12周：变现/求职",en:"Wk 9-12: Monetize/Job"}),tasks:[]},
+  ];
+  const actionMap={
+    "入门":0,"掌握":0,"学":0,"了解":0,"考证":0,
+    "进阶":1,"实操":1,"练习":1,"搭":1,"开始":1,
+    "积累":2,"做":2,"产出":2,"运营":2,"发布":2,
+    "变现":3,"求职":3,"投":3,"切换":3,"就业":3,"还贷":3,
+  };
+  steps.forEach(s=>{
+    const titleStr=t(s.title);
+    let weekIdx=1;
+    for(const[key,idx]of Object.entries(actionMap)){if(titleStr.includes(key)){weekIdx=idx;break}}
+    weekPlans[weekIdx].tasks.push({title:s.title,desc:s.desc,from:s.from});
+  });
+  const extraActions=[
+    {week:0,task:t({cn:"每天花1小时看B站/抖音教程，建立知识框架",en:"1hr/day watching tutorials, build knowledge framework"})},
+    {week:0,task:t({cn:"注册即梦/可灵/剪映账号，熟悉基础界面",en:"Register Jimeng/Kling/CapCut, learn basic UI"})},
+    {week:1,task:t({cn:"模仿3个爆款作品，完成第一个练习作品",en:"Copy 3 viral works, finish first practice piece"})},
+    {week:1,task:t({cn:"加入2-3个相关交流群，拓展人脉",en:"Join 2-3 community groups, expand network"})},
+    {week:2,task:t({cn:"每周产出2-3个作品，发布到抖音/小红书",en:"Produce 2-3 works/week, post to Douyin/XHS"})},
+    {week:2,task:t({cn:"记录数据（播放/点赞/转化），分析优化",en:"Track metrics (views/likes/conversion), analyze & optimize"})},
+    {week:3,task:t({cn:"在云工网/电鸭注册，接第一个远程订单",en:"Register on Yungong/Eleduck, take first remote order"})},
+    {week:3,task:t({cn:"整理作品集，更新简历和各平台主页",en:"Organize portfolio, update resume & profiles"})},
+  ];
+  extraActions.forEach(a=>weekPlans[a.week].tasks.push({title:{cn:a.task,en:a.task},desc:{cn:"",en:""},from:{cn:"系统建议",en:"System"}}));
+  let html=`<div class="action-plan" id="actionPlanDiv">
+    <div class="ap-title">📋 ${t({cn:"行动计划",en:"Action Plan"})}：${planTitle}</div>`;
+  weekPlans.forEach(wp=>{
+    if(!wp.tasks.length)return;
+    html+=`<div class="ap-week"><div class="ap-week-title">${wp.week}</div>`;
+    wp.tasks.forEach(task=>{
+      html+=`<div class="ap-task"><b>${t(task.title)}</b>${task.desc&&t(task.desc)?`<br>${t(task.desc)}`:""}<br><span style="font-size:10px;color:var(--muted)">📍 ${t(task.from)}</span></div>`;
+    });
+    html+=`</div>`;
+  });
+  html+=`<div style="margin-top:10px;padding:10px;background:var(--card);border-radius:10px">
+    <div style="font-size:12px;font-weight:700;color:var(--primary-d);margin-bottom:6px">💡 ${t({cn:"还贷计划",en:"Loan Plan"})}</div>
+    <div style="font-size:12px;color:var(--text2)">${t({cn:"12000元贷款，建议每月还1500-2000元，6-8个月还清。在职期间用工资还贷，副业收入用于学习和积累。",en:"12k loan: pay 1500-2000/mo, clear in 6-8 months. Use salary for loan, side income for learning."})}</div>
+  </div>
+  <button class="add-btn" style="margin-top:10px;width:100%" onclick="saveActionPlan()">${t({cn:"💾 保存行动计划",en:"Save Action Plan"})}</button>
+  </div>`;
+  const existing=document.getElementById("actionPlanDiv");
+  if(existing)existing.remove();
+  const body=source==="recommend"?document.getElementById("careerBody"):document.getElementById("careerBody");
+  body.insertAdjacentHTML("beforeend",html);
+  setTimeout(()=>{document.getElementById("actionPlanDiv").scrollIntoView({behavior:"smooth",block:"start"})},100);
+}
+function saveActionPlan(){
+  const plan=document.getElementById("actionPlanDiv");
+  if(!plan)return;
+  localStorage.setItem("tw_actionplan",plan.innerHTML);
+  toast(t({cn:"行动计划已保存！可在记录页查看",en:"Action plan saved!"}));
+}
+
+let vidFilter="all";
+const VID_CATS=[{id:"all",cn:"全部",en:"All"},{id:"AI",cn:"AI",en:"AI"},{id:"Media",cn:"新媒体",en:"Media"}];
+const PLAT_INFO={
+  bilibili:{name:{cn:"B站",en:"Bili"},color:"#00A1D6",icon:"📺"},
+  douyin:{name:{cn:"抖音",en:"Douyin"},color:"#FE2C55",icon:"🎵"},
+  xhs:{name:{cn:"小红书",en:"XHS"},color:"#FF2442",icon:"📕"},
+  kuaishou:{name:{cn:"快手",en:"Kuaishou"},color:"#FF4906",icon:"⚡"},
+};
+
+function renderVideo(){
+  const vids=vidFilter==="all"?VIDEOS:VIDEOS.filter(v=>v.cat===vidFilter);
+  document.getElementById("content").innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"风口视频",en:"Trend Videos"})}<span class="en">/ ${t({cn:"多平台",en:"Multi-platform"})}</span></div>
+  <div style="display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;padding-bottom:4px">
+    ${VID_CATS.map(c=>`<div class="chip ${vidFilter===c.id?'active':''}" data-vidcat="${c.id}">${t(c)}</div>`).join("")}
+  </div>
+  <div class="card" style="background:var(--card2)"><p style="font-size:12px;color:var(--text2)">▶️ ${t({cn:"B站视频可App内播放，抖音/小红书/快手点击跳转原平台观看。",en:"Bilibili plays in-app; Douyin/XHS/Kuaishou open in original platform."})}</p></div>
+  ${vids.map((v,i)=>{
+    const pi=PLAT_INFO[v.plat];
+    return `<div class="vid-card" onclick="${v.plat==='bilibili'?`playVideo(${VIDEOS.indexOf(v)})`:`event.preventDefault();openLink('${v.url}')`}">
+      <div class="vid-thumb-box" style="background:${v.cover}">
+        <div class="vid-plat-icon" style="background:${pi.color}">${pi.icon} ${t(pi.name)}</div>
+        <div class="play-overlay"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg></div>
+      </div>
+      <div style="flex:1;min-width:0">
+        <h4 style="font-size:13px;margin-bottom:4px">${hl(t(v.title))}</h4>
+        <p style="font-size:11px;color:var(--muted);margin-bottom:4px;overflow:hidden;text-overflow:ellipsis;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical">${t(v.desc)}</p>
+        <div class="vid-blogger">👤 ${t(v.blogger)} · ${t(v.views)}</div>
+      </div>
+    </div>`;
+  }).join("")}
+  <div class="card" style="background:linear-gradient(135deg,var(--primary-l),var(--card2))">
+    <p style="color:var(--primary-d);font-size:12px">${t({cn:"💡 B站视频可在App内直接播放；抖音/小红书/快手点击后跳转原平台。所有视频链接实时更新最新内容。",en:"Bilibili plays in-app; others open original platform. All links show latest content."})}</p>
+  </div>`;
+  document.querySelectorAll("[data-vidcat]").forEach(e=>e.onclick=()=>{vidFilter=e.dataset.vidcat;renderVideo()});
+}
+
+function playVideo(idx){
+  const v=VIDEOS[idx];
+  if(v.plat!=="bilibili"){if(v.url)openLink(v.url);return}
+  const modal=document.getElementById("vidModal");
+  document.getElementById("vidModalTitle").textContent=t(v.title);
+  const embedUrl=`https://player.bilibili.com/player.html?bvid=${v.bvid}&high_quality=1&autoplay=1&danmaku=0`;
+  const origUrl=`https://www.bilibili.com/video/${v.bvid}/`;
+  document.getElementById("vidFrameWrap").innerHTML=`<iframe src="${embedUrl}" allow="autoplay;fullscreen;encrypted-media" allowfullscreen scrolling="no"></iframe>`;
+  document.getElementById("vidModalLinks").innerHTML=`<a href="${origUrl}" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault();openLink('${origUrl}')">🔗 ${t({cn:"原站观看",en:"Original"})}</a>`;
+  modal.classList.add("show");
+  document.body.style.overflow="hidden";
+}
+function closeVidModal(){
+  document.getElementById("vidModal").classList.remove("show");
+  document.getElementById("vidFrameWrap").innerHTML="";
+  document.body.style.overflow="";
+}
+
+/* 记录 */
+function getNotes(){return JSON.parse(localStorage.getItem("tw_notes")||"[]")}
+function saveNotes(n){localStorage.setItem("tw_notes",JSON.stringify(n))}
+function getMoods(){return JSON.parse(localStorage.getItem("tw_moods")||"{}")}
+function saveMoods(m){localStorage.setItem("tw_moods",JSON.stringify(m))}
+
+const MOODS=[{e:"😊",cn:"开心",en:"Happy"},{e:"💪",cn:"有动力",en:"Motivated"},{e:"😐",cn:"一般",en:"Neutral"},{e:"😴",cn:"疲惫",en:"Tired"},{e:"😰",cn:"焦虑",en:"Anxious"},{e:"🔥",cn:"兴奋",en:"Excited"}];
+
+let calDate=new Date(), calSelected=new Date().toISOString().slice(0,10);
+
+function renderNote(){
+  const notes=getNotes();
+  const moods=getMoods();
+  const cats=[I.noteCat0,I.noteCat1,I.noteCat2,I.noteCat3,I.noteCat4];
+  const colors=["#C9A96E","#5B8CC8","#8FA876","#B57B8E","#5BA88A"];
+  const todayStr=new Date().toISOString().slice(0,10);
+  const selMood=moods[calSelected];
+  
+  document.getElementById("content").innerHTML=`
+    <div class="sec-title"><span class="bar"></span>${t({cn:"心情日历",en:"Mood Calendar"})}<span class="en">/ ${t({cn:"打卡记录",en:"Check-in"})}</span></div>
+    <div class="cal-wrap" id="calWrap">${renderCalendar()}</div>
+    <div class="card" id="moodCard">
+      <div style="font-size:13px;font-weight:600;margin-bottom:8px;color:var(--text)">📅 ${calSelected} ${t({cn:"今日心情",en:"Today's Mood"})}</div>
+      <div class="mood-picker">
+        ${MOODS.map((m,i)=>`<div class="mood-btn ${selMood===i?'selected':''}" onclick="setMood(${i})">${m.e}</div>`).join("")}
+      </div>
+      <div class="mood-label">${selMood!==undefined?MOODS[selMood].e+' '+t({cn:MOODS[selMood].cn,en:MOODS[selMood].en}):t({cn:"点击表情记录心情",en:"Tap emoji to record mood"})}</div>
+    </div>
+    <div class="sec-title" style="margin-top:14px"><span class="bar"></span>${t({cn:"我的记录本",en:"My Notebook"})}<span class="en">/ 💾 ${t({cn:"本地保存",en:"Local"})}</span></div>
+    <div class="note-input">
+      <select id="noteCat">${cats.map((c,i)=>`<option value="${i}">${t(c)}</option>`).join("")}</select>
+      <input id="noteInput" placeholder="${t(I.notePh)}" onkeydown="if(event.key==='Enter')addNote()">
+      <button class="add-btn" onclick="addNote()">${t(I.addNote)}</button>
+    </div>
+    <div id="noteList">${renderNoteList(notes,cats,colors)}</div>`;
+  bindCalendar();
+}
+
+function renderNoteList(notes,cats,colors){
+  if(!notes.length)return `<div class="empty"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4M8 13h8M8 17h5"/></svg><br>${t(I.noNote)}</div>`;
+  return notes.map(n=>`<div class="note-item">
+    <div class="nt" style="background:${colors[n.cat]||colors[0]}"></div>
+    <div class="nb"><div class="nh"><span class="ncat">${t(cats[n.cat]||cats[0])}</span><span class="del" onclick="delNote(${n.id})">×</span></div>
+    <div class="ntext">${n.text.replace(/</g,"&lt;")}</div><div class="ndate">${n.date}</div></div>
+  </div>`).join("");
+}
+
+function renderCalendar(){
+  const y=calDate.getFullYear(),m=calDate.getMonth();
+  const moods=getMoods();
+  const first=new Date(y,m,1).getDay();
+  const days=new Date(y,m+1,0).getDate();
+  const dow=lang==="en"?["S","M","T","W","T","F","S"]:["日","一","二","三","四","五","六"];
+  const monthNames=lang==="en"?["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"]:["1月","2月","3月","4月","5月","6月","7月","8月","9月","10月","11月","12月"];
+  const todayStr=new Date().toISOString().slice(0,10);
+  let html=`<div class="cal-head">
+    <div class="cm-title">${y} ${monthNames[m]}</div>
+    <div class="cal-nav">
+      <button onclick="calPrev()">‹</button>
+      <button onclick="calToday()">·</button>
+      <button onclick="calNext()">›</button>
+    </div>
+  </div><div class="cal-grid">`;
+  dow.forEach(d=>html+=`<div class="cal-dow">${d}</div>`);
+  for(let i=0;i<first;i++)html+=`<div class="cal-day other"></div>`;
+  for(let d=1;d<=days;d++){
+    const ds=`${y}-${String(m+1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+    const mood=moods[ds];
+    const cls=[`cal-day`];
+    if(ds===todayStr)cls.push("today");
+    if(ds===calSelected)cls.push("selected");
+    html+=`<div class="${cls.join(' ')}" data-calday="${ds}">${d}${mood!==undefined?`<div class="mood-dot">${MOODS[mood].e}</div>`:""}</div>`;
+  }
+  html+=`</div>`;
+  return html;
+}
+
+function bindCalendar(){
+  document.querySelectorAll("[data-calday]").forEach(e=>{
+    e.onclick=()=>{
+      calSelected=e.dataset.calday;
+      renderNote();
+    };
+  });
+}
+function calPrev(){calDate.setMonth(calDate.getMonth()-1);renderNote()}
+function calNext(){calDate.setMonth(calDate.getMonth()+1);renderNote()}
+function calToday(){calDate=new Date();calSelected=new Date().toISOString().slice(0,10);renderNote()}
+
+function setMood(idx){
+  const moods=getMoods();
+  if(moods[calSelected]===idx){delete moods[calSelected]}
+  else{moods[calSelected]=idx}
+  saveMoods(moods);
+  toast(t({cn:"已记录心情",en:"Mood saved"}));
+  renderNote();
+}
+
+function addNote(){
+  const inp=document.getElementById("noteInput"),sel=document.getElementById("noteCat");
+  if(!inp.value.trim())return;
+  const notes=getNotes();
+  notes.unshift({id:Date.now(),cat:sel.value,text:inp.value.trim(),date:calSelected+" "+new Date().toLocaleTimeString(lang==="en"?"en":"zh",{hour:"2-digit",minute:"2-digit"})});
+  saveNotes(notes);inp.value="";toast(t(I.saved));renderNote();
+}
+function delNote(id){saveNotes(getNotes().filter(n=>n.id!==id));toast(t(I.deleted));renderNote()}
+
+let cityMode="pick", selectedCity=null, compareList=[];
+
+function renderCities(){
+  const c=document.getElementById("content");
+  c.innerHTML=`
+    <div class="hero" style="background:linear-gradient(135deg,var(--primary),var(--primary-d))">
+      <h2>${t(I.cityTitle)}</h2>
+      <p>${t(I.citySub)}</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>10</b><span>${t({cn:"重点城市",en:"Cities"})}</span></div>
+        <div class="hero-stat"><b>${t({cn:"实时",en:"Live"})}</b><span>${t({cn:"官网链接",en:"Gov links"})}</span></div>
+        <div class="hero-stat"><b>VS</b><span>${t({cn:"城市对比",en:"Compare"})}</span></div>
+      </div>
+    </div>
+    <div class="mode-tabs">
+      <div class="mode-tab ${cityMode==='pick'?'active':''}" onclick="cityMode='pick';renderCities()">${t(I.cityPick)}</div>
+      <div class="mode-tab ${cityMode==='compare'?'active':''}" onclick="cityMode='compare';renderCities()">${t(I.cityCompare)}</div>
+    </div>
+    <div id="cityBody"></div>`;
+  if(cityMode==='pick')renderCityPicker();
+  else renderCityCompare();
+}
+
+function renderCityPicker(){
+  const body=document.getElementById("cityBody");
+  const t1=CITIES.filter(c=>c.tier===1),t2=CITIES.filter(c=>c.tier===2),t3=CITIES.filter(c=>c.tier===3),tHK=CITIES.filter(c=>c.tier===0);
+  let html="";
+  if(t1.length)html+=`<div class="sec-title"><span class="bar"></span>${t(I.cityTier1)}</div><div class="city-grid">${t1.map(c=>cityChipHTML(c)).join("")}</div>`;
+  if(t2.length)html+=`<div class="sec-title"><span class="bar"></span>${t(I.cityTier2)}</div><div class="city-grid">${t2.map(c=>cityChipHTML(c)).join("")}</div>`;
+  if(t3.length)html+=`<div class="sec-title"><span class="bar"></span>${t({cn:"三四线重点",en:"Tier 3+"})}</div><div class="city-grid">${t3.map(c=>cityChipHTML(c)).join("")}</div>`;
+  if(tHK.length)html+=`<div class="sec-title"><span class="bar"></span>${t({cn:"港澳",en:"HK & Macau"})}</div><div class="city-grid">${tHK.map(c=>cityChipHTML(c)).join("")}</div>`;
+  if(selectedCity){
+    const city=CITIES.find(c=>c.id===selectedCity);
+    if(city)html+=renderCityDetail(city);
+  }
+  body.innerHTML=html;
+  bindCityChips();
+}
+
+function cityChipHTML(c){
+  return `<div class="city-chip ${selectedCity===c.id?'active':''}" data-city="${c.id}">
+    <div class="cname">${t(c.name)}</div>
+    <div class="creg">${t(c.region)}</div>
+    <div class="csal">${t(c.salary)}</div>
+  </div>`;
+}
+
+function bindCityChips(){
+  document.querySelectorAll("[data-city]").forEach(e=>{
+    e.onclick=()=>{
+      selectedCity=e.dataset.city;
+      renderCityPicker();
+      setTimeout(()=>{const d=document.querySelector('.city-detail');if(d)d.scrollIntoView({behavior:'smooth',block:'start'})},100);
+    };
+  });
+}
+
+function renderCityDetail(c){
+  return `<div class="city-detail show">
+    <div class="card" style="border-left:4px solid var(--primary)">
+      <div style="display:flex;align-items:center;gap:8px;margin-bottom:6px">
+        <h3 style="font-size:18px">${t(c.name)}</h3>
+        <span class="num-pill">${t(c.region)}</span>
+        <span class="num-pill">💰 ${t(c.salary)}</span>
+      </div>
+      <p style="font-size:12.5px;color:var(--text2)">⭐ ${t(c.highlight)}</p>
+    </div>
+    <div class="card">
+      <div class="city-section"><div class="sh">🏭 ${t(I.cityKeyInd)}</div><div class="sv">${t(c.industries)}</div></div>
+      <div class="city-section"><div class="sh">🎯 ${t(I.cityTalent)}</div><div class="sv">${t(c.talent)}</div></div>
+      <div class="city-section"><div class="sh">💰 ${t(I.citySalary)}</div><div class="sv">${t(c.salary)}</div></div>
+    </div>
+    <div class="sec-title"><span class="bar"></span>${t(I.cityPolicy)}<span class="en">/ ${t({cn:"官方来源",en:"Official"})}</span></div>
+    ${c.policies.map(p=>`<div class="city-policy-item">
+      <div class="pt">${t(p.t)}</div>
+      <div class="pd">${t(p.desc)}</div>
+      <div class="pmeta">
+        <span class="pdate">📅 ${p.d}</span>
+        ${p.gov?'<span class="tag gov">🏛 官方</span>':''}
+        <a class="link-btn" href="${p.u}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" onclick="event.preventDefault();openLink('${p.u.replace(/'/g,"\\'")}')">${t({cn:"查看原文",en:"View"})} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+      </div>
+    </div>`).join("")}
+    <div class="sec-title"><span class="bar"></span>${t(I.cityOfficial)}</div>
+    <div class="card">
+      ${c.sites.map(s=>`<a class="city-site-btn" href="${s.u}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" onclick="event.preventDefault();openLink('${s.u.replace(/'/g,"\\'")}')">🏛 ${t(s.n)} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="width:12px;height:12px"><path d="M7 17 17 7M7 7h10v10"/></svg></a>`).join("")}
+    </div>
+  </div>`;
+}
+
+function renderCityCompare(){
+  const body=document.getElementById("cityBody");
+  body.innerHTML=`<div class="card" style="background:var(--card2)"><p style="font-size:12.5px;color:var(--text2)">☑️ ${t(I.compareSel)}</p></div>
+    <div class="city-grid">${CITIES.map(c=>`<div class="city-chip ${compareList.includes(c.id)?'checked':''}" data-cmp="${c.id}">
+      <div class="check">✓</div>
+      <div class="cname">${t(c.name)}</div>
+      <div class="creg">${t(c.region)}</div>
+      <div class="csal">${t(c.salary)}</div>
+    </div>`).join("")}</div>
+    <div id="cmpResult"></div>`;
+  document.querySelectorAll("[data-cmp]").forEach(e=>{
+    e.onclick=()=>{
+      const id=e.dataset.cmp;
+      if(compareList.includes(id)){compareList=compareList.filter(x=>x!==id)}
+      else if(compareList.length<3){compareList.push(id)}
+      else{toast(t({cn:"最多选3个",en:"Max 3"}));return}
+      renderCityCompare();
+    };
+  });
+  if(compareList.length>=2){
+    const cities=compareList.map(id=>CITIES.find(c=>c.id===id));
+    document.getElementById("cmpResult").innerHTML=`
+      <div class="sec-title"><span class="bar"></span>${t(I.cityCompare)}<span class="en">/ ${cities.map(c=>t(c.name)).join(' '+t(I.cityVs)+' ')}</span></div>
+      <div class="card">
+        <div class="cmp-header">${cities.map(c=>`<div class="cmp-h">${t(c.name)}</div>`).join("")}</div>
+        <div class="cmp-label">💰 ${t(I.citySalary)}</div>
+        <div class="cmp-row">${cities.map(c=>`<div class="cmp-col"><b>${t(c.salary)}</b></div>`).join("")}</div>
+        <div class="cmp-label">🏭 ${t(I.cityKeyInd)}</div>
+        <div class="cmp-row">${cities.map(c=>`<div class="cmp-col"><span style="font-size:11px;color:var(--text2)">${t(c.industries)}</span></div>`).join("")}</div>
+        <div class="cmp-label">🎯 ${t(I.cityTalent)}</div>
+        <div class="cmp-row">${cities.map(c=>`<div class="cmp-col"><span style="font-size:11px;color:var(--text2)">${t(c.talent)}</span></div>`).join("")}</div>
+        <div class="cmp-label">⭐ ${t(I.cityHighlight)}</div>
+        <div class="cmp-row">${cities.map(c=>`<div class="cmp-col"><span style="font-size:11px;color:var(--text2)">${t(c.highlight)}</span></div>`).join("")}</div>
+        <div class="cmp-label">🏛 ${t(I.cityOfficial)}</div>
+        <div class="cmp-row">${cities.map(c=>`<div class="cmp-col">${c.sites.map(s=>`<a href="${s.u}" target="_blank" style="font-size:10px;display:block;margin:2px 0">${t(s.n)}</a>`).join("")}</div>`).join("")}</div>
+      </div>`;
+  }
+}
+
+function renderRemote(){
+  const c=document.getElementById("content");
+  let jobHTML=REMOTE_JOBS;
+  if(searchQ)jobHTML=jobHTML.filter(i=>(t(i.title)+t(i.desc)+(i.nums?i.nums.map(n=>t(n.v)).join(""):"")).toLowerCase().includes(searchQ.toLowerCase()));
+  c.innerHTML=`
+    <div class="hero" style="background:linear-gradient(135deg,var(--primary),var(--primary-d))">
+      <h2>${t(I.remoteTitle)}</h2>
+      <p>${t(I.remoteSub)}</p>
+      <div class="hero-stats">
+        <div class="hero-stat"><b>12+</b><span>${t({cn:"招聘平台",en:"Platforms"})}</span></div>
+        <div class="hero-stat"><b>6</b><span>${t({cn:"热门岗位",en:"Hot jobs"})}</span></div>
+        <div class="hero-stat"><b>8k-30k</b><span>${t({cn:"薪资范围",en:"Salary"})}</span></div>
+      </div>
+    </div>
+    <div class="card" style="background:var(--card2)"><p style="font-size:12.5px;color:var(--text2)">📍 ${t(I.remoteTip)}</p></div>
+    <div class="sec-title"><span class="bar"></span>${t(I.remotePlatform)}<span class="en">/ ${t({cn:"点击直达",en:"Tap to open"})}</span></div>
+    ${REMOTE_PLATFORMS.map(p=>{
+      const tagC=p.foreign?"global":"career";
+      return `<div class="card">
+        <div class="card-head">${tagHTML(tagC)}<h3>${hl(t(p.name))}</h3></div>
+        <span class="num-pill">${hl(t(p.tag))}</span>
+        <p>${hl(t(p.desc))}</p>
+        <div class="card-links" style="margin-top:10px">
+          <a class="link-btn" href="${p.url}" target="_blank" rel="noopener noreferrer" referrerpolicy="no-referrer" onclick="event.preventDefault();openLink('${p.url.replace(/'/g,"\\'")}')">${t({cn:"打开平台",en:"Open"})} <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+          ${p.foreign?`<a class="link-btn alt" href="https://translate.google.com/translate?sl=auto&tl=zh-CN&u=${encodeURIComponent(p.url)}" target="_blank" rel="noopener noreferrer" onclick="event.preventDefault();openLink('https://translate.google.com/translate?sl=auto&tl=zh-CN&u=${encodeURIComponent(p.url)}')">🌐 ${t(I.translate)}</a>`:""}
+        </div>
+        <div class="src">🔗 ${t(I.realtime)} · ${new Date().toLocaleDateString(lang==="en"?"en":"zh")}</div>
+      </div>`;
+    }).join("")}
+    <div class="sec-title"><span class="bar"></span>${t(I.remoteJob)}<span class="en">/ ${t({cn:"匹配你的技能",en:"Matched to your skills"})}</span></div>
+    ${jobHTML.length?jobHTML.map(cardHTML).join(""):`<div class="empty">${t({cn:"没有匹配内容",en:"No matches"})}</div>`}
+    <div class="card" style="background:linear-gradient(135deg,var(--primary-l),var(--card2))">
+      <p style="color:var(--primary-d);font-weight:600">${t({cn:"💡 建议：先在云工网/电鸭社区注册，用业余时间接远程新媒体运营或AI剪辑订单，边还贷边积累作品集，3-6个月后可全职远程。",en:"Tip: Register on Yungong/Eleduck, take remote new-media or AI editing gigs part-time, build portfolio while paying loan, go full-time in 3-6 months."})}</p>
+    </div>`;
+}
+
+function renderContent(){
+  if(activeCat==="Remote"&&activePage!=="note"&&activePage!=="video"&&activePage!=="career"&&activePage!=="city"){renderRemote();return}
+  const pages={home:renderHome,trend:renderTrend,policy:renderPolicy,global:renderGlobal,city:renderCities,remote:renderRemote,career:renderCareer,video:renderVideo,note:renderNote};
+  (pages[activePage]||renderHome)();
+}
+
+/* ============ 主题/护眼/语言 ============ */
+function applyTheme(){
+  document.documentElement.setAttribute("data-theme",theme);
+  document.querySelector('meta[name="theme-color"]').setAttribute("content",getComputedStyle(document.documentElement).getPropertyValue("--primary-d").trim());
+  localStorage.setItem("tw_theme",theme);
+}
+function applyEye(){
+  document.body.classList.toggle("eye-on",eye);
+  document.getElementById("eyeBtn").classList.toggle("active",eye);
+  localStorage.setItem("tw_eye",eye?"1":"0");
+}
+function applyLang(){
+  document.documentElement.lang=lang==="en"?"en":"zh-CN";
+  document.querySelectorAll("[data-i]").forEach(e=>e.textContent=t(I[e.dataset.i]));
+  document.getElementById("langTxt").textContent=lang==="cn"?"EN":"中";
+  document.getElementById("search").placeholder=lang==="cn"?I.searchPh.cn:I.searchPh.en;
+  document.getElementById("langSwitch").classList.toggle("on",lang==="en");
+  renderNav();renderCats();renderContent();
+}
+function toggleLang(){lang=lang==="cn"?"en":"cn";localStorage.setItem("tw_lang",lang);applyLang();toast(lang==="en"?"EN":"中文")}
+function toggleEye(){eye=!eye;applyEye();toast(eye?t(I.eyeOn):t(I.eyeOff))}
+
+function renderThemeSheet(){
+  document.getElementById("themeGrid").innerHTML=THEMES.map(th=>`<div class="theme-opt ${th.id===theme?"active":""}" data-th="${th.id}">
+    <div class="prev" style="background:linear-gradient(135deg,${th.c1},${th.c2})"></div>
+    <span>${lang==="en"?th.en:th.cn}</span>
+  </div>`).join("");
+  document.querySelectorAll("[data-th]").forEach(e=>e.onclick=()=>{theme=e.dataset.th;applyTheme();renderThemeSheet()});
+}
+
+/* ============ 工具 ============ */
+let toastT;
+function toast(msg){const e=document.getElementById("toast");e.textContent=msg;e.classList.add("show");clearTimeout(toastT);toastT=setTimeout(()=>e.classList.remove("show"),1800)}
+
+/* ============ 事件 ============ */
+document.getElementById("search").addEventListener("input",e=>{searchQ=e.target.value.trim();renderContent()});
+document.getElementById("langBtn").onclick=toggleLang;
+document.getElementById("eyeBtn").onclick=toggleEye;
+document.getElementById("themeBtn").onclick=()=>{renderThemeSheet();document.getElementById("themeSheet").classList.add("show");document.getElementById("sheetMask").classList.add("show")};
+document.getElementById("eyeSwitch").onclick=toggleEye;
+document.getElementById("langSwitch").onclick=toggleLang;
+document.getElementById("sheetMask").onclick=()=>{document.getElementById("themeSheet").classList.remove("show");document.getElementById("sheetMask").classList.remove("show")};
+
+/* ============ 初始化 ============ */
+applyTheme();applyEye();
+// 加载数据后再渲染
+loadAllData().then(()=>{
+  applyLang();
+});
+
+// ============ PWA Service Worker ============
+if('serviceWorker' in navigator){
+  navigator.serviceWorker.register('./sw.js').then(()=>console.log('SW OK')).catch(()=>{});
+}
+// PWA安装提示
+let deferredPrompt;
+window.addEventListener('beforeinstallprompt',e=>{
+  e.preventDefault();
+  deferredPrompt=e;
+  const btn=document.getElementById('pwaInstallBtn');
+  if(btn){btn.style.display='flex';btn.onclick=()=>{deferredPrompt.prompt();deferredPrompt.userChoice.then(()=>{deferredPrompt=null;btn.style.display='none'})}}
+});
+</script>
+</body>
+</html>

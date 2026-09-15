@@ -1,0 +1,288 @@
+[
+  {
+    "bvid": "BV1aZMw6DEQY",
+    "plat": "bilibili",
+    "title": {
+      "cn": "AI漫剧制作全流程（2026暑假版）",
+      "en": "AI Comic Drama Full Process"
+    },
+    "views": {
+      "cn": "2026-07-04",
+      "en": "Jul 2026"
+    },
+    "blogger": {
+      "cn": "AI漫剧教程",
+      "en": "AI Drama Tutor"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "剧本+分镜+静帧+视频+配音+剪辑AI一键生成，零基础可学",
+      "en": "Full pipeline: script+storyboard+AI generation+voice+editing"
+    },
+    "cover": "linear-gradient(135deg,#fb7299,#e63946)"
+  },
+  {
+    "bvid": "BV14bKG6YE9b",
+    "plat": "bilibili",
+    "title": {
+      "cn": "AI漫剧零基础全套教程（800集）",
+      "en": "AI Comic Drama 800-Ep Course"
+    },
+    "views": {
+      "cn": "2026-07-16",
+      "en": "Jul 2026"
+    },
+    "blogger": {
+      "cn": "红果漫剧学院",
+      "en": "Hongguo Academy"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "包含剧本+分镜+配音+剪辑+人物一致性，学完即可变现",
+      "en": "Script+storyboard+voice+editing+character consistency"
+    },
+    "cover": "linear-gradient(135deg,#00A1D6,#fb7299)"
+  },
+  {
+    "bvid": "BV1NAoMBkEXZ",
+    "plat": "bilibili",
+    "title": {
+      "cn": "AI帮你剪视频！23条素材一句话出片",
+      "en": "AI Edits 23 Clips in One Sentence"
+    },
+    "views": {
+      "cn": "实操演示",
+      "en": "Demo"
+    },
+    "blogger": {
+      "cn": "AI效率实验室",
+      "en": "AI Efficiency Lab"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "Whisper语音识别+GLM视觉理解，自动分析编排渲染",
+      "en": "Whisper+GLM vision, auto analysis & rendering"
+    },
+    "cover": "linear-gradient(135deg,#00A1D6,#2C3E50)"
+  },
+  {
+    "bvid": "BV1CVcZzXEjY",
+    "plat": "bilibili",
+    "title": {
+      "cn": "AI剪辑综艺解说保姆级教程",
+      "en": "AI Editing Talk Show Tutorial"
+    },
+    "views": {
+      "cn": "保姆级",
+      "en": "Step-by-step"
+    },
+    "blogger": {
+      "cn": "剪映AI工坊",
+      "en": "CapCut AI Workshop"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "全自动剪辑生成综艺解说，120秒成片实操",
+      "en": "Auto-generate variety commentary, 120s demo"
+    },
+    "cover": "linear-gradient(135deg,#00A1D6,#1a1a2e)"
+  },
+  {
+    "bvid": "BV1TrPKzWEMc",
+    "plat": "bilibili",
+    "title": {
+      "cn": "新媒体运营0到1全栈攻略（2026）",
+      "en": "New Media Ops 0-to-1 (2026)"
+    },
+    "views": {
+      "cn": "2026最新",
+      "en": "2026"
+    },
+    "blogger": {
+      "cn": "短视频运营方宇",
+      "en": "Fangyu Ops"
+    },
+    "cat": "Media",
+    "desc": {
+      "cn": "DeepSeek+小红书+短视频+直播电商+私域变现全流程",
+      "en": "DeepSeek+Xiaohongshu+short video+livestream+private domain"
+    },
+    "cover": "linear-gradient(135deg,#FF2442,#FF6B6B)"
+  },
+  {
+    "bvid": "BV15AemzxEAF",
+    "plat": "bilibili",
+    "title": {
+      "cn": "全媒体运营师怎么考？备考指南",
+      "en": "How to Get Omni-media Operator Cert"
+    },
+    "views": {
+      "cn": "备考指南",
+      "en": "Prep guide"
+    },
+    "blogger": {
+      "cn": "考证通",
+      "en": "Cert Guide"
+    },
+    "cat": "Media",
+    "desc": {
+      "cn": "报考条件、考试时间、备考方法，2-3周轻松上手",
+      "en": "Requirements, schedule, prep methods, 2-3 wks"
+    },
+    "cover": "linear-gradient(135deg,#00A1D6,#3498DB)"
+  },
+  {
+    "plat": "douyin",
+    "title": {
+      "cn": "AI漫剧从0到1全流程（抖音版）",
+      "en": "AI Comic Drama 0-to-1 (Douyin)"
+    },
+    "views": {
+      "cn": "2026最新",
+      "en": "2026"
+    },
+    "blogger": {
+      "cn": "AI漫剧创作营",
+      "en": "AI Drama Camp"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "抖音热门AI漫剧教程，从出图到剪辑到上传红果全流程",
+      "en": "Popular Douyin AI drama tutorial: image generation to editing to Hongguo upload"
+    },
+    "cover": "linear-gradient(135deg,#000000,#25F4EE)",
+    "url": "https://www.douyin.com/search/AI漫剧制作教程"
+  },
+  {
+    "plat": "douyin",
+    "title": {
+      "cn": "AI剪辑实操：一句话生成短视频",
+      "en": "AI Editing: One Sentence to Short Video"
+    },
+    "views": {
+      "cn": "热门",
+      "en": "Trending"
+    },
+    "blogger": {
+      "cn": "AI剪辑师小王",
+      "en": "AI Editor Wang"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "用剪映AI功能一句话生成完整短视频，含配音字幕",
+      "en": "Use CapCut AI to generate complete short video with voiceover and subtitles"
+    },
+    "cover": "linear-gradient(135deg,#25F4EE,#FE2C55)",
+    "url": "https://www.douyin.com/search/AI剪辑教程"
+  },
+  {
+    "plat": "douyin",
+    "title": {
+      "cn": "新媒体运营入门：涨粉变现全攻略",
+      "en": "New Media Ops: Growth & Monetization"
+    },
+    "views": {
+      "cn": "热门",
+      "en": "Trending"
+    },
+    "blogger": {
+      "cn": "运营老司机",
+      "en": "Ops Veteran"
+    },
+    "cat": "Media",
+    "desc": {
+      "cn": "抖音新媒体运营全攻略，从0粉到变现的完整路径",
+      "en": "Complete Douyin new media path from 0 followers to monetization"
+    },
+    "cover": "linear-gradient(135deg,#FE2C55,#FF6B6B)",
+    "url": "https://www.douyin.com/search/新媒体运营教程"
+  },
+  {
+    "plat": "xhs",
+    "title": {
+      "cn": "小红书AI爆款内容制作指南",
+      "en": "Xiaohongshu AI Content Guide"
+    },
+    "views": {
+      "cn": "2026最新",
+      "en": "2026"
+    },
+    "blogger": {
+      "cn": "小红书运营学院",
+      "en": "XHS Ops Academy"
+    },
+    "cat": "Media",
+    "desc": {
+      "cn": "用AI工具打造小红书爆款笔记，DeepSeek+剪映全流程",
+      "en": "Use AI tools to create viral Xiaohongshu posts, DeepSeek+CapCut workflow"
+    },
+    "cover": "linear-gradient(135deg,#FF2442,#FF6B6B)",
+    "url": "https://www.xiaohongshu.com/search_result?keyword=AI剪辑教程"
+  },
+  {
+    "plat": "xhs",
+    "title": {
+      "cn": "AI漫剧变现：小红书引流实操",
+      "en": "AI Drama Monetization: XHS Traffic"
+    },
+    "views": {
+      "cn": "实操",
+      "en": "Practical"
+    },
+    "blogger": {
+      "cn": "AI变现日记",
+      "en": "AI Monetization Diary"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "在小红书做AI漫剧内容引流，结合私域变现的完整方案",
+      "en": "Use Xiaohongshu for AI drama content traffic + private domain monetization"
+    },
+    "cover": "linear-gradient(135deg,#FF2442,#C9A96E)",
+    "url": "https://www.xiaohongshu.com/search_result?keyword=AI漫剧变现"
+  },
+  {
+    "plat": "kuaishou",
+    "title": {
+      "cn": "快手AI漫剧全流程变现实战",
+      "en": "Kuaishou AI Drama Monetization"
+    },
+    "views": {
+      "cn": "2026实战",
+      "en": "2026"
+    },
+    "blogger": {
+      "cn": "快手百万漫剧博主",
+      "en": "Kuaishou Million-follower Creator"
+    },
+    "cat": "AI",
+    "desc": {
+      "cn": "快手百万粉丝AI漫剧博主亲授，吃透90%分账红利，月入过万",
+      "en": "Million-follower Kuaishou AI drama creator teaches 90% revenue share, 10k+/mo"
+    },
+    "cover": "linear-gradient(135deg,#FF4906,#FF6B6B)",
+    "url": "https://www.kuaishou.com/search/video?searchKey=AI漫剧教程"
+  },
+  {
+    "plat": "kuaishou",
+    "title": {
+      "cn": "AI短视频矩阵运营：快手批量带货",
+      "en": "AI Short Video Matrix: Kuaishou Batch Sales"
+    },
+    "views": {
+      "cn": "实战",
+      "en": "Practical"
+    },
+    "blogger": {
+      "cn": "AI带货王",
+      "en": "AI Sales King"
+    },
+    "cat": "Media",
+    "desc": {
+      "cn": "用AI批量生成快手短视频带货，多账号矩阵月入1万+",
+      "en": "Batch-generate Kuaishou sales videos with AI, multi-account matrix 10k+/mo"
+    },
+    "cover": "linear-gradient(135deg,#FF4906,#FFA500)",
+    "url": "https://www.kuaishou.com/search/video?searchKey=AI短视频运营"
+  }
+]

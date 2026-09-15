@@ -1,0 +1,186 @@
+[
+  {
+    "name": {
+      "cn": "电鸭社区",
+      "en": "Eleduck"
+    },
+    "desc": {
+      "cn": "国内最知名的远程工作者社区，大量中小团队直招，可交流经验积累人脉。",
+      "en": "Top remote worker community in China; SME direct hires; networking."
+    },
+    "url": "https://eleduck.com",
+    "tag": {
+      "cn": "社区直招",
+      "en": "Community"
+    }
+  },
+  {
+    "name": {
+      "cn": "远程.work",
+      "en": "Yuancheng.work"
+    },
+    "desc": {
+      "cn": "专门聚合国内全远程岗位，每日更新，分类清晰，入驻企业500+、职位700+。",
+      "en": "Aggregates China remote jobs; daily updates; 500+ companies, 700+ jobs."
+    },
+    "url": "https://yuancheng.work",
+    "tag": {
+      "cn": "每日更新",
+      "en": "Daily"
+    }
+  },
+  {
+    "name": {
+      "cn": "云工网",
+      "en": "Yungong"
+    },
+    "desc": {
+      "cn": "远程工作招聘平台，涵盖电商运营、新媒体运营、设计、开发、文案等岗位，支持兼职全职。",
+      "en": "Remote work platform: e-commerce, new media, design, dev, copywriting; part-time & full-time."
+    },
+    "url": "https://www.yungong.com",
+    "tag": {
+      "cn": "综合平台",
+      "en": "All-in-one"
+    }
+  },
+  {
+    "name": {
+      "cn": "小蜜蜂",
+      "en": "Xiaomifeng"
+    },
+    "desc": {
+      "cn": "远程工作平台，覆盖开发、产品、设计、运营、市场、媒体、客服等多领域。",
+      "en": "Remote work: dev, product, design, ops, marketing, media, CS."
+    },
+    "url": "https://www.xmf.com",
+    "tag": {
+      "cn": "多领域",
+      "en": "Multi-field"
+    }
+  },
+  {
+    "name": {
+      "cn": "云队友",
+      "en": "CloudMate"
+    },
+    "desc": {
+      "cn": "自由职业者远程协作平台，涵盖设计、文案、技术、音视频、运营等。",
+      "en": "Freelancer collaboration: design, copywriting, tech, AV, ops."
+    },
+    "url": "https://awp.duiyou360.com",
+    "tag": {
+      "cn": "自由职业",
+      "en": "Freelance"
+    }
+  },
+  {
+    "name": {
+      "cn": "FreeLab自由客实验室",
+      "en": "FreeLab"
+    },
+    "desc": {
+      "cn": "联结自由职业者、小微创业者及数字游民，涵盖翻译、摄影、插画、UI设计、开发、影视剪辑。",
+      "en": "Connects freelancers, entrepreneurs & digital nomads; translation, photography, UI, dev, video editing."
+    },
+    "url": "https://www.freelab.cc",
+    "tag": {
+      "cn": "数字游民",
+      "en": "Nomad"
+    }
+  },
+  {
+    "name": {
+      "cn": "BOSS直聘·远程",
+      "en": "BOSS·Remote"
+    },
+    "desc": {
+      "cn": "搜索「远程办公」「居家办公」关键词，大量新媒体运营、公众号运营远程岗位。",
+      "en": "Search 'remote' keywords; many new-media & WeChat ops remote roles."
+    },
+    "url": "https://www.zhipin.com/web/geek/job?query=远程办公&city=100010000",
+    "tag": {
+      "cn": "直聘搜索",
+      "en": "Search"
+    }
+  },
+  {
+    "name": {
+      "cn": "远程岛",
+      "en": "Remote Island"
+    },
+    "desc": {
+      "cn": "专注远程工作的中文社区平台，汇聚各类远程职位信息。",
+      "en": "Chinese remote work community; various remote positions."
+    },
+    "url": "https://yuanchengdao.com",
+    "tag": {
+      "cn": "中文社区",
+      "en": "CN Community"
+    }
+  },
+  {
+    "name": {
+      "cn": "Jobicy·China",
+      "en": "Jobicy China"
+    },
+    "desc": {
+      "cn": "国际远程工作平台中国区，浏览可在中国远程工作的工程师、设计、营销岗位。",
+      "en": "International remote jobs in China: engineers, designers, marketing."
+    },
+    "url": "https://jobicy.com/job-region/china",
+    "tag": {
+      "cn": "国际·中国",
+      "en": "Intl·CN"
+    },
+    "foreign": 1
+  },
+  {
+    "name": {
+      "cn": "Remote.co",
+      "en": "Remote.co"
+    },
+    "desc": {
+      "cn": "国际远程职位招聘网站，涵盖技术、营销、教育、客服等多行业远程岗位。",
+      "en": "International remote jobs: tech, marketing, education, CS."
+    },
+    "url": "https://remote.co",
+    "tag": {
+      "cn": "国际综合",
+      "en": "Intl"
+    },
+    "foreign": 1
+  },
+  {
+    "name": {
+      "cn": "We Work Remotely",
+      "en": "WeWorkRemotely"
+    },
+    "desc": {
+      "cn": "全球最大的远程工作社区之一，大量海外全职远程岗位，适合英语好的求职者。",
+      "en": "World's largest remote work community; full-time overseas remote jobs; great for English speakers."
+    },
+    "url": "https://weworkremotely.com",
+    "tag": {
+      "cn": "海外全职",
+      "en": "Overseas"
+    },
+    "foreign": 1
+  },
+  {
+    "name": {
+      "cn": "Toptal",
+      "en": "Toptal"
+    },
+    "desc": {
+      "cn": "专注高技能专业人士（软件开发、设计、财务）的远程工作平台，申请严格但薪资高。",
+      "en": "Elite remote platform for devs, designers, finance; strict screening, high pay."
+    },
+    "url": "https://www.toptal.com",
+    "tag": {
+      "cn": "高端自由",
+      "en": "Elite"
+    },
+    "foreign": 1
+  }
+]
