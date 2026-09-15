@@ -1,0 +1,322 @@
+[
+  {
+    "cat": "AI",
+    "tag": "hot",
+    "title": {
+      "cn": "AI全产业链：商业化变现元年",
+      "en": "AI Full-Chain: Commercialization Year"
+    },
+    "desc": {
+      "cn": "十五五规划明确加快AI大模型商业化落地，推动AI智能体、具身机器人场景化应用。2026年AI全产业链规模预计突破万亿，端侧AI于7月获合规牌照进入持证经营。",
+      "en": "15th FYP accelerates AI commercialization; AI agents & embodied robots. 2026 AI market >1 trillion; on-device AI got compliance licenses in July."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "市场规模",
+          "en": "Market"
+        },
+        "v": {
+          "cn": "突破万亿",
+          "en": ">1T"
+        }
+      },
+      {
+        "k": {
+          "cn": "端侧牌照",
+          "en": "Licenses"
+        },
+        "v": {
+          "cn": "7张(7月)",
+          "en": "7 (Jul)"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "国务院发布会",
+          "en": "Gov Press"
+        },
+        "u": "https://www.gov.cn/lianbo/fabu/202607/content_7076192.htm",
+        "gov": 1
+      },
+      {
+        "t": {
+          "cn": "央视机遇清单",
+          "en": "CCTV"
+        },
+        "u": "https://news.cctv.cn/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "hot",
+    "title": {
+      "cn": "AI漫剧：百亿赛道爆发",
+      "en": "AI Comic Drama: Boom"
+    },
+    "desc": {
+      "cn": "2025年市场规模168亿，2026年预计突破240-400亿，年增幅超45%。AI生成占比超95%，单剧成本压缩至真人实拍1/10，3-7天可完成数十集。抖音上半年上线AI短剧22万部，日均上新400-500部。",
+      "en": "2025 market 16.8B; 2026 est. 24-40B (+45%). AI-gen >95%; cost 1/10 of live-action; 3-7 days per series. Douyin launched 220k AI dramas in H1."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "2026规模",
+          "en": "2026"
+        },
+        "v": {
+          "cn": "240-400亿",
+          "en": "24-40B"
+        }
+      },
+      {
+        "k": {
+          "cn": "用户",
+          "en": "Users"
+        },
+        "v": {
+          "cn": "2.8亿",
+          "en": "280M"
+        }
+      },
+      {
+        "k": {
+          "cn": "出海增速",
+          "en": "Overseas"
+        },
+        "v": {
+          "cn": "6倍",
+          "en": "6x"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "央视数智报道",
+          "en": "CCTV"
+        },
+        "u": "https://5gai.cctv.com/2026/03/23/ARTIPbDWz2xxYxLEmcTgdzbU260323.shtml"
+      },
+      {
+        "t": {
+          "cn": "漫剧变现攻略",
+          "en": "Monetization"
+        },
+        "u": "https://www.manju.cn/641.html"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "new",
+    "title": {
+      "cn": "AI剪辑师：招聘暴增179%",
+      "en": "AI Editor: Hiring +179%"
+    },
+    "desc": {
+      "cn": "2026年6月AI剪辑相关职位招聘规模同比骤增179%，薪资8000-20000元。传统基础剪辑已饱和，行业转向融合型后期（PR/AE+AIGC）。复合型人才缺口突破100万，应届起薪8k-15k。",
+      "en": "AI editing jobs +179% YoY (Jun 2026), salary 8-20k. Basic editing saturated; demand shifts to PR/AE+AIGC hybrid. Talent gap >1M; fresh grad 8-15k."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "招聘增长",
+          "en": "Hiring"
+        },
+        "v": {
+          "cn": "+179%",
+          "en": "+179%"
+        }
+      },
+      {
+        "k": {
+          "cn": "薪资",
+          "en": "Salary"
+        },
+        "v": {
+          "cn": "8k-20k",
+          "en": "8-20k"
+        }
+      },
+      {
+        "k": {
+          "cn": "人才缺口",
+          "en": "Gap"
+        },
+        "v": {
+          "cn": "100万+",
+          "en": "1M+"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "行业缺口分析",
+          "en": "Analysis"
+        },
+        "u": "https://m.sohu.com/a/1052726462_122575751/"
+      },
+      {
+        "t": {
+          "cn": "AIGC成刚需",
+          "en": "AIGC"
+        },
+        "u": "https://m.sohu.com/a/1060891153_122575751/"
+      }
+    ]
+  },
+  {
+    "cat": "Low",
+    "tag": "new",
+    "title": {
+      "cn": "低空经济：商用爆发年",
+      "en": "Low-Altitude Economy: Boom"
+    },
+    "desc": {
+      "cn": "2026年20多个城市放开无人机航线试点，市场规模预计突破3000亿，未来5年复合增长率超30%。无人机配送、农林植保、低空文旅等场景商业化，配套运维服务门槛低。",
+      "en": "20+ cities open drone routes in 2026; market >300B, 5-yr CAGR >30%. Delivery, agriculture, tourism commercialized; low-barrier O&M services."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "市场规模",
+          "en": "Market"
+        },
+        "v": {
+          "cn": "3000亿+",
+          "en": "300B+"
+        }
+      },
+      {
+        "k": {
+          "cn": "复合增长",
+          "en": "CAGR"
+        },
+        "v": {
+          "cn": "30%+",
+          "en": "30%+"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "四大高景气赛道",
+          "en": "4 Tracks"
+        },
+        "u": "https://tidenews.com.cn/tmh_news.html?id=6a55a512805a1f00015de701"
+      },
+      {
+        "t": {
+          "cn": "新兴支柱路线图",
+          "en": "Roadmap"
+        },
+        "u": "http://www.ce.cn/xwzx/gnsz/gdxw/202608/t20260806_3130523.shtml"
+      }
+    ]
+  },
+  {
+    "cat": "Energy",
+    "tag": "new",
+    "title": {
+      "cn": "储能与新型电力系统",
+      "en": "Energy Storage & New Power"
+    },
+    "desc": {
+      "cn": "双碳目标推进，风光强制配储、虚拟电厂推广。2026年储能市场规模预计突破5000亿，钠离子电池、工商业储能、户用储能爆发。分销与运维成轻资产风口。",
+      "en": "Dual-carbon drives mandatory storage & virtual power plants. 2026 market >500B; sodium-ion, C&I, home storage booming. Distribution & O&M are light-asset opportunities."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "市场规模",
+          "en": "Market"
+        },
+        "v": {
+          "cn": "5000亿+",
+          "en": "500B+"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "四大高景气赛道",
+          "en": "4 Tracks"
+        },
+        "u": "https://tidenews.com.cn/tmh_news.html?id=6a55a512805a1f00015de701"
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "title": {
+      "cn": "六大新兴支柱产业",
+      "en": "6 Emerging Pillar Industries"
+    },
+    "desc": {
+      "cn": "集成电路、航空航天、生物医药、低空经济、新型储能、智能机器人。到2030年相关产值比2025年翻一番，总规模扩大到10万亿以上。",
+      "en": "ICs, aerospace, biomedicine, low-altitude, storage, robots. By 2030 output doubles vs 2025, >10 trillion total."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "2030规模",
+          "en": "2030"
+        },
+        "v": {
+          "cn": "10万亿+",
+          "en": "10T+"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "央视机遇清单",
+          "en": "CCTV"
+        },
+        "u": "https://news.cctv.cn/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml"
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "title": {
+      "cn": "六大未来产业",
+      "en": "6 Future Industries"
+    },
+    "desc": {
+      "cn": "量子科技、生物制造、绿色氢能和核聚变能、脑机接口、具身智能、6G。处在技术突破前夜，AI相关产业规模十五五末将达10万亿以上。",
+      "en": "Quantum, bio-manufacturing, green H2 & fusion, BCI, embodied AI, 6G. On the eve of breakthroughs; AI sector >10T by end of 15th FYP."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "AI规模",
+          "en": "AI"
+        },
+        "v": {
+          "cn": "10万亿+",
+          "en": "10T+"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "央视机遇清单",
+          "en": "CCTV"
+        },
+        "u": "https://news.cctv.cn/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml"
+      }
+    ]
+  }
+]

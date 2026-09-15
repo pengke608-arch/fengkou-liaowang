@@ -1,0 +1,431 @@
+[
+  {
+    "cat": "Silver",
+    "tag": "gov",
+    "region": {
+      "cn": "重庆",
+      "en": "Chongqing"
+    },
+    "title": {
+      "cn": "《重庆市养老服务条例》7月1日施行",
+      "en": "Chongqing Eldercare Regulation (Jul 1)"
+    },
+    "desc": {
+      "cn": "支持医疗机构设养老机构、养老机构设医务室；推动中医药康养、森林康养、旅居养老等特色业态；健全养老服务产业政策，促进智慧养老、康养地产发展。",
+      "en": "Supports med-care integration; TCM/forest/residential care; smart eldercare & wellness real estate policies."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "重庆民政局",
+          "en": "MCA"
+        },
+        "u": "https://mzj.cq.gov.cn/zwgk_218/zfxxgkml/zcjd/mtsj/202606/t20260630_15785606.html",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "Silver",
+    "tag": "gov",
+    "region": {
+      "cn": "重庆",
+      "en": "Chongqing"
+    },
+    "title": {
+      "cn": "失能老人养老服务消费补贴（全国实施）",
+      "en": "Disabled Elder Care Subsidy"
+    },
+    "desc": {
+      "cn": "自2026年1月1日起，向中度以上失能老年人发放养老服务消费补贴，全国范围内实施。重庆已建成医养结合机构196家、医养床位4.6万张、社区医养中心30个。",
+      "en": "From Jan 1 2026, nationwide subsidy for moderate+ disabled elders. Chongqing: 196 med-care institutions, 46k beds, 30 community centers."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "补贴通知原文",
+          "en": "Notice"
+        },
+        "u": "https://static.ciicbj.cn/hrlib/kb/template/2026/02/12/01kh8jpgmbfsmzb5rgvjkg7dh1.pdf",
+        "gov": 1
+      },
+      {
+        "t": {
+          "cn": "重庆卫健委",
+          "en": "Health"
+        },
+        "u": "https://wsjkw.cq.gov.cn/ztzl_242/rdjyzxta/zxta/202606/t20260604_15729742_wap.html"
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "成都",
+      "en": "Chengdu"
+    },
+    "title": {
+      "cn": "人工智能OPC创新发展13条（补贴最高2500万）",
+      "en": "AI OPC 13 Measures (up to 25M)"
+    },
+    "desc": {
+      "cn": "围绕空间载体、人才引育、新产品新场景、创新创业支撑四部分，13条举措精准滴灌人工智能产业，补贴最高达2500万元。",
+      "en": "13 measures across space, talent, products/scenarios, innovation; subsidies up to 25M yuan."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "中国日报报道",
+          "en": "China Daily"
+        },
+        "u": "https://sc.chinadaily.com.cn/a/202603/24/WS69c267b7a310942cc49a4b8f.html"
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "福建闽清",
+      "en": "Minqing"
+    },
+    "title": {
+      "cn": "数据标注产业十条",
+      "en": "Data Annotation 10 Measures"
+    },
+    "desc": {
+      "cn": "福建省首个县级数据标注产业政策，从办公场地、人才安居、技能提升、规模就业、数据交易等10方面系统支持，打造数据标注产业集聚高地。",
+      "en": "Fujian's first county-level data annotation policy: 10 areas incl. office, housing, skills, employment, data trading."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "福建省政府",
+          "en": "Fujian Gov"
+        },
+        "u": "https://www.fujian.gov.cn/zwgk/ztzl/sxzygwzxsgzx/sdjj/szjj/202604/t20260410_7121152.htm",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "gov",
+    "region": {
+      "cn": "福建石狮",
+      "en": "Shishi"
+    },
+    "title": {
+      "cn": "电商人才倍增措施（补贴500-4500元）",
+      "en": "E-commerce Talent Measures"
+    },
+    "desc": {
+      "cn": "将电子商务师、互联网营销师、跨境电商运营纳入急需紧缺职业目录，获证参训者补贴500-4500元；电商直播纳入职业技能大赛，获奖可评技术能手。",
+      "en": "E-commerce/internet marketing/cross-border listed as shortage occupations; 500-4500 yuan subsidies; competition winners get titles."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "石狮市政府",
+          "en": "Shishi Gov"
+        },
+        "u": "https://www.shishi.gov.cn/zwgk/zfxxgkzl/zc/xzgfxwj/bm/202602/t20260206_3265285.htm",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "gov",
+    "region": {
+      "cn": "福建泉州",
+      "en": "Quanzhou"
+    },
+    "title": {
+      "cn": "泉就业+N提质赋能十条（培训补贴500-4500元）",
+      "en": "Quan Employment 10 Measures"
+    },
+    "desc": {
+      "cn": "面向各类劳动者开展技能培训，合格取证按等级补贴500-4500元，力争全年培训2万人次以上；增强新就业形态人员保障。",
+      "en": "Skills training for all workers; 500-4500 yuan by level; 20k+ trainings/yr; new-economy worker protections."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "泉州人社局",
+          "en": "Quanzhou HR"
+        },
+        "u": "https://rsj.quanzhou.gov.cn/zwgk/zfxxgkzl/zc/xzgfxwj/202601/t20260113_3254289.htm",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "贵州贵阳",
+      "en": "Guiyang"
+    },
+    "title": {
+      "cn": "支持数据产业发展若干措施",
+      "en": "Data Industry Support Measures"
+    },
+    "desc": {
+      "cn": "对数据标注从业人员首次达100/200/500人及以上企业，分别给予10万/30万/50万一次性奖励；深入实施数字活市战略。",
+      "en": "One-time rewards: 100/200/500+ staff firms get 100k/300k/500k yuan; digital-city strategy."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "知政策",
+          "en": "Policy"
+        },
+        "u": "https://www.zhizhengce.com/policies/69aa8b0c1ace6b6a60034bd2"
+      }
+    ]
+  },
+  {
+    "cat": "Skill",
+    "tag": "gov",
+    "region": {
+      "cn": "全国",
+      "en": "National"
+    },
+    "title": {
+      "cn": "2026年高校毕业生就业创业政策：职业培训补贴",
+      "en": "2026 Grad Employment: Training Subsidy"
+    },
+    "desc": {
+      "cn": "人社部财政部联合发文，毕业年度高校毕业生参加就业技能培训和创业培训，取得证书后给予补贴。企业新录用毕业生1年内参加岗位技能培训也予补贴。",
+      "en": "MOHRSS+MOF: training subsidy for grads completing skills/entrepreneurship training with certificates. Enterprise onboarding training also subsidized."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "中国政府网原文",
+          "en": "Gov.cn"
+        },
+        "u": "https://www.gov.cn/zhengce/zhengceku/202603/content_7063305.htm",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "Skill",
+    "tag": "gov",
+    "region": {
+      "cn": "全国",
+      "en": "National"
+    },
+    "title": {
+      "cn": "2026年技能提升补贴新规（8月7日）",
+      "en": "2026 Skills Subsidy New Rules (Aug 7)"
+    },
+    "desc": {
+      "cn": "参加失业保险12个月以上在职职工，取得急需紧缺/数字/绿色职业等级证书，可申领技能提升补贴。政策执行至2026年底。数字职业技能证书是重点倾斜方向。",
+      "en": "Workers with 12mo+ unemployment insurance, obtaining shortage/digital/green occupation certificates can claim skills subsidy. Valid through end of 2026. Digital skills prioritized."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "搜狐政策解读",
+          "en": "Sohu"
+        },
+        "u": "https://m.sohu.com/a/1060043670_121106822/",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "深圳",
+      "en": "Shenzhen"
+    },
+    "title": {
+      "cn": "人工智能训练师报考（补贴1000-3120元）",
+      "en": "AI Trainer Certification (Subsidy 1000-3120)"
+    },
+    "desc": {
+      "cn": "深圳报考人工智能训练师可享1000-3120元政府补贴。广东政务服务网报名，适合职场转型、技能提升。不限户籍，年满16岁即可。",
+      "en": "Shenzhen: AI trainer certification gets 1000-3120 yuan subsidy. Register via GD government service. No household restriction, age 16+. Ideal for career transition."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "深圳本地宝指南",
+          "en": "Guide"
+        },
+        "u": "http://m.bendibao.com/show999381.html",
+        "gov": 1
+      },
+      {
+        "t": {
+          "cn": "广东政务网报名",
+          "en": "Register"
+        },
+        "u": "https://ggfw.hrss.gd.gov.cn/OUPX/",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "广州",
+      "en": "Guangzhou"
+    },
+    "title": {
+      "cn": "广州AI训练师报考（不限户籍，补贴最高3120元）",
+      "en": "GZ AI Trainer (No Hukou, up to 3120)"
+    },
+    "desc": {
+      "cn": "2026年广州AI训练师报考推进中，不限户籍年满16岁可参与，最高补贴3120元。AI训练师是AI落地关键支撑岗位，职场转型优选方向。",
+      "en": "2026 GZ AI trainer registration open, no hukou restriction, 16+, max 3120 yuan subsidy. Key AI deployment role, ideal for career transition."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "广州本地宝",
+          "en": "GZ Guide"
+        },
+        "u": "https://m.gz.bendibao.com/edu/369884.html",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "广州番禺",
+      "en": "GZ Panyu"
+    },
+    "title": {
+      "cn": "政策+AI双驱动：技能培训补贴最高173%",
+      "en": "Policy+AI: Training Subsidy up to 173%"
+    },
+    "desc": {
+      "cn": "广州石碁镇对AI训练师、电子商务师等数字技能类及紧缺工种重点倾斜，考核合格最高可申领培训费用100%-173%技能提升补贴。补贴申领至2026年底。",
+      "en": "GZ Shiqi: AI trainers, e-commerce and digital skills prioritized. Up to 100-173% training cost subsidy. Valid through end of 2026."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "中国就业网",
+          "en": "China Job"
+        },
+        "u": "https://chinajob.mohrss.gov.cn/h5/c/2026-03-30/517998.shtml",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "gov",
+    "region": {
+      "cn": "安徽",
+      "en": "Anhui"
+    },
+    "title": {
+      "cn": "安徽AI通识培训（补贴最高2400元/人）",
+      "en": "Anhui AI Training (Subsidy up to 2400)"
+    },
+    "desc": {
+      "cn": "安徽统筹就业补助资金、失业保险基金，AI培训合格学员补贴最高2400元/人。取得AI训练师等技能等级证书按规定给技能提升补贴。合肥、芜湖建实训基地。",
+      "en": "Anhui: AI training subsidy up to 2400 yuan/person. AI trainer certificate holders get additional skills subsidy. Hefei/Wuhu build training bases."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "中国教育报",
+          "en": "China Ed News"
+        },
+        "u": "https://m.weibo.cn/detail/5328953565778632",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "Skill",
+    "tag": "gov",
+    "region": {
+      "cn": "深圳",
+      "en": "Shenzhen"
+    },
+    "title": {
+      "cn": "深圳技能提升补贴（高级工上浮30%）",
+      "en": "SZ Skills Subsidy (Senior +30%)"
+    },
+    "desc": {
+      "cn": "2026年1月1日起，深圳技能提升补贴部分高级工及以上标准上浮30%。补贴有效期至2026年12月31日。涵盖数字技能、AI训练师等紧缺工种。",
+      "en": "From Jan 1 2026, Shenzhen skills subsidy for senior workers +30%. Valid through Dec 31 2026. Covers digital skills, AI trainer and shortage occupations."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "深圳本地宝",
+          "en": "SZ Guide"
+        },
+        "u": "http://m.bendibao.com/show999141.html",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "Silver",
+    "tag": "gov",
+    "region": {
+      "cn": "全国",
+      "en": "National"
+    },
+    "title": {
+      "cn": "银发经济：智慧养老+康养文旅万亿市场",
+      "en": "Silver Economy: Smart Eldercare Trillion Market"
+    },
+    "desc": {
+      "cn": "国家推进银发经济政策，智慧养老、康养文旅、适老化改造万亿级市场。重庆医养结合机构196家，银发内容创作（短视频/科普）是蓝海方向。适合你在职过渡。",
+      "en": "National silver economy policy: smart eldercare, wellness tourism, age-friendly renovation = trillion-level market. CQ has 196 med-care institutions. Silver content creation is blue ocean for your transition."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "重庆养老条例",
+          "en": "CQ Regulation"
+        },
+        "u": "https://mzj.cq.gov.cn/zwgk_218/zfxxgkml/zcjd/mtsj/202606/t20260630_15785606.html",
+        "gov": 1
+      }
+    ]
+  },
+  {
+    "cat": "LowAlt",
+    "tag": "gov",
+    "region": {
+      "cn": "全国",
+      "en": "National"
+    },
+    "title": {
+      "cn": "低空经济纳入六大新兴支柱产业",
+      "en": "Low-Altitude Economy: 6 Strategic Pillars"
+    },
+    "desc": {
+      "cn": "低空经济与集成电路、航空航天、生物医药、新型储能、智能机器人并列六大新兴支柱产业，到2030年达10万亿+。无人机操控、低空运营等新职业涌现。",
+      "en": "Low-altitude economy joins ICs, aerospace, biomedicine, energy storage, robotics as 6 strategic pillars. 10T+ by 2030. New jobs: drone operation, low-alt operations."
+    },
+    "links": [
+      {
+        "t": {
+          "cn": "央视新闻",
+          "en": "CCTV"
+        },
+        "u": "https://news.cctv.com/2026/03/07/ARTIBtHZUNlHBa37kO4ya8AJ260307.shtml",
+        "gov": 1
+      }
+    ]
+  }
+]

@@ -1,0 +1,296 @@
+[
+  {
+    "cat": "Media",
+    "tag": "career",
+    "title": {
+      "cn": "IP运营操盘手（远程）",
+      "en": "IP Operations Specialist (Remote)"
+    },
+    "desc": {
+      "cn": "负责IP账号全流程运营：内容策划、矩阵搭建、爆款打造、商业变现。远程办公，结果导向。综合年收入20-30万。你的新媒体运营意向+普通话二甲很匹配。",
+      "en": "Full-process IP account ops: content, matrix, viral hits, monetization. Remote, result-oriented. 200-300k/yr. Matches your new-media interest + Mandarin 2A."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "年收入",
+          "en": "Annual"
+        },
+        "v": {
+          "cn": "20-30万",
+          "en": "200-300k"
+        }
+      },
+      {
+        "k": {
+          "cn": "模式",
+          "en": "Mode"
+        },
+        "v": {
+          "cn": "全职远程",
+          "en": "Full remote"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "BOSS直聘搜索",
+          "en": "BOSS"
+        },
+        "u": "https://www.zhipin.com/web/geek/job?query=IP运营远程&city=100010000"
+      },
+      {
+        "t": {
+          "cn": "电鸭社区",
+          "en": "Eleduck"
+        },
+        "u": "https://eleduck.com/search/CDYy"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "career",
+    "title": {
+      "cn": "新媒体运营（远程办公）",
+      "en": "New Media Operations (Remote)"
+    },
+    "desc": {
+      "cn": "负责公众号/抖音/小红书等平台内容运营，远程办公无需坐班。适合兼职过渡期积累经验。时薪25-50元起，全职8k-15k。",
+      "en": "Manage WeChat/Douyin/Xiaohongshu content; remote, no office. Good for part-time transition. 25-50/hr, full-time 8-15k."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "薪资",
+          "en": "Salary"
+        },
+        "v": {
+          "cn": "8k-15k",
+          "en": "8-15k"
+        }
+      },
+      {
+        "k": {
+          "cn": "时薪",
+          "en": "Hourly"
+        },
+        "v": {
+          "cn": "25-50元",
+          "en": "25-50"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "BOSS直聘搜索",
+          "en": "BOSS"
+        },
+        "u": "https://www.zhipin.com/web/geek/job?query=新媒体运营远程&city=100010000"
+      },
+      {
+        "t": {
+          "cn": "云工网",
+          "en": "Yungong"
+        },
+        "u": "https://www.yungong.com/yunying/index.html"
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "career",
+    "title": {
+      "cn": "AI剪辑师 / AI漫剧制作（远程接单）",
+      "en": "AI Editor / AI Drama (Remote Freelance)"
+    },
+    "desc": {
+      "cn": "用AI工具完成短视频剪辑、漫剧制作，可远程接单或全职。副业单账号月入5k-5w。你的英语六级可看海外教程，计算机二级有基础。",
+      "en": "AI short video editing & comic drama; remote freelance or full-time. Side income 5k-50k/mo. CET-6 for overseas tutorials, Computer L2 foundation."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "月入",
+          "en": "Monthly"
+        },
+        "v": {
+          "cn": "5k-5w",
+          "en": "5k-50k"
+        }
+      },
+      {
+        "k": {
+          "cn": "模式",
+          "en": "Mode"
+        },
+        "v": {
+          "cn": "接单/全职",
+          "en": "Freelance/FT"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "云工网接单",
+          "en": "Yungong"
+        },
+        "u": "https://www.yungong.com"
+      },
+      {
+        "t": {
+          "cn": "电鸭社区",
+          "en": "Eleduck"
+        },
+        "u": "https://eleduck.com"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "career",
+    "title": {
+      "cn": "公众号运营（远程办公，无需坐班）",
+      "en": "WeChat Account Ops (Remote)"
+    },
+    "desc": {
+      "cn": "负责公众号内容撰写、排版、粉丝互动，远程办公，结果导向。非常适合兼职过渡，每周7小时起。",
+      "en": "WeChat content writing, layout, fan engagement; remote, result-oriented. Great for part-time, 7hrs/wk minimum."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "时薪",
+          "en": "Hourly"
+        },
+        "v": {
+          "cn": "25元起",
+          "en": "25+"
+        }
+      },
+      {
+        "k": {
+          "cn": "周期",
+          "en": "Schedule"
+        },
+        "v": {
+          "cn": "2天/周",
+          "en": "2d/wk"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "BOSS直聘",
+          "en": "BOSS"
+        },
+        "u": "https://www.zhipin.com/web/geek/job?query=公众号运营远程&city=100010000"
+      }
+    ]
+  },
+  {
+    "cat": "AI",
+    "tag": "career",
+    "title": {
+      "cn": "数据标注 / AI训练师（远程）",
+      "en": "Data Annotation / AI Trainer (Remote)"
+    },
+    "desc": {
+      "cn": "为AI大模型做数据标注和训练，零基础可学，远程办公。多地出台数据标注产业政策，闽清、贵阳有专项补贴。",
+      "en": "Annotate data for AI models; zero-base friendly, remote. Multiple cities have data annotation industry policies & subsidies."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "门槛",
+          "en": "Barrier"
+        },
+        "v": {
+          "cn": "零基础",
+          "en": "Zero-base"
+        }
+      },
+      {
+        "k": {
+          "cn": "政策",
+          "en": "Policy"
+        },
+        "v": {
+          "cn": "有补贴",
+          "en": "Subsidized"
+        }
+      }
+    ],
+    "links": [
+      {
+        "t": {
+          "cn": "闽清数据标注十条",
+          "en": "Minqing"
+        },
+        "u": "https://www.fujian.gov.cn/zwgk/ztzl/sxzygwzxsgzx/sdjj/szjj/202604/t20260410_7121152.htm"
+      },
+      {
+        "t": {
+          "cn": "贵阳数据产业",
+          "en": "Guiyang"
+        },
+        "u": "https://www.zhizhengce.com/policies/69aa8b0c1ace6b6a60034bd2"
+      }
+    ]
+  },
+  {
+    "cat": "Media",
+    "tag": "career",
+    "title": {
+      "cn": "海外无脸频道运营（YouTube/TikTok）",
+      "en": "Faceless Channel Ops (YouTube/TikTok)"
+    },
+    "desc": {
+      "cn": "用AI工具批量生成短视频，运营海外无脸频道，月入500-3000美元。你的英语六级是核心优势，可做英文内容。",
+      "en": "Batch-generate short video with AI; run overseas faceless channels; $500-3000/mo. Your CET-6 is a core advantage for English content."
+    },
+    "nums": [
+      {
+        "k": {
+          "cn": "月入",
+          "en": "Monthly"
+        },
+        "v": {
+          "cn": "500-3000$",
+          "en": "$500-3k"
+        }
+      },
+      {
+        "k": {
+          "cn": "RPM",
+          "en": "RPM"
+        },
+        "v": {
+          "cn": "$10-15",
+          "en": "$10-15"
+        }
+      }
+    ],
+    "foreign": 1,
+    "links": [
+      {
+        "t": {
+          "cn": "工具盘点",
+          "en": "Tools"
+        },
+        "u": "https://aiunpacker.com/blog/7-ai-video-generation-tools-that-built-profitable-youtube-channels-in-2026/"
+      },
+      {
+        "t": {
+          "cn": "变现指南",
+          "en": "Monetize"
+        },
+        "u": "https://www.makeinfluencer.ai/guides/sora-2-make-money-guide"
+      }
+    ]
+  }
+]

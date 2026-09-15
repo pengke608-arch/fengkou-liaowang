@@ -1,0 +1,1684 @@
+[
+  {
+    "id": "chongqing",
+    "tier": 2,
+    "name": {
+      "cn": "重庆",
+      "en": "Chongqing"
+    },
+    "region": {
+      "cn": "西南",
+      "en": "SW"
+    },
+    "industries": {
+      "cn": "新能源汽车、电子信息、医疗器械、AI大数据、养老康养、33618现代制造业",
+      "en": "NEV, electronics, medical devices, AI/Big Data, eldercare, 33618 manufacturing"
+    },
+    "talent": {
+      "cn": "AI/大数据、智能制造、新能源、养老护理、新媒体运营、数据标注、33618制造业人才",
+      "en": "AI/Big Data, smart manufacturing, NEV, eldercare, new media, data annotation, 33618 manufacturing"
+    },
+    "salary": {
+      "cn": "6k-15k",
+      "en": "6-15k"
+    },
+    "highlight": {
+      "cn": "8月11日出台系列就业补贴政策；7月22日渝创渝新创业启航计划；7月1日施行养老服务条例；416科创+33618制造业集群",
+      "en": "Aug 11 employment subsidies; Jul 22 startup plan; Jul 1 eldercare regulation; 416 tech + 33618 manufacturing"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "重庆出台一系列就业补贴政策（8月11日最新）",
+          "en": "CQ Employment Subsidy Policies (Aug 11)"
+        },
+        "d": "2026-08-11",
+        "u": "https://cq.gov.cn/ywdt/jrcq/202608/t20260811_15916612.html",
+        "gov": 1,
+        "desc": {
+          "cn": "一次性求职补贴、12个县大学生就业补贴、灵活就业社保补贴、紧缺岗位就业补贴，8月10日发布。",
+          "en": "One-time job-seeking subsidy, 12-county grad subsidy, flexible employment social security subsidy, shortage position subsidy, published Aug 10."
+        }
+      },
+      {
+        "t": {
+          "cn": "渝创渝新大学生创业启航计划（7月22日）",
+          "en": "Yu-Chuang-Yu-Xin Startup Plan (Jul 22)"
+        },
+        "d": "2026-07-22",
+        "u": "https://rlsbj.cq.gov.cn/zwxx_182/tzgg/202607/t20260722_15842602.html",
+        "gov": 1,
+        "desc": {
+          "cn": "聚焦33618现代制造业、软件信息、AI、乡村振兴、新能源新材料等重点行业创业项目，含AI OPC优质项目。",
+          "en": "Focuses on 33618 manufacturing, software, AI, rural revitalization, NEV materials startups, including AI OPC quality projects."
+        }
+      },
+      {
+        "t": {
+          "cn": "2026年留学人员回国创业创新支持计划",
+          "en": "2026 Returnee Startup Innovation Support"
+        },
+        "d": "2026-07-16",
+        "u": "https://rlsbj.cq.gov.cn/zwxx_182/tzgg/202607/t20260716_15827926.html",
+        "gov": 1,
+        "desc": {
+          "cn": "优先支持新一代信息技术、集成电路、AI、航空航天、新能源、新材料、高端装备、生物医药、量子科技等前沿领域。",
+          "en": "Prioritizes next-gen IT, ICs, AI, aerospace, NEV, new materials, high-end equipment, biomedicine, quantum tech."
+        }
+      },
+      {
+        "t": {
+          "cn": "《2026年促进高校毕业生等青年就业创业政策清单》",
+          "en": "2026 Youth Employment Policy List"
+        },
+        "d": "2026-07-31",
+        "u": "https://rlsbj.cq.gov.cn/zwxx_182/tzgg/202607/t20260731_15879302.html",
+        "gov": 1,
+        "desc": {
+          "cn": "系统梳理青年就业创业政策，促进青年留渝来渝就业创业。紧缺岗位就业并参保1年以上补贴6000元/人。",
+          "en": "Systematic youth employment policies; 6000 yuan/person subsidy for shortage positions with 1yr+ social security."
+        }
+      },
+      {
+        "t": {
+          "cn": "《重庆市养老服务条例》7月1日施行",
+          "en": "Eldercare Regulation (Jul 1)"
+        },
+        "d": "2026-06-30",
+        "u": "https://mzj.cq.gov.cn/zwgk_218/zfxxgkml/zcjd/mtsj/202606/t20260630_15785606.html",
+        "gov": 1,
+        "desc": {
+          "cn": "支持医养结合、中医药康养、旅居养老；促进智慧养老、康养地产发展。",
+          "en": "Supports med-care integration, TCM wellness, residential care; smart eldercare development."
+        }
+      },
+      {
+        "t": {
+          "cn": "促进农民工就业补贴政策延续实施",
+          "en": "Migrant Worker Employment Subsidy Extended"
+        },
+        "d": "2026-06-24",
+        "u": "https://rlsbj.cq.gov.cn/zwgk_182/zfxxgkml/zcwj_145360/jfxzgfxwj/202606/t20260624_15773897.html",
+        "gov": 1,
+        "desc": {
+          "cn": "企业吸纳返乡农民工就业补贴延续；家政物业等生活性服务业就业空间拓宽。",
+          "en": "Enterprise hiring returning migrant worker subsidy extended; domestic/property services employment expanded."
+        }
+      },
+      {
+        "t": {
+          "cn": "百万高校毕业生留渝来渝就业创业行动计划(2024-2027)",
+          "en": "Million Graduates Stay-in-CQ Action (2024-2027)"
+        },
+        "d": "2024-04",
+        "u": "https://www.cq.gov.cn/zwgk/zfxxgkml/szfwj/qtgw/202404/W020240416427769071305.pdf",
+        "gov": 1,
+        "desc": {
+          "cn": "制造业/生产性服务业紧缺岗位就业补贴6000元；市外毕业生交通食宿补贴500元。",
+          "en": "6000 yuan subsidy for manufacturing/service shortage jobs; 500 yuan transport subsidy for out-of-city grads."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "重庆市人社局",
+          "en": "CQ HR&SS Bureau"
+        },
+        "u": "https://rlsbj.cq.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "重庆市政府",
+          "en": "CQ Gov"
+        },
+        "u": "https://www.cq.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "重庆民政局",
+          "en": "CQ Civil Affairs"
+        },
+        "u": "https://mzj.cq.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "中国就业网-重庆",
+          "en": "China Job-CQ"
+        },
+        "u": "https://chinajob.mohrss.gov.cn/h5/c/2026-08-13/587203.shtml"
+      }
+    ]
+  },
+  {
+    "id": "shanghai",
+    "tier": 1,
+    "name": {
+      "cn": "上海",
+      "en": "Shanghai"
+    },
+    "region": {
+      "cn": "华东",
+      "en": "E China"
+    },
+    "industries": {
+      "cn": "集成电路、人工智能、生物医药、新能源汽车、航空航天",
+      "en": "ICs, AI, biomedicine, NEV, aerospace"
+    },
+    "talent": {
+      "cn": "AI推介官（培训5万人次）、集成电路、健康照护师、供应链管理师、数字内容创作",
+      "en": "AI promoter (50k training target), ICs, health care specialist, supply chain manager, digital content"
+    },
+    "salary": {
+      "cn": "10k-25k",
+      "en": "10-25k"
+    },
+    "highlight": {
+      "cn": "2026年急需紧缺高技能人才目录已发布；技能提升年行动方案；A类重点支持+B类急需紧缺补贴目录新版",
+      "en": "2026 urgently-needed skilled talent catalog; skills upgrade year action plan; new A/B/C subsidy catalog"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "《上海市急需紧缺高技能人才职业目录(2026年)》",
+          "en": "Shanghai Urgent Skills Catalog (2026)"
+        },
+        "d": "2026-07",
+        "u": "https://rsj.sh.gov.cn/cmsres/cf/cf505c38a50a4fe6969b764e573e02ef/a0754ce0f619402e7bb06d3125e9fcb8.pdf",
+        "gov": 1,
+        "desc": {
+          "cn": "发布急需紧缺高技能人才职业工种目录，覆盖AI、集成电路、生物医药等重点产业。",
+          "en": "Catalog of urgently-needed skilled occupations covering AI, ICs, biomedicine and other key industries."
+        }
+      },
+      {
+        "t": {
+          "cn": "《技能提升年行动方案》- AI推介官培训5万人次",
+          "en": "Skills Upgrade Year - 50k AI Promoter Training"
+        },
+        "d": "2026-06",
+        "u": "https://rsj.sh.gov.cn/cmsres/57/577ddccf2cca486c9da019b65b416a12/ff41dfaf5f1734bb76a76101db774081.pdf",
+        "gov": 1,
+        "desc": {
+          "cn": "全年完成AI推介官培训认证5万人次；加快技能人才发展立法。",
+          "en": "50k AI promoter training certifications; accelerating skills talent legislation."
+        }
+      },
+      {
+        "t": {
+          "cn": "新版职业技能提升补贴目录",
+          "en": "New Skills Subsidy Catalog"
+        },
+        "d": "2026-04-07",
+        "u": "https://rsj.sh.gov.cn/trdhy_17355/20260407/t0035_1439765.html",
+        "gov": 1,
+        "desc": {
+          "cn": "A类重点支持新增供应链管理师；B类急需紧缺新增健康照护师等职业。",
+          "en": "A-class adds supply chain manager; B-class adds health care specialist and more."
+        }
+      },
+      {
+        "t": {
+          "cn": "上海市急需紧缺高技能人才职业目录(2026年)",
+          "en": "Shanghai Urgent Skills Directory 2026"
+        },
+        "d": "2026-07-02",
+        "u": "https://rsj.sh.gov.cn/tjypx_17737/20260702/t0035_1442059.html",
+        "gov": 1,
+        "desc": {
+          "cn": "聚焦三大先导产业、民生和城市运行保障重点行业，培育引进急需紧缺高技能人才。",
+          "en": "Focus on 3 pioneer industries, livelihood and urban operation key industries."
+        }
+      },
+      {
+        "t": {
+          "cn": "AI+制造发展若干措施",
+          "en": "AI+Manufacturing Measures"
+        },
+        "d": "2026-07-07",
+        "u": "http://www.sheitc.sh.gov.cn/cyfz/20260717/7986191fa75f49a698259f01c829df52.html",
+        "gov": 1,
+        "desc": {
+          "cn": "强化工业AI供给能力，支持工业垂类大模型、AI编程大模型、物理AI、工业智能等核心技术攻关。",
+          "en": "Strengthen industrial AI supply, support vertical LLM, AI coding, physical AI, industrial intelligence."
+        }
+      },
+      {
+        "t": {
+          "cn": "百日千万招聘专项行动（行业专场）",
+          "en": "100-Day Million Jobs Campaign"
+        },
+        "d": "2026-07-29",
+        "u": "https://rsj.sh.gov.cn/tgwyrsb_17088/20260729/t0035_1442774.html",
+        "gov": 1,
+        "desc": {
+          "cn": "汽车、互联网、现代服务、电商专场招聘，比亚迪、蔚来、字节跳动、京东等数百家企业参与。",
+          "en": "Auto, internet, services, e-commerce job fairs with BYD, NIO, ByteDance, JD etc."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "上海市人社局",
+          "en": "SH HR&SS Bureau"
+        },
+        "u": "https://rsj.sh.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "上海市政府",
+          "en": "SH Gov"
+        },
+        "u": "https://www.shanghai.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "shenzhen",
+    "tier": 1,
+    "name": {
+      "cn": "深圳",
+      "en": "Shenzhen"
+    },
+    "region": {
+      "cn": "华南",
+      "en": "S China"
+    },
+    "industries": {
+      "cn": "人工智能、新能源、生物医药、鸿蒙生态、20+8战略性新兴产业",
+      "en": "AI, NEV, biomedicine, HarmonyOS, 20+8 strategic industries"
+    },
+    "talent": {
+      "cn": "鸿蒙人才（缺口百万级）、AI工程师、新能源、生物医药、智能制造",
+      "en": "HarmonyOS talent (million-level gap), AI engineers, NEV, biomedicine, smart manufacturing"
+    },
+    "salary": {
+      "cn": "10k-30k",
+      "en": "10-30k"
+    },
+    "highlight": {
+      "cn": "8月5日鸿蒙人才双选会，缺口百万级；每天新增约150个四新经济就业岗位；20+8战略性新兴产业",
+      "en": "Aug 5 HarmonyOS job fair, million-level gap; ~150 new-economy jobs daily; 20+8 strategic industries"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "鸿蒙人才双选会-人才缺口将达百万级",
+          "en": "HarmonyOS Talent Fair - Million Gap"
+        },
+        "d": "2026-08-05",
+        "u": "https://www.sz.gov.cn/ztfw/jylyfwzt/index.html",
+        "gov": 1,
+        "desc": {
+          "cn": "8月5日举行百万英才汇南粤鸿蒙人才双选会，鸿蒙生态人才缺口将达百万级。",
+          "en": "Aug 5 HarmonyOS talent fair under Million Talents program; million-level talent gap in HarmonyOS ecosystem."
+        }
+      },
+      {
+        "t": {
+          "cn": "深圳每天新增约150个四新经济就业岗位",
+          "en": "~150 New-Economy Jobs Daily"
+        },
+        "d": "2026-07-24",
+        "u": "https://hrss.sz.gov.cn/xxgk/",
+        "gov": 1,
+        "desc": {
+          "cn": "深圳每天新增约150个四新经济（新技术新产业新业态新模式）就业岗位。",
+          "en": "Shenzhen adds ~150 new-economy jobs daily across new tech, industries, formats, and models."
+        }
+      },
+      {
+        "t": {
+          "cn": "百万英才汇南粤-覆盖AI/新能源/生物医药20+8产业",
+          "en": "Million Talents - 20+8 Industries"
+        },
+        "d": "2026-03",
+        "u": "https://www.sz.gov.cn/cn/xxgk/zfxxgj/zwdt/content/mpost_12685428.html",
+        "gov": 1,
+        "desc": {
+          "cn": "招聘岗位突出两业融合，覆盖AI、新能源、生物医药等20+8战略性新兴产业，超千家企业在线发布岗位。",
+          "en": "Jobs cover AI, NEV, biomedicine and 20+8 strategic industries; 1000+ companies posting online."
+        }
+      },
+      {
+        "t": {
+          "cn": "2026年第一批战略性新兴产业专项资金申报",
+          "en": "2026 Batch 1 Strategic Industry Funding"
+        },
+        "d": "2026-07-31",
+        "u": "http://fgw.sz.gov.cn/gkmlpt/content/12/12918/mpost_12918955.html",
+        "gov": 1,
+        "desc": {
+          "cn": "围绕半导体与集成电路、生物医药、高端医疗器械、新能源等战新产业，8月1-31日申报。",
+          "en": "Semiconductor, biomedicine, medical devices, NEV. Apply Aug 1-31."
+        }
+      },
+      {
+        "t": {
+          "cn": "每天新增约150个四新经济就业岗位",
+          "en": "150 New 'Four-New' Jobs Daily"
+        },
+        "d": "2026-07-24",
+        "u": "https://www.sz.gov.cn/ztfw/jylyfwzt/index.html",
+        "gov": 1,
+        "desc": {
+          "cn": "深圳四新经济（新技术、新产业、新业态、新模式）每日新增约150个就业岗位。",
+          "en": "Shenzhen's four-new economy adds ~150 jobs daily."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "深圳市人社局",
+          "en": "SZ HR&SS Bureau"
+        },
+        "u": "https://hrss.sz.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "深圳就业创业",
+          "en": "SZ Employment"
+        },
+        "u": "https://www.sz.gov.cn/ztfw/jylyfwzt/index.html"
+      }
+    ]
+  },
+  {
+    "id": "beijing",
+    "tier": 1,
+    "name": {
+      "cn": "北京",
+      "en": "Beijing"
+    },
+    "region": {
+      "cn": "华北",
+      "en": "N China"
+    },
+    "industries": {
+      "cn": "人工智能、集成电路、医药健康、智能网联汽车、数字经济",
+      "en": "AI, ICs, pharma & health, smart connected vehicles, digital economy"
+    },
+    "talent": {
+      "cn": "AI大模型、集成电路设计、生物医药、数字经济、高层次人才（高聚工程/科技新星）",
+      "en": "AI LLMs, IC design, biomedicine, digital economy, high-level talent (High聚/Tech Star programs)"
+    },
+    "salary": {
+      "cn": "10k-25k",
+      "en": "10-25k"
+    },
+    "highlight": {
+      "cn": "7月24日启动百日千万招聘专项行动；100万平方米创业空间；青年公寓试点；高聚工程人才经费支持",
+      "en": "Jul 24 Million Recruitment Action; 1M sqm startup space; youth apartment pilot; High聚 talent funding"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "2026年百日千万招聘专项行动",
+          "en": "2026 100-Day Million Recruitment Action"
+        },
+        "d": "2026-07-24",
+        "u": "https://rsj.beijing.gov.cn/xxgk/2024qt/202607/t20260724_4783974.html",
+        "gov": 1,
+        "desc": {
+          "cn": "利用100天集中组织线上线下招聘，聚焦高校毕业生、新兴和未来产业、重点企业用工需求。",
+          "en": "100-day intensive online/offline recruitment for grads, emerging/future industries, key enterprises."
+        }
+      },
+      {
+        "t": {
+          "cn": "《北京市2026年推动经济稳中有进若干措施》",
+          "en": "2026 Economic Stability Measures"
+        },
+        "d": "2026-03-18",
+        "u": "https://www.beijing.gov.cn/zhengce/zhengcefagui/202603/t20260318_4560553.html",
+        "gov": 1,
+        "desc": {
+          "cn": "提供100万平方米创业空间；加大青年人才创业支持；推进青年公寓试点。",
+          "en": "1M sqm startup space; enhanced youth entrepreneurship support; youth apartment pilot."
+        }
+      },
+      {
+        "t": {
+          "cn": "经济技术开发区OPC人才认定申报",
+          "en": "Economic Zone OPC Talent Certification"
+        },
+        "d": "2026-07-10",
+        "u": "https://www.beijing.gov.cn/ywdt/gzdt/202607/t20260710_4757039.html",
+        "gov": 1,
+        "desc": {
+          "cn": "北京经开区将超级个体人才纳入亦城人才体系，7月9日上线AI超级个体(OPC)认定申报。",
+          "en": "Beijing EZ includes super-individual talent, OPC certification launched Jul 9."
+        }
+      },
+      {
+        "t": {
+          "cn": "22条措施促进农村劳动力高质量就业",
+          "en": "22 Measures for Rural Employment"
+        },
+        "d": "2026-07-08",
+        "u": "https://rsj.beijing.gov.cn/zmsxw/xwsl/202607/t20260709_4753899.html",
+        "gov": 1,
+        "desc": {
+          "cn": "绿岗就业规模不低于3万人，统筹产业布局与岗位开发。",
+          "en": "Green jobs ≥30k, coordinate industry layout and job creation."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "北京市人社局",
+          "en": "BJ HR&SS Bureau"
+        },
+        "u": "https://rsj.beijing.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "首都之窗",
+          "en": "BJ Gov Portal"
+        },
+        "u": "https://www.beijing.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "guangzhou",
+    "tier": 1,
+    "name": {
+      "cn": "广州",
+      "en": "Guangzhou"
+    },
+    "region": {
+      "cn": "华南",
+      "en": "S China"
+    },
+    "industries": {
+      "cn": "智能网联汽车、生物医药、数字经济、低空经济、具身智能、脑机接口",
+      "en": "Smart vehicles, biomedicine, digital economy, low-altitude, embodied AI, BCI"
+    },
+    "talent": {
+      "cn": "AI大模型、低空经济、具身智能、脑机接口、集成电路、算法算力",
+      "en": "AI LLMs, low-altitude economy, embodied AI, BCI, ICs, algorithm/computing"
+    },
+    "salary": {
+      "cn": "8k-20k",
+      "en": "8-20k"
+    },
+    "highlight": {
+      "cn": "本科以上落户无名额限制秒批；百万英才汇南粤；12218现代化产业体系；穗跃进好五来礼遇",
+      "en": "Bachelor+ settlement unlimited & instant; Million Talents; 12218 industrial system; Five Benefits talent policy"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "百万英才汇南粤-广州五来礼遇引才政策",
+          "en": "Million Talents - Five Benefits Policy"
+        },
+        "d": "2026-07",
+        "u": "https://rsj.gz.gov.cn/ywzt/jycy/gzdt/content/post_10734650.html",
+        "gov": 1,
+        "desc": {
+          "cn": "全日制本科以上落户无名额限制、全程网办秒批；住下来/干起来/创未来/乐驾来/想将来五大礼遇。",
+          "en": "Bachelor+ settlement unlimited & instant; 5 benefits: housing, work, startup, driving, future."
+        }
+      },
+      {
+        "t": {
+          "cn": "海珠区总量控制类引进人才-含低空经济/具身智能/脑机接口",
+          "en": "Haizhu Talent Import - Low-alt/Embodied AI/BCI"
+        },
+        "d": "2026-08",
+        "u": "https://www.haizhu.gov.cn/gzjg/qzf/hzqrsj/tzgg/content/mpost_10959245.html",
+        "gov": 1,
+        "desc": {
+          "cn": "重点培育企业含智能网联、具身智能、低空经济、脑机接口、大模型等前沿产业。",
+          "en": "Key enterprises include smart vehicles, embodied AI, low-altitude, BCI, LLMs and frontier industries."
+        }
+      },
+      {
+        "t": {
+          "cn": "广东省高校毕业生就业创业扶持政策清单",
+          "en": "Guangdong Grad Employment Support List"
+        },
+        "d": "2026-08-03",
+        "u": "https://www.gz.gov.cn/zwgk/zdly/jycy/gzdt/#modal",
+        "gov": 1,
+        "desc": {
+          "cn": "8月3日发布最新政策清单；见企面岗实践活动白云/南沙/番禺线8月7日开启。",
+          "en": "Aug 3 latest policy list; Aug 7 enterprise visit activities in Baiyu/Nansha/Panyu."
+        }
+      },
+      {
+        "t": {
+          "cn": "2026年广东高校毕业生就业创业十大行动方案",
+          "en": "2026 Grad Employment 10 Actions"
+        },
+        "d": "2026-08-06",
+        "u": "https://rsj.gz.gov.cn/zzzq/tzgg/content/post_10956505.html",
+        "gov": 1,
+        "desc": {
+          "cn": "全年招聘活动1000场以上，公务员岗位1500个，事业单位5000个，国企新招5000人。",
+          "en": "1000+ job fairs, 1500 civil servant posts, 5000 institution posts, 5000 SOE hires."
+        }
+      },
+      {
+        "t": {
+          "cn": "海珠区引进人才入户申报（8月10-31日）",
+          "en": "Haizhu Talent Residency (Aug 10-31)"
+        },
+        "d": "2026-08-10",
+        "u": "https://www.haizhu.gov.cn/gzjg/qzf/hzqrsj/tzgg/content/mpost_10959245.html",
+        "gov": 1,
+        "desc": {
+          "cn": "海珠区总量控制类引进人才入户指标申报，8月10日至31日受理。",
+          "en": "Haizhu quota-based talent residency, Aug 10-31."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "广州市人社局",
+          "en": "GZ HR&SS Bureau"
+        },
+        "u": "https://rsj.gz.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "广州市政府",
+          "en": "GZ Gov"
+        },
+        "u": "https://www.gz.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "hangzhou",
+    "tier": 2,
+    "name": {
+      "cn": "杭州",
+      "en": "Hangzhou"
+    },
+    "region": {
+      "cn": "华东",
+      "en": "E China"
+    },
+    "industries": {
+      "cn": "数字经济、人工智能、视觉智能、集成电路、高端软件、低空经济",
+      "en": "Digital economy, AI, visual intelligence, ICs, software, low-altitude"
+    },
+    "talent": {
+      "cn": "AI/大模型、数字经济、集成电路、低空经济、先进制造、生活服务业（113个培训项目）",
+      "en": "AI/LLMs, digital economy, ICs, low-altitude, advanced manufacturing, services (113 training programs)"
+    },
+    "salary": {
+      "cn": "8k-20k",
+      "en": "8-20k"
+    },
+    "highlight": {
+      "cn": "2026版技能类紧缺职业目录；就业创业一张图智能化平台；数字经济创新中心；AI赋能制造业试点",
+      "en": "2026 skills shortage catalog; smart employment platform; digital economy innovation center; AI+manufacturing pilot"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "《杭州市技能类紧缺职业(工种)目录(2026版)》",
+          "en": "Hangzhou Skills Shortage Catalog (2026)"
+        },
+        "d": "2026-03-28",
+        "u": "https://www.hangzhou.gov.cn/col/col1229063386/art/2026/art_8e35283dbbe84cbb894caa1143cd3067.html",
+        "gov": 1,
+        "desc": {
+          "cn": "发布2026版紧缺职业工种目录，覆盖数字经济、AI、先进制造、低空经济等关键领域。",
+          "en": "2026 shortage occupation catalog covering digital economy, AI, manufacturing, low-altitude economy."
+        }
+      },
+      {
+        "t": {
+          "cn": "113个培训项目-含数字经济/低空经济/先进制造",
+          "en": "113 Training Programs - Digital/Low-alt/Manufacturing"
+        },
+        "d": "2026-06",
+        "u": "https://hrss.hangzhou.gov.cn/col/col1229196787/art/2026/art_14769f838444444190f8f9458263ee57.html",
+        "gov": 1,
+        "desc": {
+          "cn": "开展1000场以上技能培训，帮扶1万名以上重点群体提升技能；113个培训项目覆盖生活服务业、数字经济、先进制造业、低空经济。",
+          "en": "1000+ skill training sessions; 10k+ targeted groups; 113 programs covering services, digital economy, manufacturing, low-altitude."
+        }
+      },
+      {
+        "t": {
+          "cn": "杭州八大促就业服务举措",
+          "en": "Hangzhou 8 Employment Service Measures"
+        },
+        "d": "2026-08-07",
+        "u": "http://hznews.hangzhou.com.cn/chengshi/content/2026-08/07/content_9274090.htm",
+        "desc": {
+          "cn": "8月7日起推出八大促就业服务举措，面向未就业青年。",
+          "en": "Aug 7: 8 employment service measures for unemployed youth."
+        }
+      },
+      {
+        "t": {
+          "cn": "萧山区高校毕业生就业补贴清单",
+          "en": "Xiaoshan Grad Employment Subsidy List"
+        },
+        "d": "2026-07-06",
+        "u": "https://www.xiaoshan.gov.cn/col/col1229728547/art/2026/art_5b77d4e32e7c4bf5a8cfae1c26b6a5e2.html",
+        "gov": 1,
+        "desc": {
+          "cn": "毕业2年内高校生到中小微企业就业补贴等多项政策清单。",
+          "en": "Subsidies for grads within 2 years working at SMEs."
+        }
+      },
+      {
+        "t": {
+          "cn": "新场景大规模应用实施方案（2026-2027）",
+          "en": "New Scenario Application Plan (2026-2027)"
+        },
+        "d": "2026-07-19",
+        "u": "https://www.hangzhou.gov.cn/col/col1229063385/art/2026/art_0d6dbb2f399f4e8d8829a8b39ebc928e.html",
+        "gov": 1,
+        "desc": {
+          "cn": "每年培育开放高质量场景200个、促成合作项目60项，聚焦先进制造业集群。",
+          "en": "200 quality scenarios/year, 60 cooperation projects, advanced manufacturing focus."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "杭州市人社局",
+          "en": "HZ HR&SS Bureau"
+        },
+        "u": "https://hrss.hangzhou.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "杭州市政府",
+          "en": "HZ Gov"
+        },
+        "u": "https://www.hangzhou.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "chengdu",
+    "tier": 2,
+    "name": {
+      "cn": "成都",
+      "en": "Chengdu"
+    },
+    "region": {
+      "cn": "西南",
+      "en": "SW"
+    },
+    "industries": {
+      "cn": "航空航天、新一代信息技术、生物医药、人工智能、数字文创",
+      "en": "Aerospace, next-gen IT, biomedicine, AI, digital creative"
+    },
+    "talent": {
+      "cn": "AI大模型、集成电路、脑机接口算法工程师、机械臂控制、航空航天",
+      "en": "AI LLMs, ICs, BCI algorithm engineers, robotic arm control, aerospace"
+    },
+    "salary": {
+      "cn": "7k-18k",
+      "en": "7-18k"
+    },
+    "highlight": {
+      "cn": "新质产业职位需求激增；航空航天/信息技术/生物医药稳居前三；天府新区重点产业紧缺人才清单；AI OPC 13条补贴最高2500万",
+      "en": "New-quality job surge; aerospace/IT/biomedicine top 3; Tianfu New Area shortage list; AI OPC 13 measures up to 25M"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "天府新区重点产业领域急需紧缺人才清单(2025-2026)",
+          "en": "Tianfu New Area Key Industry Talent List"
+        },
+        "d": "2026-03",
+        "u": "https://imgbdb4.bendibao.com/cdbdb/fangchan/20263/26/2026326180904_79230.pdf",
+        "desc": {
+          "cn": "涵盖人工智能(大模型/集成电路)、脑机接口算法工程师、机械臂运动控制等紧缺岗位。",
+          "en": "Covers AI (LLMs/ICs), BCI algorithm engineers, robotic arm control and other shortage roles."
+        }
+      },
+      {
+        "t": {
+          "cn": "AI OPC创新发展13条（补贴最高2500万）",
+          "en": "AI OPC 13 Measures (up to 25M)"
+        },
+        "d": "2026-03-23",
+        "u": "https://sc.chinadaily.com.cn/a/202603/24/WS69c267b7a310942cc49a4b8f.html",
+        "desc": {
+          "cn": "围绕空间载体、人才引育、新产品新场景、创新创业支撑四部分，13条举措补贴最高2500万元。",
+          "en": "13 measures across space, talent, products/scenarios, innovation; subsidies up to 25M yuan."
+        }
+      },
+      {
+        "t": {
+          "cn": "2026年海外人才实习生计划招募",
+          "en": "2026 Overseas Talent Intern Program"
+        },
+        "d": "2026-07-22",
+        "u": "http://www.chengdu.gov.cn/cdsrmzf/c169603/2026-07/22/content_73a218c74674456dac3483cc13c16716.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "围绕9+9+10产业体系征集超400个实习岗位，覆盖AI、集成电路、低空经济等。",
+          "en": "400+ internships in AI, IC, low-altitude economy per 9+9+10 system."
+        }
+      },
+      {
+        "t": {
+          "cn": "促进人工智能产业发展办法（9月1日施行）",
+          "en": "AI Industry Promotion Regulation (Sep 1)"
+        },
+        "d": "2026-07-28",
+        "u": "http://www.chengdu.gov.cn/gkml/cdsrmzfbgt/gz/1531618249366568960.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "市政府令第247号，推动AI在经济、生活、城市治理深度融合应用。",
+          "en": "Municipal order 247, AI integration in economy, life, governance."
+        }
+      },
+      {
+        "t": {
+          "cn": "四川延续扩大社保补贴范围政策",
+          "en": "Sichuan Extends Social Security Subsidy"
+        },
+        "d": "2026-07-30",
+        "u": "https://www.sc.gov.cn/10462/10464/10797/2026/7/30/f996d4ce7b4b459a8f58ba5604e93f93.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "中小微企业吸纳重点群体就业，按个人实际缴费额25%给予社保补贴。",
+          "en": "SMEs hiring key groups get 25% social security subsidy."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "成都市人社局",
+          "en": "CD HR&SS Bureau"
+        },
+        "u": "https://cdhrss.chengdu.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "成都市政府",
+          "en": "CD Gov"
+        },
+        "u": "https://www.chengdu.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "wuhan",
+    "tier": 2,
+    "name": {
+      "cn": "武汉",
+      "en": "Wuhan"
+    },
+    "region": {
+      "cn": "华中",
+      "en": "C China"
+    },
+    "industries": {
+      "cn": "光电子信息、人工智能、生物医药、具身智能、新能源汽车",
+      "en": "Optoelectronics, AI, biomedicine, embodied AI, NEV"
+    },
+    "talent": {
+      "cn": "具身智能（需求增长翻番110%）、AI/光电子、生物医药、新能源",
+      "en": "Embodied AI (demand +110%), AI/optoelectronics, biomedicine, NEV"
+    },
+    "salary": {
+      "cn": "7k-16k",
+      "en": "7-16k"
+    },
+    "highlight": {
+      "cn": "具身智能人才需求增长翻番全国第一(110.28%)；AI光博计划储备300名博士；AI产业就业景气指数同比飙升95.83%",
+      "en": "Embodied AI demand #1 nationally (+110%); AI Photon-Doctor plan 300 PhDs; AI employment index +95.83%"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "武汉具身智能人才需求增长翻番-全国第一",
+          "en": "Wuhan Embodied AI Demand Doubles - #1 Nationally"
+        },
+        "d": "2026-05-22",
+        "u": "https://www.wuhan.gov.cn/sy/whyw/202605/t20260522_2767422.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "具身智能领域新发职位城市分布TOP10中，武汉人才需求增长翻番，同比增速110.28%排第一。4月全省AI产业就业景气指数同比飙升95.83%。",
+          "en": "Wuhan embodied AI talent demand grew 110.28% YoY, ranking #1 nationally. Apr AI employment index +95.83% YoY."
+        }
+      },
+      {
+        "t": {
+          "cn": "AI光博计划-储备300名博士",
+          "en": "AI Photon-Doctor Plan - 300 PhDs"
+        },
+        "d": "2026-06-26",
+        "u": "https://finance.sina.com.cn/roll/2026-06-26/doc-inietwvm7206542.shtml.md",
+        "desc": {
+          "cn": "武汉光谷启动AI光博计划，三年定向储备300名应届博士，打通高校实验室到产业一线通道。",
+          "en": "Wuhan Optical Valley launches AI Photon-Doctor plan: 300 PhDs in 3 years, lab-to-industry pipeline."
+        }
+      },
+      {
+        "t": {
+          "cn": "支持生物医药产业创新发展若干措施",
+          "en": "Biomedicine Innovation Support Measures"
+        },
+        "d": "2026-06-10",
+        "u": "https://www.wuhan.gov.cn/zwgk/xxgk/zfwj/bgtwj/202606/t20260610_2775977.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "鼓励生物医药顶尖人才创新创业，推荐申报武汉英才计划，举荐制绿色通道评定职称。",
+          "en": "Encourages biomedicine top talent innovation; Wuhan Talent program; green-channel title evaluation."
+        }
+      },
+      {
+        "t": {
+          "cn": "第三批支持城市更新政策措施",
+          "en": "Batch 3 Urban Renewal Policies"
+        },
+        "d": "2026-07-16",
+        "u": "https://www.wuhan.gov.cn/sy/whyw/202607/t20260716_2821510.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "支持城市更新人才申报武汉英才计划，危旧房原拆原建可增容。",
+          "en": "Urban renewal talent can apply for Wuhan Talent Plan."
+        }
+      },
+      {
+        "t": {
+          "cn": "千校万企联合促就业活动启动",
+          "en": "1000 Schools 10000 Enterprises Joint Employment"
+        },
+        "d": "2026-07-10",
+        "u": "https://www.wuhan.gov.cn/sy/whyw/202607/t20260710_2819014.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "200余所高校参加，覆盖毕业生109.7万人，东风汽车、小米、华工科技等300余家企业。",
+          "en": "200+ universities, 1.097M grads, 300+ enterprises incl. Xiaomi."
+        }
+      },
+      {
+        "t": {
+          "cn": "湖北十大就业服务举措（7-12月）",
+          "en": "Hubei 10 Employment Services (Jul-Dec)"
+        },
+        "d": "2026-07-21",
+        "u": "https://rst.hubei.gov.cn/bmdt/dtyw/stfb/202607/t20260721_5981011.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "20万+岗位、500个培训项目，青年就业服务攻坚行动7月至12月。",
+          "en": "200k+ jobs, 500 training programs, Jul-Dec youth employment campaign."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "武汉市政府",
+          "en": "WH Gov"
+        },
+        "u": "https://www.wuhan.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "武汉市人社局",
+          "en": "WH HR&SS"
+        },
+        "u": "https://rsj.wuhan.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "nanjing",
+    "tier": 2,
+    "name": {
+      "cn": "南京",
+      "en": "Nanjing"
+    },
+    "region": {
+      "cn": "华东",
+      "en": "E China"
+    },
+    "industries": {
+      "cn": "人工智能、机器人、生物医药、新一代信息通信、6G",
+      "en": "AI, robotics, biomedicine, next-gen communications, 6G"
+    },
+    "talent": {
+      "cn": "AI/软件、机器人、生物医药、信息通信、6G研发、电商人才",
+      "en": "AI/software, robotics, biomedicine, communications, 6G R&D, e-commerce"
+    },
+    "salary": {
+      "cn": "8k-18k",
+      "en": "8-18k"
+    },
+    "highlight": {
+      "cn": "十五五每年集10名顶尖人才资助最高1亿；学士1万/硕士3万/博士补贴；6G之城；1026新兴产业集群",
+      "en": "15th FYP: 10 top talents/yr up to 100M funding; Bachelor 10k/Master 30k/PhD subsidy; 6G City; 1026 clusters"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "十五五人才新政-顶尖人才综合资助最高1亿元",
+          "en": "15th FYP Talent Policy - Up to 100M for Top Talent"
+        },
+        "d": "2026-07",
+        "u": "https://cnooc.ncss.cn/ncss/jydt/jy/202607/20260714/2293873506.html",
+        "desc": {
+          "cn": "每年集聚10名顶尖人才综合资助最高1亿元，项目最高2000万；引进200个高层次团队；学士1万/硕士3万/博士补贴；重点产业补贴上浮20%。",
+          "en": "10 top talents/yr up to 100M total; 200 teams/yr; Bachelor 10k/Master 30k/PhD subsidy; key industry +20%."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "南京市政府",
+          "en": "NJ Gov"
+        },
+        "u": "https://www.nanjing.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "南京市人社局",
+          "en": "NJ HR&SS"
+        },
+        "u": "https://rsj.nanjing.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "xian",
+    "tier": 2,
+    "name": {
+      "cn": "西安",
+      "en": "Xi'an"
+    },
+    "region": {
+      "cn": "西北",
+      "en": "NW"
+    },
+    "industries": {
+      "cn": "航空航天、集成电路、人工智能、新能源、高端装备",
+      "en": "Aerospace, ICs, AI, NEV, high-end equipment"
+    },
+    "talent": {
+      "cn": "航空航天、芯片设计、AI算法、新能源材料、军工电子",
+      "en": "Aerospace, chip design, AI algorithms, NEV materials, defense electronics"
+    },
+    "salary": {
+      "cn": "6k-14k",
+      "en": "6-14k"
+    },
+    "highlight": {
+      "cn": "硬科技之都；航空航天产业西迁承接核心城市；集成电路设计全国前列；硬科技产业政策持续加码",
+      "en": "Hard-tech capital; aerospace westward relocation hub; top IC design city; continuous hard-tech policy support"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "硬科技产业政策持续加码-国产替代红利",
+          "en": "Hard-tech Policy - Domestic Substitution"
+        },
+        "d": "2026-07",
+        "u": "https://tidenews.com.cn/tmh_news.html?id=6a55a512805a1f00015de701",
+        "desc": {
+          "cn": "西安作为硬科技之都，航空航天、集成电路获国家级政策重点扶持，国产硬科技替代加速。",
+          "en": "Xi'an as hard-tech capital; aerospace & ICs receive national policy support; domestic substitution accelerating."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "西安市政府",
+          "en": "XA Gov"
+        },
+        "u": "https://www.xa.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "西安市人社局",
+          "en": "XA HR&SS"
+        },
+        "u": "https://rsj.xa.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "hongkong",
+    "tier": 0,
+    "name": {
+      "cn": "香港",
+      "en": "Hong Kong"
+    },
+    "region": {
+      "cn": "特别行政区",
+      "en": "SAR"
+    },
+    "industries": {
+      "cn": "金融科技、AI与机械人、生命健康科技、半导体、先进材料、新能源",
+      "en": "FinTech, AI & Robotics, Life Science, Semiconductor, Advanced Materials, NEV"
+    },
+    "talent": {
+      "cn": "AI/数据科学、金融科技、生命健康、半导体芯片、先进制造人才",
+      "en": "AI/Data Science, FinTech, Life Science, Semiconductor, Advanced Manufacturing"
+    },
+    "salary": {
+      "cn": "20k-60k港币",
+      "en": "20-60k HKD"
+    },
+    "highlight": {
+      "cn": "创科产业引导基金启动；高端人才通行证已批32617宗；新型工业加速计划每家最高2亿港币",
+      "en": "Tech Industry Guidance Fund launched; Top Talent Pass 32617 approved; New Industrialization Acceleration up to HK$200M per enterprise"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "创科产业引导基金（2026-27年度）",
+          "en": "Tech Industry Guidance Fund (2026-27)"
+        },
+        "d": "2026-02",
+        "u": "https://www.itib.gov.hk/zh-cn/attractingenterprises/index.php",
+        "gov": 1,
+        "desc": {
+          "cn": "引导市场投资生命健康科技、AI与机械人、半导体与智能设备、先进材料和新能源等策略性新兴产业。",
+          "en": "Guide market investment in life science, AI/robotics, semiconductor, advanced materials, NEV."
+        }
+      },
+      {
+        "t": {
+          "cn": "高端人才通行证计划及优才计划优化",
+          "en": "Top Talent Pass & QMAS Optimization"
+        },
+        "d": "2026-06",
+        "u": "https://www.legco.gov.hk/yr2026/chinese/policy-pulse/pp2026-13-empowering-hong-kong-by-nurturing-and-pooling-talents-building-an-international-hub-for-high-calibre-talents-c.pdf",
+        "gov": 1,
+        "desc": {
+          "cn": "优才入境计划已批32617宗不设配额；科技人才入境计划每公司每年最多100人配额。",
+          "en": "QMAS 32617 approved no quota; Tech Talent Scheme max 100/company/year."
+        }
+      },
+      {
+        "t": {
+          "cn": "新型工业加速计划（100亿港币）",
+          "en": "New Industrialization Acceleration (HK$10B)"
+        },
+        "d": "2026-03",
+        "u": "https://www.itf.gov.hk/sc/funding-programmes/promoting-new-industrialisation/nias/index.html",
+        "gov": 1,
+        "desc": {
+          "cn": "1:2配对资助，每家最高2亿港币，覆盖生命健康科技、AI与数据科学、先进制造与新能源。",
+          "en": "1:2 matching, max HK$200M per enterprise. Life science, AI, advanced manufacturing, NEV."
+        }
+      },
+      {
+        "t": {
+          "cn": "引进重点企业办公室（引进办）",
+          "en": "Office for Attracting Strategic Enterprises"
+        },
+        "d": "2026-01",
+        "u": "https://www.itib.gov.hk/zh-cn/attractingenterprises/index.php",
+        "gov": 1,
+        "desc": {
+          "cn": "重点引进AI与数据科学、生命健康科技、金融科技等策略产业企业落户香港。",
+          "en": "Attract AI/data science, life science, FinTech enterprises to HK."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "创新科技及工业局",
+          "en": "ITIB"
+        },
+        "u": "https://www.itib.gov.hk/zh-cn/"
+      },
+      {
+        "n": {
+          "cn": "香港立法会",
+          "en": "LegCo"
+        },
+        "u": "https://www.legco.gov.hk/"
+      },
+      {
+        "n": {
+          "cn": "创新科技基金",
+          "en": "ITF"
+        },
+        "u": "https://www.itf.gov.hk/sc/"
+      }
+    ]
+  },
+  {
+    "id": "macau",
+    "tier": 0,
+    "name": {
+      "cn": "澳门",
+      "en": "Macau"
+    },
+    "region": {
+      "cn": "特别行政区",
+      "en": "SAR"
+    },
+    "industries": {
+      "cn": "大健康、高新技术、现代金融、文化体育、文旅会展",
+      "en": "Health, High-tech, Modern Finance, Culture & Sports, Tourism & MICE"
+    },
+    "talent": {
+      "cn": "大健康产业、高新技术、现代金融、文旅会展、双语人才",
+      "en": "Health, High-tech, Modern Finance, Tourism/MICE, Bilingual"
+    },
+    "salary": {
+      "cn": "15k-40k澳门元",
+      "en": "15-40k MOP"
+    },
+    "highlight": {
+      "cn": "第三期人才引进计划9个计划申请中；1+4经济适度多元发展；青年专项实习5000澳门元/月",
+      "en": "3rd Talent Import 9 programs; 1+4 diversification; Youth internship 5000 MOP/mo"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "第三期人才引进计划（申请至2026年12月）",
+          "en": "3rd Talent Import Plan (Apply by Dec 2026)"
+        },
+        "d": "2025-12-09",
+        "u": "https://www.cdqq.gov.mo/zh-hant/3rdtrp",
+        "gov": 1,
+        "desc": {
+          "cn": "面向全球三类人才开展九个计划申请，含高端人才、优秀人才和高级专业人才。配合1+4经济适度多元发展。",
+          "en": "Global talent: 9 programs including high-end, outstanding, and senior professional talent. Supports 1+4 diversification."
+        }
+      },
+      {
+        "t": {
+          "cn": "科技研发人才资助计划（2026年度）",
+          "en": "R&D Talent Grant (2026)"
+        },
+        "d": "2026-03-23",
+        "u": "https://www.fdct.gov.mo/zh_tw/stt_detail/article/m9aw4x8l.html",
+        "gov": 1,
+        "desc": {
+          "cn": "分企业研发人才类、博士后类及人才回流类，支持科技人才引进和培育。",
+          "en": "Enterprise R&D talent, postdoc, and talent return categories."
+        }
+      },
+      {
+        "t": {
+          "cn": "澳门青年重点产业专项实习计划",
+          "en": "Macau Youth Key Industry Internship"
+        },
+        "d": "2026-07-31",
+        "u": "https://www.gov.mo/zh-hans/news/927039/",
+        "gov": 1,
+        "desc": {
+          "cn": "12周60个名额，涵盖大健康、现代金融、高新科技、文旅会展四大产业。5000澳门元/月生活津贴。",
+          "en": "12 weeks, 60 spots, 4 industries: health, finance, tech, tourism. 5000 MOP/mo stipend."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "人才发展委员会",
+          "en": "Talent Dev Committee"
+        },
+        "u": "https://www.cdqq.gov.mo/"
+      },
+      {
+        "n": {
+          "cn": "澳门政府",
+          "en": "Macau Gov"
+        },
+        "u": "https://www.gov.mo/"
+      },
+      {
+        "n": {
+          "cn": "科技发展基金",
+          "en": "FDCT"
+        },
+        "u": "https://www.fdct.gov.mo/"
+      }
+    ]
+  },
+  {
+    "id": "suzhou",
+    "tier": 2,
+    "name": {
+      "cn": "苏州",
+      "en": "Suzhou"
+    },
+    "region": {
+      "cn": "华东",
+      "en": "East"
+    },
+    "industries": {
+      "cn": "软件信息、生物医药、人工智能、纳米技术、高端装备",
+      "en": "Software, Biomedicine, AI, Nanotech, High-end Equipment"
+    },
+    "talent": {
+      "cn": "软件工程师、AI算法、生物医药研发、高端制造、集成电路",
+      "en": "Software, AI, Biomedicine R&D, Manufacturing, IC"
+    },
+    "salary": {
+      "cn": "8k-25k",
+      "en": "8-25k"
+    },
+    "highlight": {
+      "cn": "软件产业目标4000亿；优秀人才奖励申报中（7月20-8月19日）；高技能人才购房补贴100万",
+      "en": "Software target 400B; Talent reward Jul20-Aug19; Skilled talent housing subsidy 1M"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "2026苏州市优秀人才专项奖励申报",
+          "en": "2026 Suzhou Talent Reward"
+        },
+        "d": "2026-07-20",
+        "u": "http://hrss.suzhou.gov.cn/jsszhrss/zxdt/202607/412399797c5d46ae8c9a3b193f6888ba.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "C类以上年薪50万人才、重点产业年薪100万以上人才可申报，7月20-8月19日。",
+          "en": "Category C+ with 500k salary, key industry 1M+ salary. Jul 20-Aug 19."
+        }
+      },
+      {
+        "t": {
+          "cn": "软件产业高质量发展行动计划（2026-2027）",
+          "en": "Software Industry Plan (2026-2027)"
+        },
+        "d": "2026-01-17",
+        "u": "http://www.suzhou.gov.cn/szsrmzf/szfgfxwjk/202601/a66f6d4709324ae4b68efbda40cdddbe/files/d80147294a834078af68065a67090768.pdf",
+        "gov": 1,
+        "desc": {
+          "cn": "目标2027年软件产业4000亿，新设企业最高200万，核心技术攻关最高1000万，人才引进最高100万。",
+          "en": "Target 400B by 2027, new enterprise 2M, core tech 10M, talent 1M."
+        }
+      },
+      {
+        "t": {
+          "cn": "高技能人才购房补贴（拔尖型100万）",
+          "en": "Skilled Talent Housing Subsidy (Top 1M)"
+        },
+        "d": "2026-05",
+        "u": "http://www.suzhou.gov.cn/szsrmzf/mszx/202605/b64c2478558148bdaea6b3f6d4deaa7e.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "拔尖型高技能人才100万购房补贴，紧缺型30万，储备型5万一次性生活补贴。",
+          "en": "Top skilled talent 1M housing, shortage 300k, reserve 50k living subsidy."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "苏州人社局",
+          "en": "SZ HR&SS"
+        },
+        "u": "http://hrss.suzhou.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "苏州市政府",
+          "en": "SZ Gov"
+        },
+        "u": "http://www.suzhou.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "hefei",
+    "tier": 2,
+    "name": {
+      "cn": "合肥",
+      "en": "Hefei"
+    },
+    "region": {
+      "cn": "华东",
+      "en": "East"
+    },
+    "industries": {
+      "cn": "智能家电、集成电路、新能源汽车、人工智能、量子科技",
+      "en": "Smart Appliances, IC, NEV, AI, Quantum"
+    },
+    "talent": {
+      "cn": "集成电路、AI、新能源、量子科技、智能家电研发",
+      "en": "IC, AI, NEV, Quantum, Smart Appliance R&D"
+    },
+    "salary": {
+      "cn": "7k-20k",
+      "en": "7-20k"
+    },
+    "highlight": {
+      "cn": "高新区秋季全国高校巡回招聘9-11月；654X产业体系；人才驿站免费30天",
+      "en": "High-tech zone fall campus recruiting Sep-Nov; 654X system; talent inn free 30 days"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "产业高质量发展若干政策（654X体系）",
+          "en": "Industrial Dev Policy (654X System)"
+        },
+        "d": "2026-04-27",
+        "u": "https://www.lj.gov.cn/tzlj/tzzc/120386389.html",
+        "gov": 1,
+        "desc": {
+          "cn": "核心技术攻关最高1000万，股权激励最高20万，产教融合最高30万奖补。",
+          "en": "Core tech up to 10M, equity incentive 200k, industry-education 300k."
+        }
+      },
+      {
+        "t": {
+          "cn": "高新区秋季高校引才巡回招聘（9-11月）",
+          "en": "High-tech Zone Fall Campus Recruiting (Sep-Nov)"
+        },
+        "d": "2026-08-05",
+        "u": "https://gxq.hefei.gov.cn/tzgg/18965839.html",
+        "gov": 1,
+        "desc": {
+          "cn": "赴全国重点高校引才，线上云聘会+线下招聘+直播招聘，人才驿站免费30天。",
+          "en": "Nationwide campus recruiting, online+offline+livestream. Free talent inn 30 days."
+        }
+      },
+      {
+        "t": {
+          "cn": "招才引智云聘会智能家电产业专场",
+          "en": "Smart Appliance Talent Cloud Fair"
+        },
+        "d": "2026-06-15",
+        "u": "http://rsj.hefei.gov.cn/",
+        "gov": 1,
+        "desc": {
+          "cn": "围绕智能家电重点产业精准对接人才需求，推动区域人才服务协同发展。",
+          "en": "Smart appliance industry talent matching, regional talent coordination."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "合肥人社局",
+          "en": "HF HR&SS"
+        },
+        "u": "http://rsj.hefei.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "合肥高新区",
+          "en": "HF High-tech Zone"
+        },
+        "u": "https://gxq.hefei.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "合肥政府",
+          "en": "HF Gov"
+        },
+        "u": "https://www.hefei.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "changsha",
+    "tier": 2,
+    "name": {
+      "cn": "长沙",
+      "en": "Changsha"
+    },
+    "region": {
+      "cn": "华中",
+      "en": "Central"
+    },
+    "industries": {
+      "cn": "工程机械、新能源、电子信息、文创传媒、新材料",
+      "en": "Construction Machinery, NEV, Electronics, Media/Creative, New Materials"
+    },
+    "talent": {
+      "cn": "工程机械、新能源、电子信息、新媒体运营、智能制造",
+      "en": "Machinery, NEV, Electronics, New Media, Smart Manufacturing"
+    },
+    "salary": {
+      "cn": "6k-18k",
+      "en": "6-18k"
+    },
+    "highlight": {
+      "cn": "三季度3.7万个岗位；小荷青年创业20万补贴；创新创业带动就业申报中",
+      "en": "Q3 37k jobs; Xiaohe startup 200k subsidy; Innovation-entrepreneurship employment program"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "三季度企业岗位需求3.7万个",
+          "en": "Q3 Enterprise Jobs: 37,000"
+        },
+        "d": "2026-07-06",
+        "u": "http://www.changsha.gov.cn/jdhy/hygq/bmzx/jdjy/202607/t20260706_12432638.html",
+        "gov": 1,
+        "desc": {
+          "cn": "600家企业3.7万招聘名额，覆盖工程机械、新能源、电子信息等产业链。",
+          "en": "600 enterprises, 37k openings across machinery, NEV, electronics chains."
+        }
+      },
+      {
+        "t": {
+          "cn": "小荷青年人才创业项目（20万补贴）",
+          "en": "Xiaohe Youth Startup (200k Subsidy)"
+        },
+        "d": "2026-06-26",
+        "u": "http://rsj.changsha.gov.cn/zxzx_0/tzgg_131288/ldjy_131291/202606/t20260626_12423292.html",
+        "gov": 1,
+        "desc": {
+          "cn": "40岁以下青年创业人才一次性20万，可参评D类高层次人才。",
+          "en": "Under-40 startup talent gets 200k, D-class high-level talent eligible."
+        }
+      },
+      {
+        "t": {
+          "cn": "创新创业带动就业项目申报",
+          "en": "Innovation-Entrepreneurship Employment Program"
+        },
+        "d": "2026-03",
+        "u": "http://www.furong.gov.cn/affairs/xxgk/gov1/rsj/jy/fczc/202603/P020260320458133843759.pdf",
+        "gov": 1,
+        "desc": {
+          "cn": "含大学生创业项目，通过创业带动就业落实就业优先战略。",
+          "en": "Includes college startup projects, employment-first strategy through entrepreneurship."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "长沙人社局",
+          "en": "CS HR&SS"
+        },
+        "u": "http://rsj.changsha.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "长沙政府",
+          "en": "CS Gov"
+        },
+        "u": "http://www.changsha.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "guiyang",
+    "tier": 3,
+    "name": {
+      "cn": "贵阳",
+      "en": "Guiyang"
+    },
+    "region": {
+      "cn": "西南",
+      "en": "SW"
+    },
+    "industries": {
+      "cn": "大数据、数据标注、AI训练、云计算、软件服务",
+      "en": "Big Data, Data Annotation, AI Training, Cloud, Software"
+    },
+    "talent": {
+      "cn": "数据标注、AI训练师、大数据开发、云计算运维、软件开发",
+      "en": "Data Annotation, AI Trainer, Big Data Dev, Cloud Ops, Software Dev"
+    },
+    "salary": {
+      "cn": "5k-12k",
+      "en": "5-12k"
+    },
+    "highlight": {
+      "cn": "数据产业21条；数据标注企业最高50万奖励；数据人才月薪500-2000元奖励；大数据条例1月1日实施",
+      "en": "Data 21 measures; Annotation firms 500k; Data talent 500-2000/mo; Big Data regulation Jan 1"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "支持数据产业发展若干措施（21条）",
+          "en": "Data Industry Support (21 Measures)"
+        },
+        "d": "2026-02-26",
+        "u": "https://www.guiyang.gov.cn/zwgk/zfxxgks/fdzdgknr/lzyj/gfxwj/szfgfxwj/qfbf/202603/t20260306_89610042.html",
+        "gov": 1,
+        "desc": {
+          "cn": "数据标注企业最高50万奖励，数据人才月薪500-2000元，大学生实习每人每天50-100元补贴。",
+          "en": "Annotation firms 500k, data talent 500-2000/mo, intern 50-100/day."
+        }
+      },
+      {
+        "t": {
+          "cn": "贵州省大数据发展应用促进条例（修订）",
+          "en": "Guizhou Big Data Regulation (Revised)"
+        },
+        "d": "2026-01-01",
+        "u": "https://m.sohu.com/a/1043755818_121106902/",
+        "gov": 1,
+        "desc": {
+          "cn": "建设数据标注产业基地成为硬核条文，数据标注作为特色产业支持培育。",
+          "en": "Data annotation base construction mandated, annotation as specialty industry."
+        }
+      },
+      {
+        "t": {
+          "cn": "数据标注产业供需对接会暨21条发布",
+          "en": "Data Annotation Supply-Demand Fair"
+        },
+        "d": "2026-03-18",
+        "u": "https://guiyang.gov.cn/ztzl/rdzt/ztzlzsyzzl/ztzlzsyzzltzdt/202603/t20260324_89900341.html",
+        "gov": 1,
+        "desc": {
+          "cn": "贵阳贵安数据标注产业供需对接会发布21条措施，培育数据产业生态。",
+          "en": "Supply-demand fair with 21 measures, building data industry ecosystem."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "贵阳市政府",
+          "en": "GY Gov"
+        },
+        "u": "https://www.guiyang.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "贵阳大数据局",
+          "en": "GY Big Data Bureau"
+        },
+        "u": "https://sjj.guizhou.gov.cn"
+      }
+    ]
+  },
+  {
+    "id": "kunming",
+    "tier": 3,
+    "name": {
+      "cn": "昆明",
+      "en": "Kunming"
+    },
+    "region": {
+      "cn": "西南",
+      "en": "SW"
+    },
+    "industries": {
+      "cn": "文旅康养、生物医药、新材料、高原特色农业、跨境电商",
+      "en": "Tourism/Wellness, Biomedicine, New Materials, Highland Agriculture, Cross-border E-commerce"
+    },
+    "talent": {
+      "cn": "文旅运营、康养护理、跨境电商、生物医药、新媒体运营",
+      "en": "Tourism Ops, Wellness Care, Cross-border E-commerce, Biomedicine, New Media"
+    },
+    "salary": {
+      "cn": "5k-10k",
+      "en": "5-10k"
+    },
+    "highlight": {
+      "cn": "就业春城品牌；2026年城镇新增就业38万人；吸引20万高校毕业生来昆；金融支持人才创业",
+      "en": "Employment Spring City brand; 380k new urban jobs; 200k grads attracted; Financial talent support"
+    },
+    "policies": [
+      {
+        "t": {
+          "cn": "金融支持昆明市人才工作实施意见",
+          "en": "Financial Support for Talent Work"
+        },
+        "d": "2026-03-28",
+        "u": "https://www.km.gov.cn/c/2026-03-28/5067166.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "贷免扶补贷款、创业基金、青年共享创业空间，三级青创载体体系。",
+          "en": "Loan-subsidy, startup fund, youth shared space, 3-tier youth innovation system."
+        }
+      },
+      {
+        "t": {
+          "cn": "就业春城：公共就业服务能力提升示范项目",
+          "en": "Employment Spring City: Service Demo"
+        },
+        "d": "2026-07-17",
+        "u": "https://www.km.gov.cn/c/2026-07-17/5097787.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "目标城镇新增就业38万人，吸引20万高校毕业生来昆，技能劳动者占比超30%。",
+          "en": "Target: 380k urban jobs, 200k grads attracted, 30%+ skilled workers."
+        }
+      },
+      {
+        "t": {
+          "cn": "2026年高校毕业生就业促进政策",
+          "en": "2026 Grad Employment Promotion"
+        },
+        "d": "2026-03-13",
+        "u": "https://www.km.gov.cn/c/2026-03-13/5070722.shtml",
+        "gov": 1,
+        "desc": {
+          "cn": "事业单位招聘1875人，三支一扶计划岗位，见习岗位，创业扶持。",
+          "en": "Institution hiring 1875, Three Supports plan, internships, startup support."
+        }
+      }
+    ],
+    "sites": [
+      {
+        "n": {
+          "cn": "昆明市政府",
+          "en": "KM Gov"
+        },
+        "u": "https://www.km.gov.cn"
+      },
+      {
+        "n": {
+          "cn": "昆明人社局",
+          "en": "KM HR&SS"
+        },
+        "u": "https://rsj.km.gov.cn"
+      }
+    ]
+  }
+]
