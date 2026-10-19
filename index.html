@@ -30,8 +30,7 @@
 .eye-on #eyeOverlay{opacity:1}
 
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-html,body{height:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;height:100%;height:100dvh;overflow:hidden}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;min-height:100vh;min-height:100dvh}
 a{color:var(--primary-d);text-decoration:none}
 img{max-width:100%}
 
@@ -60,7 +59,7 @@ img{max-width:100%}
 .chip .sw{width:12px;height:12px;border-radius:4px;border:1px solid rgba(0,0,0,.1)}
 
 /* ============ 主内容 ============ */
-.main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;padding:12px 14px 28px;max-width:720px;width:100%;margin:0 auto;box-sizing:border-box}
+.main{flex:1;position:relative;padding:12px 14px 28px;max-width:720px;width:100%;margin:0 auto;box-sizing:border-box}
 .page{display:none;animation:fade .3s}
 .page.active{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -138,7 +137,7 @@ img{max-width:100%}
 .empty svg{width:48px;height:48px;opacity:.4;margin-bottom:10px}
 
 /* 底部导航 */
-.bottomnav{position:relative;flex-shrink:0;height:calc(var(--nav-h) + var(--safe-b));background:var(--bg2);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-b);z-index:100}
+.bottomnav{position:sticky;bottom:0;flex-shrink:0;height:calc(var(--nav-h) + var(--safe-b));background:var(--bg2);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-b);z-index:100}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--muted);cursor:pointer;transition:color .2s;font-size:9px}
 .nav-item.active{color:var(--primary-d)}
 .nav-item svg{width:18px;height:18px}
@@ -1584,8 +1583,8 @@ function renderCats(){
   document.querySelectorAll("[data-cat]").forEach(e=>e.onclick=()=>{
     activeCat=e.dataset.cat;
     try{localStorage.setItem("tw_lastcat",activeCat)}catch(e){};
-    if(activePage!=="home"){activePage="home";renderNav();goPage('home')}
-    renderCats();renderContent();const cc=document.getElementById("content");if(cc)cc.scrollTo(0,0)
+    if(activePage!=="home"){scrollMem[activePage]=window.scrollY;activePage="home";try{localStorage.setItem("tw_lastpage","home")}catch(e){};renderNav();if(!uiSilent){try{if(!(history.state&&history.state.tw==="page"&&history.state.page==="home"))history.pushState({tw:"page",page:"home"},"")}catch(e){}}}
+    renderCats();renderContent();window.scrollTo(0,0);showCatBar()
   });
 }
 
@@ -1661,7 +1660,7 @@ function renderHome(){
 let scrollMem={};
 function hideCatBar(){const sb=document.querySelector(".subbar");if(sb)sb.classList.add("cat-hidden")}
 function showCatBar(){const sb=document.querySelector(".subbar");if(sb)sb.classList.remove("cat-hidden")}
-function goPage(p,restore){const c=document.getElementById("content");scrollMem[activePage]=c?c.scrollTop:0;activePage=p;activeCat="all";renderCats();try{localStorage.setItem("tw_lastpage",p)}catch(e){};renderNav();renderContent();hideCatBar();if(c)c.scrollTo(0,restore?(scrollMem[p]||0):0);if(!uiSilent){try{if(!(history.state&&history.state.tw==="page"&&history.state.page===p))history.pushState({tw:"page",page:p},"")}catch(e){}}}
+function goPage(p,restore){scrollMem[activePage]=window.scrollY;activePage=p;activeCat="all";renderCats();try{localStorage.setItem("tw_lastpage",p)}catch(e){};renderNav();renderContent();window.scrollTo(0,restore?(scrollMem[p]||0):0);if(p==="home"){showCatBar()}else{hideCatBar()}if(!uiSilent){try{if(!(history.state&&history.state.tw==="page"&&history.state.page===p))history.pushState({tw:"page",page:p},"")}catch(e){}}}
 
 function renderList(arr){
   let filtered=arr.filter(i=>activeCat==="all"||i.cat===activeCat);
@@ -2573,7 +2572,7 @@ function saveProfile(){
   localStorage.setItem("tw_profile",JSON.stringify(p));
   toast(t(I.saved));
   document.getElementById("matchBody").innerHTML=renderMatchResults();
-  const _mc=document.getElementById("content");if(_mc)_mc.scrollTo(0,0);
+  window.scrollTo(0,0);
 }
 function resetProfile(){localStorage.removeItem("tw_profile");pfSkillsSel=[];renderMatch();toast(t(I.deleted))}
 
@@ -2766,8 +2765,7 @@ function renderJobhacks(){
 }
 
 function renderContent(keepY){
-  const _c=document.getElementById("content");
-  const _y=keepY&&_c?_c.scrollTop:0;
+  const _y=keepY?window.scrollY:0;
   if(searchQ){
     renderSearchAll();
     const c=document.getElementById("content");
@@ -2780,7 +2778,7 @@ function renderContent(keepY){
     const c=document.getElementById("content");
     c.insertAdjacentHTML("afterbegin",`<div class="back-bar" onclick="goPage('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg><span>返回首页</span></div>`);
   }
-  if(keepY&&_c)requestAnimationFrame(()=>_c.scrollTo(0,_y));
+  if(keepY)requestAnimationFrame(()=>window.scrollTo(0,_y));
 }
 
 /* ============ 全局搜索：跨所有数据，忽略空格差异 ============ */
@@ -2974,16 +2972,17 @@ document.getElementById("themeBtn").onclick=()=>{renderThemeSheet();document.get
 document.getElementById("eyeSwitch").onclick=toggleEye;
 document.getElementById("langSwitch").onclick=toggleLang;
 document.getElementById("sheetMask").onclick=closeSheets;
-/* 回到顶部：滚动到底部出现按钮；回到顶部后自动恢复分类栏 */
+/* 回到顶部：滚到内容最底部出现按钮；回到顶部后自动恢复分类栏（仅监听，不阻止滚动） */
 (function(){
-  const c=document.getElementById("content"),b=document.getElementById("toTop");
-  if(!c||!b)return;
-  c.addEventListener("scroll",()=>{
-    const nearBottom=c.scrollTop+c.clientHeight>=c.scrollHeight-60;
-    b.classList.toggle("show",nearBottom&&c.scrollHeight>c.clientHeight+80);
-    if(c.scrollTop<=2)showCatBar();
+  const b=document.getElementById("toTop");
+  if(!b)return;
+  window.addEventListener("scroll",()=>{
+    const de=document.documentElement,y=window.scrollY||de.scrollTop;
+    const nearBottom=y+window.innerHeight>=de.scrollHeight-60;
+    b.classList.toggle("show",nearBottom&&de.scrollHeight>window.innerHeight+80);
+    if(y<=2)showCatBar();
   },{passive:true});
-  b.onclick=()=>{c.scrollTo({top:0,behavior:"smooth"});setTimeout(showCatBar,450)};
+  b.onclick=()=>{window.scrollTo({top:0,behavior:"smooth"});setTimeout(showCatBar,450)};
 })();
 
 /* ============ 划词翻译：选中英文单词/句子，弹气泡翻译成中文 ============ */
@@ -3240,7 +3239,7 @@ applyTheme();applyEye();applyLang();initSplash();
 // PWA: 内联 Service Worker（带外部回退）
 (function(){
   if('serviceWorker' in navigator){
-    var swCode = "// \u98ce\u53e3\u77ad\u671b Service Worker - \u79bb\u7ebf\u7f13\u5b58\nconst CACHE_NAME = 'trendwatch-v17';\nconst ASSETS = [\n  './',\n  './index.html',\n  './manifest.json',\n  './icon-192.png',\n  './icon-512.png'\n];\n\n// \u5b89\u88c5\u65f6\u7f13\u5b58\u6838\u5fc3\u8d44\u6e90\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})\n  );\n  self.skipWaiting();\n});\n\n// \u6fc0\u6d3b\u65f6\u6e05\u7406\u65e7\u7f13\u5b58\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))\n    )\n  );\n  self.clients.claim();\n});\n\n// \u8bf7\u6c42\u62e6\u622a\uff1a\u7f51\u7edc\u4f18\u5148\uff0c\u5931\u8d25\u56de\u9000\u7f13\u5b58\nself.addEventListener('fetch', e => {\n  const url = new URL(e.request.url);\n  // \u53ea\u7f13\u5b58\u540c\u6e90\u8bf7\u6c42\uff0c\u8de8\u57df\u8bf7\u6c42\u76f4\u63a5\u653e\u884c\n  if (url.origin !== location.origin) return;\n  e.respondWith(\n    fetch(e.request)\n      .then(res => {\n        const copy = res.clone();\n        caches.open(CACHE_NAME).then(cache => cache.put(e.request, copy)).catch(()=>{});\n        return res;\n      })\n      .catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))\n  );\n});\n";
+    var swCode = "// \u98ce\u53e3\u77ad\u671b Service Worker - \u79bb\u7ebf\u7f13\u5b58\nconst CACHE_NAME = 'trendwatch-v18';\nconst ASSETS = [\n  './',\n  './index.html',\n  './manifest.json',\n  './icon-192.png',\n  './icon-512.png'\n];\n\n// \u5b89\u88c5\u65f6\u7f13\u5b58\u6838\u5fc3\u8d44\u6e90\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})\n  );\n  self.skipWaiting();\n});\n\n// \u6fc0\u6d3b\u65f6\u6e05\u7406\u65e7\u7f13\u5b58\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))\n    )\n  );\n  self.clients.claim();\n});\n\n// \u8bf7\u6c42\u62e6\u622a\uff1a\u7f51\u7edc\u4f18\u5148\uff0c\u5931\u8d25\u56de\u9000\u7f13\u5b58\nself.addEventListener('fetch', e => {\n  const url = new URL(e.request.url);\n  // \u53ea\u7f13\u5b58\u540c\u6e90\u8bf7\u6c42\uff0c\u8de8\u57df\u8bf7\u6c42\u76f4\u63a5\u653e\u884c\n  if (url.origin !== location.origin) return;\n  e.respondWith(\n    fetch(e.request)\n      .then(res => {\n        const copy = res.clone();\n        caches.open(CACHE_NAME).then(cache => cache.put(e.request, copy)).catch(()=>{});\n        return res;\n      })\n      .catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))\n  );\n});\n";
     try {
       var blob = new Blob([swCode], {type: 'application/javascript'});
       var swUrl = URL.createObjectURL(blob);
