@@ -31,12 +31,12 @@
 
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{height:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;overflow-x:hidden;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased}
+body{font-family:-apple-system,BlinkMacSystemFont,"PingFang SC","Noto Sans CJK SC","Microsoft YaHei",sans-serif;background:var(--bg);color:var(--text);font-size:15px;line-height:1.6;transition:background .3s,color .3s;-webkit-font-smoothing:antialiased;display:flex;flex-direction:column;height:100%;height:100dvh;overflow:hidden}
 a{color:var(--primary-d);text-decoration:none}
 img{max-width:100%}
 
 /* ============ 顶部栏 ============ */
-.topbar{position:sticky;top:0;z-index:100;background:var(--bg2);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
+.topbar{position:relative;flex-shrink:0;z-index:100;background:var(--bg2);border-bottom:1px solid var(--border);padding:10px 14px;padding-top:calc(10px + env(safe-area-inset-top,0px))}
 .top-row{display:flex;align-items:center;gap:10px}
 .logo{display:flex;align-items:center;gap:8px;font-weight:700;font-size:17px;color:var(--primary-d);flex-shrink:0}
 .logo .dot{width:10px;height:10px;border-radius:50%;background:linear-gradient(135deg,var(--primary),var(--primary-l));box-shadow:0 0 8px var(--primary)}
@@ -60,7 +60,7 @@ img{max-width:100%}
 .chip .sw{width:12px;height:12px;border-radius:4px;border:1px solid rgba(0,0,0,.1)}
 
 /* ============ 主内容 ============ */
-.main{padding:12px 14px calc(var(--nav-h) + var(--safe-b) + 24px);max-width:720px;margin:0 auto}
+.main{flex:1;overflow-y:auto;-webkit-overflow-scrolling:touch;position:relative;padding:12px 14px 28px;max-width:720px;width:100%;margin:0 auto;box-sizing:border-box}
 .page{display:none;animation:fade .3s}
 .page.active{display:block}
 @keyframes fade{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
@@ -138,7 +138,7 @@ img{max-width:100%}
 .empty svg{width:48px;height:48px;opacity:.4;margin-bottom:10px}
 
 /* 底部导航 */
-.bottomnav{position:fixed;bottom:0;left:0;right:0;height:calc(var(--nav-h) + var(--safe-b));background:var(--bg2);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-b);z-index:100;backdrop-filter:blur(12px)}
+.bottomnav{position:relative;flex-shrink:0;height:calc(var(--nav-h) + var(--safe-b));background:var(--bg2);border-top:1px solid var(--border);display:flex;padding-bottom:var(--safe-b);z-index:100}
 .nav-item{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1px;color:var(--muted);cursor:pointer;transition:color .2s;font-size:9px}
 .nav-item.active{color:var(--primary-d)}
 .nav-item svg{width:18px;height:18px}
@@ -184,8 +184,8 @@ img{max-width:100%}
 .act-tools button{flex:1;padding:9px;border-radius:12px;border:1px solid var(--border);background:var(--card);color:var(--text2);font-size:12px;cursor:pointer}
 .act-tools button:active{transform:scale(.96)}
 /* v4 匹配标记与详情 */
-.mark-btns{display:flex;gap:6px;align-items:center;margin-top:8px}
-.mk{padding:4px 10px;border-radius:14px;border:1px solid var(--border);background:var(--card);font-size:12px;cursor:pointer;opacity:.6;color:var(--text)}
+.mark-btns{display:flex;gap:6px;align-items:center;margin-top:8px;flex-wrap:wrap;position:relative;z-index:2}
+.mk{padding:8px 13px;min-height:36px;display:inline-flex;align-items:center;border-radius:14px;border:1px solid var(--border);background:var(--card);font-size:12px;cursor:pointer;opacity:.6;color:var(--text);touch-action:manipulation;user-select:none;-webkit-user-select:none}
 .mk.on{opacity:1;border-color:var(--primary);background:var(--primary-l)}
 .mk.more{font-size:11px;margin-left:auto}
 .match-detail{display:none;margin-top:8px}
@@ -300,14 +300,14 @@ mark{background:var(--accent);color:#fff;border-radius:3px;padding:0 2px}
   .theme-grid{grid-template-columns:repeat(5,1fr)}
 }
 
-/* ============ 移动端专属布局（<768px）：与电脑端隔离，防止桌面组件在移动端残留 ============ */
-@media (max-width:768px){
-  /* 顶部分类标题条：手机端直接不渲染（移动端 sticky 合成层 bug 会把它错绘固定在视口中间） */
-  .subbar{display:none!important}
-  /* 顶栏与返回条在手机端不固定悬浮，随文档流走，杜绝"卡在页面中间"的残留 */
-  .topbar{position:relative}
-  .back-bar{position:static}
-}
+/* ============ 顶部分类栏：智能显隐（切页自动隐藏，回到顶部自动显示） ============ */
+.subbar{max-height:64px;transition:max-height .3s ease,opacity .25s ease,padding .3s ease}
+.subbar.cat-hidden{max-height:0;opacity:0;padding-top:0;overflow:hidden;pointer-events:none}
+
+/* ============ 加载动画 ============ */
+.ld-box{display:flex;align-items:center;justify-content:center;gap:10px;padding:44px 0;color:var(--muted);font-size:13px}
+.ld-spin{width:22px;height:22px;border-radius:50%;border:3px solid var(--primary-l);border-top-color:var(--primary);animation:ldSpin .8s linear infinite;flex-shrink:0}
+@keyframes ldSpin{to{transform:rotate(360deg)}}
 
 /* ============ 城市模块 ============ */
 .city-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px}
@@ -409,7 +409,8 @@ mark{background:var(--accent);color:#fff;border-radius:3px;padding:0 2px}
 .card.read-item.is-read .card-head h3::after{content:' ✓';color:var(--primary);font-size:12px}
 .read-badge{position:absolute;top:8px;right:8px;background:var(--accent);color:#fff;font-size:9px;padding:2px 6px;border-radius:8px;font-weight:600}
 .nav-badge{position:absolute;top:-2px;right:50%;transform:translateX(18px);background:var(--accent);color:#fff;font-size:8px;min-width:14px;height:14px;border-radius:7px;display:flex;align-items:center;justify-content:center;padding:0 3px;font-weight:700}
-.read-toggle{font-size:11px;color:var(--primary-d);cursor:pointer;padding:4px 10px;border-radius:8px;background:var(--primary-l);border:none;display:inline-block;margin-top:6px}
+.read-toggle{font-size:11px;color:var(--primary-d);cursor:pointer;padding:8px 12px;min-height:34px;border-radius:8px;background:var(--primary-l);border:none;display:inline-flex;align-items:center;margin-top:6px;touch-action:manipulation;user-select:none;-webkit-user-select:none}
+.src{position:relative;z-index:2;flex-wrap:wrap}
 .read-toggle:active{transform:scale(.95)}
 
 /* ============ 视频封面 ============ */
@@ -1584,7 +1585,7 @@ function renderCats(){
     activeCat=e.dataset.cat;
     try{localStorage.setItem("tw_lastcat",activeCat)}catch(e){};
     if(activePage!=="home"){activePage="home";renderNav();goPage('home')}
-    renderCats();renderContent();window.scrollTo(0,0)
+    renderCats();renderContent();const cc=document.getElementById("content");if(cc)cc.scrollTo(0,0)
   });
 }
 
@@ -1658,7 +1659,9 @@ function renderHome(){
 }
 
 let scrollMem={};
-function goPage(p,restore){scrollMem[activePage]=window.scrollY;activePage=p;try{localStorage.setItem("tw_lastpage",p)}catch(e){};renderNav();renderContent();window.scrollTo(0,restore?(scrollMem[p]||0):0);if(!uiSilent){try{if(!(history.state&&history.state.tw==="page"&&history.state.page===p))history.pushState({tw:"page",page:p},"")}catch(e){}}}
+function hideCatBar(){const sb=document.querySelector(".subbar");if(sb)sb.classList.add("cat-hidden")}
+function showCatBar(){const sb=document.querySelector(".subbar");if(sb)sb.classList.remove("cat-hidden")}
+function goPage(p,restore){const c=document.getElementById("content");scrollMem[activePage]=c?c.scrollTop:0;activePage=p;activeCat="all";renderCats();try{localStorage.setItem("tw_lastpage",p)}catch(e){};renderNav();renderContent();hideCatBar();if(c)c.scrollTo(0,restore?(scrollMem[p]||0):0);if(!uiSilent){try{if(!(history.state&&history.state.tw==="page"&&history.state.page===p))history.pushState({tw:"page",page:p},"")}catch(e){}}}
 
 function renderList(arr){
   let filtered=arr.filter(i=>activeCat==="all"||i.cat===activeCat);
@@ -1667,7 +1670,21 @@ function renderList(arr){
   return filtered.map(cardHTML).join("");
 }
 
-function renderTrend(){document.getElementById("content").innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"国家级行业风口",en:"National Industry Trends"})}<span class="en">/ 2026</span></div>${renderList(TRENDS)}`}
+function renderTrend(){
+  const c=document.getElementById("content");
+  const title=`<div class="sec-title"><span class="bar"></span>${t({cn:"国家级行业风口",en:"National Industry Trends"})}<span class="en">/ 2026</span></div>`;
+  c.innerHTML=title+`<div class="ld-box"><div class="ld-spin"></div><span>${t({cn:"正在加载行业资讯…",en:"Loading trends…"})}</span></div>`;
+  setTimeout(()=>{
+    let arr=TRENDS.filter(i=>activeCat==="all"||i.cat===activeCat);
+    if(searchQ)arr=arr.filter(i=>(t(i.title)+t(i.desc)).toLowerCase().includes(searchQ.toLowerCase()));
+    if(arr.length){c.innerHTML=title+arr.map(cardHTML).join("")}
+    else{c.innerHTML=title+`<div class="empty" style="padding:40px 16px;text-align:center">
+      <p style="font-size:14px;color:var(--text2);margin-bottom:6px">📡 ${t({cn:"正在持续收录行业资讯，稍后再来查看",en:"Collecting industry news, please check back soon"})}</p>
+      <p style="font-size:11.5px;color:var(--muted);margin-bottom:14px">${t({cn:"当前分类下暂无内容，可切换顶部分类或点击刷新重试",en:"No items under this filter; try another category or refresh"})}</p>
+      <button class="add-btn" onclick="renderTrend()">🔄 ${t({cn:"刷新",en:"Refresh"})}</button>
+    </div>`}
+  },260);
+}
 
 function renderPolicy(){
   document.getElementById("content").innerHTML=`<div class="sec-title"><span class="bar"></span>${t({cn:"国家到地方政策",en:"National & Local Policies"})}</div>
@@ -2451,7 +2468,7 @@ function matchScore(item,p){
 }
 
 function getMarks(){return JSON.parse(localStorage.getItem("tw_marks")||"{}")}
-function setMark(id,mk){const m=getMarks();if(m[id]===mk)delete m[id];else m[id]=mk;localStorage.setItem("tw_marks",JSON.stringify(m));renderMatchResults()}
+function setMark(id,mk){const m=getMarks();if(m[id]===mk)delete m[id];else m[id]=mk;localStorage.setItem("tw_marks",JSON.stringify(m));renderContent(true)}
 let detailOpen=new Set();
 function toggleDetail(id,query){if(detailOpen.has(id))detailOpen.delete(id);else detailOpen.add(id);
   const el=document.getElementById("md_"+id.replace(/[^\w\u4e00-\u9fa5]/g,"_"));if(el)el.classList.toggle("show")}
@@ -2556,7 +2573,7 @@ function saveProfile(){
   localStorage.setItem("tw_profile",JSON.stringify(p));
   toast(t(I.saved));
   document.getElementById("matchBody").innerHTML=renderMatchResults();
-  window.scrollTo(0,0);
+  const _mc=document.getElementById("content");if(_mc)_mc.scrollTo(0,0);
 }
 function resetProfile(){localStorage.removeItem("tw_profile");pfSkillsSel=[];renderMatch();toast(t(I.deleted))}
 
@@ -2749,7 +2766,8 @@ function renderJobhacks(){
 }
 
 function renderContent(keepY){
-  const _y=keepY?window.scrollY:0;
+  const _c=document.getElementById("content");
+  const _y=keepY&&_c?_c.scrollTop:0;
   if(searchQ){
     renderSearchAll();
     const c=document.getElementById("content");
@@ -2762,7 +2780,7 @@ function renderContent(keepY){
     const c=document.getElementById("content");
     c.insertAdjacentHTML("afterbegin",`<div class="back-bar" onclick="goPage('home')"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M15 18l-6-6 6-6"/></svg><span>返回首页</span></div>`);
   }
-  if(keepY)requestAnimationFrame(()=>window.scrollTo(0,_y));
+  if(keepY&&_c)requestAnimationFrame(()=>_c.scrollTo(0,_y));
 }
 
 /* ============ 全局搜索：跨所有数据，忽略空格差异 ============ */
@@ -2956,9 +2974,17 @@ document.getElementById("themeBtn").onclick=()=>{renderThemeSheet();document.get
 document.getElementById("eyeSwitch").onclick=toggleEye;
 document.getElementById("langSwitch").onclick=toggleLang;
 document.getElementById("sheetMask").onclick=closeSheets;
-/* 回到顶部 */
-window.addEventListener("scroll",()=>{const b=document.getElementById("toTop");if(b)b.classList.toggle("show",window.scrollY>400)},{passive:true});
-document.getElementById("toTop").onclick=()=>window.scrollTo({top:0,behavior:"smooth"});
+/* 回到顶部：滚动到底部出现按钮；回到顶部后自动恢复分类栏 */
+(function(){
+  const c=document.getElementById("content"),b=document.getElementById("toTop");
+  if(!c||!b)return;
+  c.addEventListener("scroll",()=>{
+    const nearBottom=c.scrollTop+c.clientHeight>=c.scrollHeight-60;
+    b.classList.toggle("show",nearBottom&&c.scrollHeight>c.clientHeight+80);
+    if(c.scrollTop<=2)showCatBar();
+  },{passive:true});
+  b.onclick=()=>{c.scrollTo({top:0,behavior:"smooth"});setTimeout(showCatBar,450)};
+})();
 
 /* ============ 划词翻译：选中英文单词/句子，弹气泡翻译成中文 ============ */
 let trSel="";
@@ -3108,26 +3134,42 @@ function enterApp(){
   document.getElementById("splash").classList.add("hide");
   checkRemind();
 }
-/* 提醒：静态站无服务器推送，每天到点后首次打开即提示+系统通知（需授权） */
+/* 提醒：Web Notification API + 每分钟定时检查 + 当天防重复 */
 function getRemind(){return localStorage.getItem("tw_remind")||"20:00"}
 function setRemind(v){localStorage.setItem("tw_remind",v);toast("⏰ "+v)}
 function checkRemind(){
   const today=new Date().toISOString().slice(0,10);
-  if(localStorage.getItem("tw_seen")===today)return;
+  if(localStorage.getItem("tw_notified")===today)return;
   const [h,m]=getRemind().split(":").map(Number);
   const now=new Date();
   if(now.getHours()>h||(now.getHours()===h&&now.getMinutes()>=m)){
     if("Notification" in window&&Notification.permission==="granted"){
       try{new Notification("🌅 风口瞭望",{body:t({cn:"今日必看已更新，看看今天的新机会",en:"Today's must-read is updated"})})}catch(e){}
+      localStorage.setItem("tw_notified",today);
     }
-    if(activePage==="home")renderContent(true);
-    else toast("🌟 "+t({cn:"今日必看已更新，去首页看看",en:"Must-read updated"}));
+    if(localStorage.getItem("tw_seen")!==today){
+      if(activePage==="home")renderContent(true);
+      else toast("🌟 "+t({cn:"今日必看已更新，去首页看看",en:"Must-read updated"}));
+    }
   }
 }
+setInterval(checkRemind,60000);
 function askNotify(){
   if(!("Notification" in window)){toast(t({cn:"当前浏览器不支持通知",en:"Unsupported"}));return}
+  if(Notification.permission==="granted"){toast(t({cn:"通知已开启：到点会自动提醒你",en:"Enabled"}));return}
+  if(Notification.permission==="denied"){
+    toast(t({cn:"通知权限被拒绝：请到手机系统设置 → 应用 → Edge → 通知，开启权限后重试",en:"Denied: enable notifications for Edge in system settings"}));
+    return;
+  }
   Notification.requestPermission().then(p=>{
-    toast(p==="granted"?t({cn:"通知已开启：到点后打开 App 会提醒你",en:"Enabled"}):t({cn:"通知被拒绝，可在浏览器设置里开",en:"Denied"}));
+    if(p==="granted"){
+      toast(t({cn:"通知已开启：到点会自动提醒你",en:"Enabled"}));
+      try{new Notification("🌅 风口瞭望",{body:t({cn:"通知开启成功，到点会提醒你来看今日更新",en:"Notifications enabled"})})}catch(e){}
+    }else if(p==="denied"){
+      toast(t({cn:"通知权限被拒绝：请到手机系统设置 → 应用 → Edge → 通知，开启权限后重试",en:"Denied: enable notifications for Edge in system settings"}));
+    }else{
+      toast(t({cn:"未获得通知权限，可稍后在设置中重试",en:"Permission not granted"}));
+    }
   });
 }
 /* 收藏 */
@@ -3198,7 +3240,7 @@ applyTheme();applyEye();applyLang();initSplash();
 // PWA: 内联 Service Worker（带外部回退）
 (function(){
   if('serviceWorker' in navigator){
-    var swCode = "// \u98ce\u53e3\u77ad\u671b Service Worker - \u79bb\u7ebf\u7f13\u5b58\nconst CACHE_NAME = 'trendwatch-v16';\nconst ASSETS = [\n  './',\n  './index.html',\n  './manifest.json',\n  './icon-192.png',\n  './icon-512.png'\n];\n\n// \u5b89\u88c5\u65f6\u7f13\u5b58\u6838\u5fc3\u8d44\u6e90\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})\n  );\n  self.skipWaiting();\n});\n\n// \u6fc0\u6d3b\u65f6\u6e05\u7406\u65e7\u7f13\u5b58\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))\n    )\n  );\n  self.clients.claim();\n});\n\n// \u8bf7\u6c42\u62e6\u622a\uff1a\u7f51\u7edc\u4f18\u5148\uff0c\u5931\u8d25\u56de\u9000\u7f13\u5b58\nself.addEventListener('fetch', e => {\n  const url = new URL(e.request.url);\n  // \u53ea\u7f13\u5b58\u540c\u6e90\u8bf7\u6c42\uff0c\u8de8\u57df\u8bf7\u6c42\u76f4\u63a5\u653e\u884c\n  if (url.origin !== location.origin) return;\n  e.respondWith(\n    fetch(e.request)\n      .then(res => {\n        const copy = res.clone();\n        caches.open(CACHE_NAME).then(cache => cache.put(e.request, copy)).catch(()=>{});\n        return res;\n      })\n      .catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))\n  );\n});\n";
+    var swCode = "// \u98ce\u53e3\u77ad\u671b Service Worker - \u79bb\u7ebf\u7f13\u5b58\nconst CACHE_NAME = 'trendwatch-v17';\nconst ASSETS = [\n  './',\n  './index.html',\n  './manifest.json',\n  './icon-192.png',\n  './icon-512.png'\n];\n\n// \u5b89\u88c5\u65f6\u7f13\u5b58\u6838\u5fc3\u8d44\u6e90\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})\n  );\n  self.skipWaiting();\n});\n\n// \u6fc0\u6d3b\u65f6\u6e05\u7406\u65e7\u7f13\u5b58\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))\n    )\n  );\n  self.clients.claim();\n});\n\n// \u8bf7\u6c42\u62e6\u622a\uff1a\u7f51\u7edc\u4f18\u5148\uff0c\u5931\u8d25\u56de\u9000\u7f13\u5b58\nself.addEventListener('fetch', e => {\n  const url = new URL(e.request.url);\n  // \u53ea\u7f13\u5b58\u540c\u6e90\u8bf7\u6c42\uff0c\u8de8\u57df\u8bf7\u6c42\u76f4\u63a5\u653e\u884c\n  if (url.origin !== location.origin) return;\n  e.respondWith(\n    fetch(e.request)\n      .then(res => {\n        const copy = res.clone();\n        caches.open(CACHE_NAME).then(cache => cache.put(e.request, copy)).catch(()=>{});\n        return res;\n      })\n      .catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))\n  );\n});\n";
     try {
       var blob = new Blob([swCode], {type: 'application/javascript'});
       var swUrl = URL.createObjectURL(blob);
