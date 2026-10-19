@@ -1898,6 +1898,12 @@ const PLAT_INFO={
 };
 function isVidNew(v){return v.isNew||/2026/.test(t(v.views))}
 function isVidHot(v){return v.hot||/热门|实战|保姆|全套|爆款/.test(t(v.views))||v.plat==="bilibili"}
+/* 非B站平台封面：按平台+主题生成缩略图（B站用真实视频帧） */
+function vidCoverUrl(v){
+  const pi=PLAT_INFO[v.plat]||PLAT_INFO.bilibili;
+  const q=encodeURIComponent("mobile short video cover thumbnail, "+pi.name.en+" style, topic: "+v.title.en+", vibrant modern flat illustration, high quality, no text");
+  return "https://trae-api-cn.mchost.guru/api/ide/v1/text_to_image?prompt="+q+"&image_size=landscape_16_9";
+}
 function getVidProg(){return JSON.parse(localStorage.getItem("tw_vidprog")||"{}")}
 function vidId(v,i){return v.bvid||(v.plat+"_"+i)}
 function setVidProg(id,p){
@@ -1921,19 +1927,18 @@ function renderVideo(){
   <div style="display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;padding-bottom:4px">
     ${VID_SORTS.map(c=>`<div class="chip ${vidSort===c.id?'active':''}" data-vidsort="${c.id}">${t(c)}</div>`).join("")}
   </div>
-  <div class="card" style="background:var(--card2)"><p style="font-size:12px;color:var(--text2)">▶️ ${t({cn:"B站视频可站内直接播放；其他平台点击跳转观看。看完点卡片右下角 ✓ 记录进度。",en:"Bilibili plays in-app; others open the platform. Tap ✓ to record progress."})}</p></div>
+  <div class="card" style="background:var(--card2)"><p style="font-size:12px;color:var(--text2)">▶️ ${t({cn:"B站视频站内直接播放；快手/西瓜/视频号点击弹窗预览，再决定是否前往观看。看完点卡片右下角 ✓ 记录进度。",en:"Bilibili plays in-app; other platforms open an in-app preview first. Tap ✓ to record progress."})}</p></div>
   ${vids.length?vids.map((v)=>{
     const pi=PLAT_INFO[v.plat]||PLAT_INFO.bilibili;
     const idx=VIDEOS.indexOf(v);
     const id=vidId(v,idx);
     const pct=prog[id]||0;
     const hot=isVidHot(v),isNew=isVidNew(v);
-    const tag=v.plat==='bilibili'?'div':'a';
-    const extra=v.plat==='bilibili'?`onclick="playVideo(${idx})"`:`href="${v.url}" rel="noopener noreferrer"`;
+    const extra=`onclick="playVideo(${idx})" style="cursor:pointer"`;
     const thumbInner=v.plat==='bilibili'&&v.bvid
       ?`<div class="vid-live" data-bvid="${v.bvid}"></div>`
-      :`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px"><span style="font-size:26px">${pi.icon}</span><span style="font-size:9px;color:rgba(255,255,255,.9)">${t({cn:"点击观看",en:"Watch"})}</span></div>`;
-    return `<${tag} class="vid-card" ${extra}>
+      :`<div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:2px"><span style="font-size:26px">${pi.icon}</span><span style="font-size:9px;color:rgba(255,255,255,.9)">${t({cn:"点击预览",en:"Preview"})}</span></div><img src="${vidCoverUrl(v)}" loading="lazy" alt="" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`;
+    return `<div class="vid-card" ${extra}>
       <div class="vid-thumb-box" style="background:${v.cover}">
         ${thumbInner}
         <div class="vid-plat-icon" style="background:${pi.color}">${t(pi.name)}</div>
@@ -1951,7 +1956,7 @@ function renderVideo(){
           <span class="vp-check ${pct===100?'done':''}" onclick="event.stopPropagation();event.preventDefault();setVidProg('${id}',${pct===100?0:100})">${pct===100?"✅":"✓"}</span>
         </div>
       </div>
-    </${tag}>`;
+    </div>`;
   }).join(""):`<div class="empty">${t({cn:"这个筛选下暂时没有视频",en:"No videos for this filter"})}</div>`}
   <div class="card" style="background:linear-gradient(135deg,var(--primary-l),var(--card2))">
     <p style="color:var(--primary-d);font-size:12px">${t({cn:"💡 🔥=热门爆款，NEW=2026 最新。看完点 ✓ 保存进度，下次接着看。",en:"💡 🔥=hot, NEW=2026 latest. Tap ✓ to save progress."})}</p>
@@ -1976,16 +1981,22 @@ function mountVidCovers(){
 function playVideo(idx){
   const v=VIDEOS[idx];
   const id=vidId(v,idx);
-  if(!v.bvid){if(v.url)location.href=v.url;return}
-  if(v.plat!=="bilibili"){if(v.url)location.href=v.url;return}
   const prog=getVidProg();
   const modal=document.getElementById("vidModal");
+  const pi=PLAT_INFO[v.plat]||PLAT_INFO.bilibili;
   document.getElementById("vidModalTitle").textContent=t(v.title);
-  const embedUrl=`https://player.bilibili.com/player.html?bvid=${v.bvid}&high_quality=1&autoplay=1&danmaku=0`;
-  const origUrl=`https://www.bilibili.com/video/${v.bvid}/`;
-  document.getElementById("vidFrameWrap").innerHTML=`<iframe src="${embedUrl}" allow="autoplay;fullscreen;encrypted-media" allowfullscreen scrolling="no"></iframe>`;
+  let origUrl;
+  if(v.plat==="bilibili"&&v.bvid){
+    const embedUrl=`https://player.bilibili.com/player.html?bvid=${v.bvid}&high_quality=1&autoplay=1&danmaku=0`;
+    origUrl=`https://www.bilibili.com/video/${v.bvid}/`;
+    document.getElementById("vidFrameWrap").innerHTML=`<iframe src="${embedUrl}" allow="autoplay;fullscreen;encrypted-media" allowfullscreen scrolling="no"></iframe>`;
+  }else{
+    /* 平台限制无法内嵌：站内弹窗预览（封面+简介），不直接跳离工作台 */
+    origUrl=v.url;
+    document.getElementById("vidFrameWrap").innerHTML=`<img src="${vidCoverUrl(v)}" alt="" onerror="this.remove()" style="width:100%;height:100%;object-fit:cover;position:absolute;inset:0"><div style="position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;background:rgba(0,0,0,.45);color:#fff;padding:16px;text-align:center"><span style="font-size:32px">${pi.icon}</span><span style="font-size:13px;font-weight:600;line-height:1.5">${t(v.title)}</span><span style="font-size:11px;opacity:.9;line-height:1.5">${t({cn:"该平台暂不支持站内播放，点下方按钮前往观看",en:"In-app play unsupported on this platform; tap below to watch"})}</span></div>`;
+  }
   document.getElementById("vidModalLinks").innerHTML=`
-    <a href="${origUrl}" rel="noopener noreferrer">🔗 ${t({cn:"原站观看",en:"Original"})}</a>
+    <a href="${origUrl}" rel="noopener noreferrer">🔗 ${v.plat==="bilibili"?t({cn:"原站观看",en:"Original"}):t({cn:"前往",en:"Open"})+t(pi.name)+t({cn:"观看",en:""})}</a>
     <button class="add-btn" style="padding:8px 14px" onclick="setVidProg('${id}',100)">${t(I.vidWatched)}</button>
     <button class="add-btn" style="padding:8px 14px;background:var(--text2)" onclick="setVidProg('${id}',50)">${t(I.vidHalf)}</button>
     ${prog[id]===100?`<span style="font-size:11px;color:var(--primary-d)">✅ ${t({cn:"已看完",en:"Watched"})}</span>`:prog[id]===50?`<span style="font-size:11px;color:var(--text2)">⏸ ${t({cn:"看过一半",en:"Halfway"})}</span>`:""}`;
@@ -2813,7 +2824,7 @@ function renderSearchAll(){
     html+=vids.map(x=>{
       const pi=PLAT_INFO[x.v.plat]||PLAT_INFO.bilibili;
       return `<div class="vid-card" style="cursor:pointer" onclick="goPage('video')">
-        <div class="vid-thumb-box" style="background:${x.v.cover}"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="font-size:26px">${pi.icon}</span></div><div class="vid-plat-icon" style="background:${pi.color}">${t(pi.name)}</div></div>
+        <div class="vid-thumb-box" style="background:${x.v.cover}"><div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center"><span style="font-size:26px">${pi.icon}</span></div>${x.v.plat!=="bilibili"?`<img src="${vidCoverUrl(x.v)}" loading="lazy" alt="" onerror="this.remove()" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover">`:""}<div class="vid-plat-icon" style="background:${pi.color}">${t(pi.name)}</div></div>
         <div style="flex:1;min-width:0"><h4 style="font-size:13px;margin-bottom:4px">${hl(t(x.v.title))}</h4>
         <div class="vid-blogger">👤 ${t(x.v.blogger)} · ${t(x.v.views)}</div>
         <p style="font-size:11px;color:var(--primary-d);margin-top:4px;font-weight:600">${t({cn:"👉 去视频页观看",en:"👉 Go watch"})}</p></div></div>`;
@@ -2972,15 +2983,20 @@ document.getElementById("themeBtn").onclick=()=>{renderThemeSheet();document.get
 document.getElementById("eyeSwitch").onclick=toggleEye;
 document.getElementById("langSwitch").onclick=toggleLang;
 document.getElementById("sheetMask").onclick=closeSheets;
-/* 回到顶部：滚到内容最底部出现按钮；回到顶部后自动恢复分类栏（仅监听，不阻止滚动） */
+/* 回到顶部：rAF节流防卡顿；滚到底部出按钮；回顶恢复分类栏（仅监听，不阻止滚动） */
 (function(){
   const b=document.getElementById("toTop");
   if(!b)return;
+  let tick=false;
   window.addEventListener("scroll",()=>{
-    const de=document.documentElement,y=window.scrollY||de.scrollTop;
-    const nearBottom=y+window.innerHeight>=de.scrollHeight-60;
-    b.classList.toggle("show",nearBottom&&de.scrollHeight>window.innerHeight+80);
-    if(y<=2)showCatBar();
+    if(tick)return;tick=true;
+    requestAnimationFrame(()=>{
+      tick=false;
+      const de=document.documentElement,y=window.scrollY||de.scrollTop;
+      const nearBottom=y+window.innerHeight>=de.scrollHeight-60;
+      b.classList.toggle("show",nearBottom&&de.scrollHeight>window.innerHeight+80);
+      if(y<=2)showCatBar();
+    });
   },{passive:true});
   b.onclick=()=>{window.scrollTo({top:0,behavior:"smooth"});setTimeout(showCatBar,450)};
 })();
@@ -3239,7 +3255,7 @@ applyTheme();applyEye();applyLang();initSplash();
 // PWA: 内联 Service Worker（带外部回退）
 (function(){
   if('serviceWorker' in navigator){
-    var swCode = "// \u98ce\u53e3\u77ad\u671b Service Worker - \u79bb\u7ebf\u7f13\u5b58\nconst CACHE_NAME = 'trendwatch-v18';\nconst ASSETS = [\n  './',\n  './index.html',\n  './manifest.json',\n  './icon-192.png',\n  './icon-512.png'\n];\n\n// \u5b89\u88c5\u65f6\u7f13\u5b58\u6838\u5fc3\u8d44\u6e90\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})\n  );\n  self.skipWaiting();\n});\n\n// \u6fc0\u6d3b\u65f6\u6e05\u7406\u65e7\u7f13\u5b58\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))\n    )\n  );\n  self.clients.claim();\n});\n\n// \u8bf7\u6c42\u62e6\u622a\uff1a\u7f51\u7edc\u4f18\u5148\uff0c\u5931\u8d25\u56de\u9000\u7f13\u5b58\nself.addEventListener('fetch', e => {\n  const url = new URL(e.request.url);\n  // \u53ea\u7f13\u5b58\u540c\u6e90\u8bf7\u6c42\uff0c\u8de8\u57df\u8bf7\u6c42\u76f4\u63a5\u653e\u884c\n  if (url.origin !== location.origin) return;\n  e.respondWith(\n    fetch(e.request)\n      .then(res => {\n        const copy = res.clone();\n        caches.open(CACHE_NAME).then(cache => cache.put(e.request, copy)).catch(()=>{});\n        return res;\n      })\n      .catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))\n  );\n});\n";
+    var swCode = "// \u98ce\u53e3\u77ad\u671b Service Worker - \u79bb\u7ebf\u7f13\u5b58\nconst CACHE_NAME = 'trendwatch-v19';\nconst ASSETS = [\n  './',\n  './index.html',\n  './manifest.json',\n  './icon-192.png',\n  './icon-512.png'\n];\n\n// \u5b89\u88c5\u65f6\u7f13\u5b58\u6838\u5fc3\u8d44\u6e90\nself.addEventListener('install', e => {\n  e.waitUntil(\n    caches.open(CACHE_NAME).then(cache => cache.addAll(ASSETS)).catch(()=>{})\n  );\n  self.skipWaiting();\n});\n\n// \u6fc0\u6d3b\u65f6\u6e05\u7406\u65e7\u7f13\u5b58\nself.addEventListener('activate', e => {\n  e.waitUntil(\n    caches.keys().then(keys =>\n      Promise.all(keys.filter(k => k !== CACHE_NAME).map(k => caches.delete(k)))\n    )\n  );\n  self.clients.claim();\n});\n\n// \u8bf7\u6c42\u62e6\u622a\uff1a\u7f51\u7edc\u4f18\u5148\uff0c\u5931\u8d25\u56de\u9000\u7f13\u5b58\nself.addEventListener('fetch', e => {\n  const url = new URL(e.request.url);\n  // \u53ea\u7f13\u5b58\u540c\u6e90\u8bf7\u6c42\uff0c\u8de8\u57df\u8bf7\u6c42\u76f4\u63a5\u653e\u884c\n  if (url.origin !== location.origin) return;\n  e.respondWith(\n    fetch(e.request)\n      .then(res => {\n        const copy = res.clone();\n        caches.open(CACHE_NAME).then(cache => cache.put(e.request, copy)).catch(()=>{});\n        return res;\n      })\n      .catch(() => caches.match(e.request).then(r => r || caches.match('./index.html')))\n  );\n});\n";
     try {
       var blob = new Blob([swCode], {type: 'application/javascript'});
       var swUrl = URL.createObjectURL(blob);
